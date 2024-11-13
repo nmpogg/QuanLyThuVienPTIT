@@ -703,7 +703,8 @@ public class JP_QLPM extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField33ActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
-        // TODO add your handling code here:
+        LoanSlipPanel tmp = new LoanSlipPanel();
+        tmp.setVisible(true);
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
