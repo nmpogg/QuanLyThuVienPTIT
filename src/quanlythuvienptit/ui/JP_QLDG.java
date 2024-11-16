@@ -4,6 +4,12 @@
  */
 package quanlythuvienptit.ui;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import quanlythuvienptit.database.dao.DocGiaDAO;
+import quanlythuvienptit.models.DocGia;
+
 /**
  *
  * @author admin
@@ -13,6 +19,19 @@ public class JP_QLDG extends javax.swing.JPanel {
     /**
      * Creates new form JP_QLDG
      */
+    private ArrayList<DocGia> listDG;
+    
+    private void showdata(){
+        listDG = new DocGiaDAO().getListDG();
+        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        model.setRowCount(0);
+        int cnt = 1;
+        for(DocGia a : listDG){
+            model.addRow(new Object[]{
+                cnt++,a.getSoThe(),a.getHoTen(),a.getNamSinh(),a.getGioTinh(),a.getMaNganh()
+            });
+        }
+    }
     public JP_QLDG() {
         initComponents();
     }
@@ -73,15 +92,35 @@ public class JP_QLDG extends javax.swing.JPanel {
 
         jButton21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton21.setText("Xóa");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
         jButton22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton22.setText("Làm mới");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
 
         jButton23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton23.setText("Chi tiết");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         jButton24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton24.setText("Tìm kiếm");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -221,6 +260,11 @@ public class JP_QLDG extends javax.swing.JPanel {
 
         jButton25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton25.setText("Thêm mới");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
 
         jButton26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton26.setText("Xóa");
@@ -243,6 +287,11 @@ public class JP_QLDG extends javax.swing.JPanel {
 
         jComboBox5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Nam", "Nữ" }));
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -370,13 +419,99 @@ public class JP_QLDG extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1225, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        showdata();
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        int removeIndex = jTable4.getSelectedRow();
+        if(removeIndex == -1){
+            JOptionPane.showMessageDialog(jComboBox5, "Hay chon mot dong");
+        }
+        else if(listDG.isEmpty()){
+            JOptionPane.showMessageDialog(jComboBox5, "Khong co thong tin de xoa");
+        }
+        else{
+            String s = listDG.get(removeIndex).getSoThe();
+            boolean del = DocGiaDAO.delDG(s);
+            showdata();
+        }
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        String s = jTextField18.getText();
+        if(s.equals("")){
+            JOptionPane.showMessageDialog(jComboBox5, "Hay nhap thong tin");
+        }
+        else{
+            listDG = new DocGiaDAO().getListMaThe(s);
+            DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+            model.setRowCount(0);
+            int cnt = 1;
+            for(DocGia a : listDG){
+                model.addRow(new Object[]{
+                    cnt++,a.getSoThe(),a.getHoTen(),a.getNamSinh(),a.getGioTinh(),a.getMaNganh()
+                });
+            } 
+        }
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        DocGia a = new DocGia();
+        a.setSoThe(jTextField19.getText());
+        a.setHoTen(jTextField20.getText());
+        a.setNamSinh(jTextField21.getText());
+        a.setGioTinh((String) jComboBox5.getSelectedItem());
+        a.setMaNganh(jTextField24.getText());
+        a.setMaKhoa(jTextField23.getText());
+        a.setMaLop(jTextField22.getText());
+        a.setNguoiCN(jTextField25.getText());
+        a.setNgayCN(jTextField26.getText());
+        if(a.getSoThe().equals("")||a.getHoTen().equals("")||a.getNamSinh().equals("")||a.getGioTinh().equals("None")||a.getMaNganh().equals("")||a.getMaKhoa().equals("")||a.getMaLop().equals("")||a.getNguoiCN().equals("")||a.getNgayCN().equals("")){
+            JOptionPane.showMessageDialog(jComboBox5, "Hay dien day du thong tin");
+            return;
+        }
+        boolean isExist = DocGiaDAO.isExist(a.getSoThe());
+        if(isExist){
+            JOptionPane.showMessageDialog(jComboBox5, "Ma tac gia da ton tai");
+        }
+        else{
+            boolean insert = DocGiaDAO.insertDocGia(a);
+            if(!insert){
+                JOptionPane.showMessageDialog(jComboBox5, "Sever error!");
+            }
+            else{
+                JOptionPane.showMessageDialog(jComboBox5, "Them doc gia thanh cong!");
+            }
+            
+        }
+        jTextField19.setText("");
+        jTextField20.setText("");
+        jTextField21.setText("");
+        jTextField22.setText("");
+        jTextField23.setText("");
+        jTextField24.setText("");
+        jTextField25.setText("");
+        jTextField26.setText("");
+        
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

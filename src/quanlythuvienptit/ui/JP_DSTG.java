@@ -4,6 +4,12 @@
  */
 package quanlythuvienptit.ui;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import quanlythuvienptit.database.dao.TacGiaDAO;
+import quanlythuvienptit.models.TacGia;
+
 /**
  *
  * @author admin
@@ -13,10 +19,23 @@ public class JP_DSTG extends javax.swing.JPanel {
     /**
      * Creates new form JP_DSTG
      */
+    private ArrayList<TacGia> listTG;
+    
+    private void showdata(){
+        listTG = new TacGiaDAO().getListTG();
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        int cnt = 1;
+        for(TacGia a : listTG){
+            model.addRow(new Object[]{
+                cnt++,a.getMaTG(),a.getTenTG(),a.getGhiChu()
+            });
+        }
+    }
     public JP_DSTG() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,17 +72,37 @@ public class JP_DSTG extends javax.swing.JPanel {
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton5.setText("Xóa");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton6.setText("Cập nhật");
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton7.setText("Làm mới");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton8.setText("Tìm kiếm");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -175,9 +214,19 @@ public class JP_DSTG extends javax.swing.JPanel {
 
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton9.setText("Thêm");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton10.setText("Xóa");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -257,13 +306,89 @@ public class JP_DSTG extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
+            .addComponent(jTabbedPane4)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        showdata();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        int removeIndex = jTable2.getSelectedRow();
+        if(removeIndex == -1){
+            JOptionPane.showMessageDialog(jButton10, "Hay chon mot dong");
+        }
+        else if(listTG.isEmpty()){
+            JOptionPane.showMessageDialog(jButton10, "Khong co thong tin de xoa");
+        }
+        else{
+            String s = listTG.get(removeIndex).getMaTG();
+            boolean del = TacGiaDAO.delTG(s);
+            showdata();
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        String s = jTextField3.getText();
+        if(s.equals("")){
+            JOptionPane.showMessageDialog(jButton10, "Hay nhap thong tin");
+        }
+        else{
+            listTG = new TacGiaDAO().getListtenTG(s);
+            DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setRowCount(0);
+            int cnt = 1;
+            for(TacGia a : listTG){
+                model.addRow(new Object[]{
+                    cnt++,a.getMaTG(),a.getTenTG(),a.getGhiChu()
+                });
+            } 
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        jTextField9.setText("");
+        jTextField10.setText("");
+        jTextField11.setText("");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        TacGia a = new TacGia();
+        a.setMaTG(jTextField9.getText());
+        a.setTenTG(jTextField10.getText());
+        a.setGhiChu(jTextField11.getText());
+        if(a.getMaTG().equals("")||a.getTenTG().equals("")){
+            JOptionPane.showMessageDialog(jButton10, "Hay dien day du thong tin");
+            return;
+        }
+        boolean isExist = TacGiaDAO.isExist(a.getMaTG());
+        if(isExist){
+            JOptionPane.showMessageDialog(jButton10, "Ma tac gia da ton tai");
+        }
+        else{
+            boolean insert = TacGiaDAO.insertTacGia(a);
+            if(!insert){
+                JOptionPane.showMessageDialog(jButton10, "Sever error!");
+            }
+            else{
+                JOptionPane.showMessageDialog(jButton10, "Them tac gia thanh cong!");
+            }
+            
+        }
+        jTextField9.setText("");
+        jTextField10.setText("");
+        jTextField11.setText("");
+    }//GEN-LAST:event_jButton9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
