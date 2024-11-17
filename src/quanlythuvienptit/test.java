@@ -17,7 +17,7 @@ public class test {
         JFrame frame = new JFrame("Quản Lý Thư Viện");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 720);
-        frame.add(new JP_QLPM()); // Thêm JP_QLS vào JFrame
+        frame.add(new JP_QLPM());
         frame.setVisible(true);
     }
 }

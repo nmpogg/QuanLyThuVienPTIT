@@ -452,7 +452,7 @@ public class JP_QLS extends javax.swing.JPanel {
     }
     
     public void reset(){
-        String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Mã khoa", "Mã NXB", "Năm XB", "Mã thể loại", "Mã tác giả", "Số lượng", "Kệ sách", "Tình trạng", "Ghi chú"};
+        String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Mã khoa", "Mã NXB", "Năm XB", "Mã thể loại", "Mã tác giả", "Số lượng", "Còn lại", "Kệ sách", "Tình trạng", "Ghi chú"};
         DefaultTableModel model = new DefaultTableModel(col, 4);
         this.jTable3.setModel(model);
         this.jTextField17.setText("");

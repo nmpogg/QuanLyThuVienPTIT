@@ -24,18 +24,28 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
-        if(s.equals("Tìm kiếm")){
+        if(s.equals("searchSach")){
             qlpm.searchSach();
         }
-        else if(s.equals("Xoá")){
+        else if(s.equals("deleteSach")){
             qlpm.deleteSach();
         }
         else if(s.equals("Tìm")){
-            qlpm.serchPhieu();
+            qlpm.searchPhieu();
+        }
+        else if(s.equals("resetSach")){
+            qlpm.resetSach();
         }
     }
 
+    @Override
     public void mouseClicked(MouseEvent e){
-        qlpm.selectSach();
+        Object source = e.getSource();
+        if(source == qlpm.getTable5()){
+            qlpm.selectSach();   
+        }
+        else if(source == qlpm.getTable8()){
+            qlpm.getThongTinTraSach();
+        }
     }
 }

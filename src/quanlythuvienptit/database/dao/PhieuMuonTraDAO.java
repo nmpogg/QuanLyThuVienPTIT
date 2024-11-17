@@ -15,12 +15,12 @@ import quanlythuvienptit.database.DataBaseConnection;
 public class PhieuMuonTraDAO {
     
     public DefaultTableModel search(String s) {
-           DefaultTableModel model = null;
+        DefaultTableModel model = new DefaultTableModel();
         try {
             Connection con = DataBaseConnection.getConnection();
             String sql = "SELECT ID_MuonTra, MaTL, MaDG, NgayMuon, HanTra " +
-                         "FROM PhieuMuonTra" +
-                         "WHEWE MaDG = ?";
+                         "FROM PhieuMuonTra " +
+                         "WHERE MaDG = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, s);
             String[] col = {"STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
@@ -30,26 +30,20 @@ public class PhieuMuonTraDAO {
             while(rs.next()){
                 Object[] row = new Object[7];
                 row[0] = cnt++;
-                row[1] = rs.getString("ID_PhieuMuon");
+                row[1] = rs.getString("ID_MuonTra");
                 row[2] = rs.getString("MaTL");
                 row[3] = rs.getString("MaDG");
                 
-                String sql2 = "SELECT MaTG FROM TaiLieu " +
+                String sql2 = "SELECT TenTL FROM TaiLieu " +
                               "WHERE MaTL = ?";
                 PreparedStatement ps2 = con.prepareStatement(sql2);
                 ps2.setString(1, (String)row[2]);
                 ResultSet rs2 = ps2.executeQuery();
                 rs2.next();
-                String idTG = rs2.getString("MaTG");
-                String sql3 = "SELECT TenTG FROM TacGia " +
-                              "WHERE MaTG = ?";
-                PreparedStatement ps3 = con.prepareStatement(sql3);
-                ps3.setString(1, idTG);
-                ResultSet rs3 = ps3.executeQuery();
-                rs3.next();
-                row[4] = rs3.getString("TenTG");
+                row[4] = rs2.getString("TenTL");
                 row[5] = rs.getString("NgayMuon");
                 row[6] = rs.getString("HanTra");
+                arr.add(row);
             }
             if(!arr.isEmpty()){
                 Object[][] row = new Object[arr.size()][7];
@@ -64,10 +58,30 @@ public class PhieuMuonTraDAO {
             }
             
         } catch (ClassNotFoundException ex) {
-            //Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         } catch (SQLException ex) {
-            //Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return model;
+    }
+    public String getTinhTrang(String s){
+        String tinhTrang = "";
+        try {
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TinhTrangTra " +
+                         "FROM PhieuMuonTra " +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, s);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            tinhTrang = rs.getString("TinhTrangTra");
+            return tinhTrang;
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return tinhTrang;
     }
 }

@@ -6,6 +6,10 @@ package quanlythuvienptit.ui;
 
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvienptit.controllers.QLPMListener;
 import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
@@ -431,8 +435,9 @@ public class JP_QLPM extends javax.swing.JPanel {
                     .addComponent(jButton31)
                     .addComponent(jButton32)
                     .addComponent(jButton33))
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane8.addTab("Thống kê phiếu mượn", jPanel35);
@@ -637,11 +642,16 @@ public class JP_QLPM extends javax.swing.JPanel {
     
     public void addAction(){
         ActionListener ac = new QLPMListener(this);
+        this.jButton28.setActionCommand("searchSach");
         this.jButton28.addActionListener(ac);
         MouseListener ml = new QLPMListener(this);
         this.jTable5.addMouseListener(ml);
+        this.jButton29.setActionCommand("deleteSach");
         this.jButton29.addActionListener(ac);
         this.jButton34.addActionListener(ac);
+        this.jButton35.setActionCommand("resetSach");
+        this.jButton35.addActionListener(ac);
+        this.jTable8.addMouseListener(ml);
     }
     
     public void searchSach(){
@@ -674,10 +684,55 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jTable6.setModel(model);
     }
     
-    public void serchPhieu(){
+    public void searchPhieu(){
         String s = this.jTextField34.getText();
         PhieuMuonTraDAO pmd = new PhieuMuonTraDAO();
         this.jTable8.setModel(pmd.search(s));
+    }
+    
+    public void getThongTinTraSach(){
+        int row = this.jTable8.getSelectedRow();
+        if(row >= 0){
+            String hanTra = (String) this.jTable8.getValueAt(row, 6);
+            int d1 = Integer.parseInt(hanTra.substring(0, 2));
+            int m1 = Integer.parseInt(hanTra.substring(3, 5));
+            int y1 = Integer.parseInt(hanTra.substring(6));
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String ngayTra = today.format(formatter);
+            int d2 = Integer.parseInt(ngayTra.substring(0, 2));
+            int m2 = Integer.parseInt(ngayTra.substring(3, 5));
+            int y2 = Integer.parseInt(ngayTra.substring(6));
+            this.jTextField35.setText(ngayTra);
+            LocalDate startDate = LocalDate.of(y1, m1, d1);
+            LocalDate endDate = LocalDate.of(y2, m2, d2);
+            long soNgayMuon = ChronoUnit.DAYS.between(startDate, endDate);
+            if(soNgayMuon <= 0){
+                this.jTextField36.setText("0");
+            }
+            else{
+                this.jTextField36.setText(soNgayMuon + "");
+            }
+            long phat = soNgayMuon * 50000;
+            this.jTextField37.setText("" + phat + " VND");
+            String id = (String) this.jTable8.getValueAt(row, 1);
+            PhieuMuonTraDAO pmd = new PhieuMuonTraDAO();
+            String tinhTrang = pmd.getTinhTrang(id);
+            this.jTextArea1.setText(tinhTrang);
+        }
+    }
+    
+    public JTable getTable5(){
+        return jTable5;
+    }
+    public JTable getTable8(){
+        return jTable8;
+    }
+    
+    public void resetSach(){
+        String[] col = {"STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+        this.jTable8.setModel(model);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
