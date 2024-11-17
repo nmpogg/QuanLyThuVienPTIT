@@ -4,6 +4,13 @@
  */
 package quanlythuvienptit.ui;
 
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+import javax.swing.table.DefaultTableModel;
+import quanlythuvienptit.controllers.QLPMListener;
+import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
+import quanlythuvienptit.database.dao.TaiLieuDAO;
+
 /**
  *
  * @author admin
@@ -15,6 +22,7 @@ public class JP_QLPM extends javax.swing.JPanel {
      */
     public JP_QLPM() {
         initComponents();
+        this.addAction();
     }
 
     /**
@@ -92,11 +100,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel33.setText("Số thẻ:");
 
         jTextField29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField29ActionPerformed(evt);
-            }
-        });
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel34.setText("Họ tên");
@@ -105,11 +108,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton27.setText("Tìm kiếm");
 
         jTextField30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField30.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField30ActionPerformed(evt);
-            }
-        });
 
         jLabel38.setBackground(new java.awt.Color(204, 255, 255));
         jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -161,11 +159,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         jPanel33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jTextField33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField33.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField33ActionPerformed(evt);
-            }
-        });
 
         jButton28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton28.setText("Tìm kiếm");
@@ -178,7 +171,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Mã tài liệu", "Tên tài liệu", "Tác giả", "Ngành", "Còn lại"
+                "Mã tài liệu", "Tên tài liệu", "Tác giả", "Khoa", "Còn lại"
             }
         ));
         jScrollPane5.setViewportView(jTable5);
@@ -189,14 +182,11 @@ public class JP_QLPM extends javax.swing.JPanel {
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)
-                    .addGroup(jPanel33Layout.createSequentialGroup()
-                        .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton28)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton28)
+                .addContainerGap(433, Short.MAX_VALUE))
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE)
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,9 +195,8 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton28))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
         );
 
         jPanel34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -305,32 +294,12 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton30.setText("Tạo phiếu mượn");
 
         jTextField31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField31ActionPerformed(evt);
-            }
-        });
 
         jTextField32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField32ActionPerformed(evt);
-            }
-        });
 
         jTextField38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField38.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField38ActionPerformed(evt);
-            }
-        });
 
         jTextField39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField39.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField39ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -420,27 +389,12 @@ public class JP_QLPM extends javax.swing.JPanel {
 
         jButton31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton31.setText("Chi tiết");
-        jButton31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton31ActionPerformed(evt);
-            }
-        });
 
         jButton32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton32.setText("Làm mới");
-        jButton32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton32ActionPerformed(evt);
-            }
-        });
 
         jButton33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton33.setText("Xóa");
-        jButton33.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton33ActionPerformed(evt);
-            }
-        });
 
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -461,16 +415,13 @@ public class JP_QLPM extends javax.swing.JPanel {
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE)
-                    .addGroup(jPanel35Layout.createSequentialGroup()
-                        .addComponent(jButton31)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton32)
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton33)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(jButton31)
+                .addGap(36, 36, 36)
+                .addComponent(jButton32)
+                .addGap(30, 30, 30)
+                .addComponent(jButton33)
+                .addContainerGap(921, Short.MAX_VALUE))
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1224, Short.MAX_VALUE)
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,9 +431,8 @@ public class JP_QLPM extends javax.swing.JPanel {
                     .addComponent(jButton31)
                     .addComponent(jButton32)
                     .addComponent(jButton33))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
         );
 
         jTabbedPane8.addTab("Thống kê phiếu mượn", jPanel35);
@@ -589,11 +539,6 @@ public class JP_QLPM extends javax.swing.JPanel {
 
         jButton35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton35.setText("Làm mới");
-        jButton35.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton35ActionPerformed(evt);
-            }
-        });
 
         jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -689,52 +634,51 @@ public class JP_QLPM extends javax.swing.JPanel {
             .addComponent(jTabbedPane8)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField29ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField29ActionPerformed
-
-    private void jTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField30ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField30ActionPerformed
-
-    private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField33ActionPerformed
-
-    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
-        LoanSlipPanel tmp = new LoanSlipPanel();
-        tmp.setVisible(true);
-    }//GEN-LAST:event_jButton31ActionPerformed
-
-    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton32ActionPerformed
-
-    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton33ActionPerformed
-
-    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton35ActionPerformed
-
-    private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField31ActionPerformed
-
-    private void jTextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField32ActionPerformed
-
-    private void jTextField38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField38ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField38ActionPerformed
-
-    private void jTextField39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField39ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField39ActionPerformed
-
+    
+    public void addAction(){
+        ActionListener ac = new QLPMListener(this);
+        this.jButton28.addActionListener(ac);
+        MouseListener ml = new QLPMListener(this);
+        this.jTable5.addMouseListener(ml);
+        this.jButton29.addActionListener(ac);
+        this.jButton34.addActionListener(ac);
+    }
+    
+    public void searchSach(){
+        try{
+            TaiLieuDAO tld = new TaiLieuDAO();
+            String s = this.jTextField33.getText();
+            this.jTable5.setModel(tld.qlpm_SearchSach(s));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void selectSach(){
+        int row = this.jTable5.getSelectedRow();
+        if(row >= 0){
+            String idTaiLieu = (String) this.jTable5.getValueAt(row, 0);
+            String tenTaiLieu = (String) this.jTable5.getValueAt(row, 1);
+            String[] col = {"Mã tài liệu", "Tên tài liệu"};
+            DefaultTableModel model = new DefaultTableModel(col, 0);
+            String[] r = {idTaiLieu, tenTaiLieu};
+            model.addRow(r);
+            this.jTable6.setModel(model);
+            
+        }
+    }
+    
+    public void deleteSach(){
+        String[] col = {"Mã tài liệu", "Tên tài liệu"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+        this.jTable6.setModel(model);
+    }
+    
+    public void serchPhieu(){
+        String s = this.jTextField34.getText();
+        PhieuMuonTraDAO pmd = new PhieuMuonTraDAO();
+        this.jTable8.setModel(pmd.search(s));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton27;

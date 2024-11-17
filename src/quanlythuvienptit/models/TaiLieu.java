@@ -9,7 +9,26 @@ package quanlythuvienptit.models;
  * @author NguyenXuanKhuong
  */
 public class TaiLieu {
-    private String MaTL, TenTL, MaKhoa, MaPhanLoai, MaTG;
+    private String MaTL, TenTL, MaKhoa, MaNXB;
+    private int NamXB;
+    private String MaTheLoai, MaTG;
+    private int SoLuong, ConLai;
+    private String KeSach, TinhTrang, GhiChu;
+
+    public TaiLieu(String MaTL, String TenTL, String MaKhoa, String MaNXB, int NamXB, String MaTheLoai, String MaTG, int SoLuong, int ConLai, String KeSach, String TinhTrang, String GhiChu) {
+        this.MaTL = MaTL;
+        this.TenTL = TenTL;
+        this.MaKhoa = MaKhoa;
+        this.MaNXB = MaNXB;
+        this.NamXB = NamXB;
+        this.MaTheLoai = MaTheLoai;
+        this.MaTG = MaTG;
+        this.SoLuong = SoLuong;
+        this.ConLai = ConLai;
+        this.KeSach = KeSach;
+        this.TinhTrang = TinhTrang;
+        this.GhiChu = GhiChu;
+    }
 
     public String getMaTL() {
         return MaTL;
@@ -35,12 +54,28 @@ public class TaiLieu {
         this.MaKhoa = MaKhoa;
     }
 
-    public String getMaPhanLoai() {
-        return MaPhanLoai;
+    public String getMaNXB() {
+        return MaNXB;
     }
 
-    public void setMaPhanLoai(String MaPhanLoai) {
-        this.MaPhanLoai = MaPhanLoai;
+    public void setMaNXB(String MaNXB) {
+        this.MaNXB = MaNXB;
+    }
+
+    public int getNamXB() {
+        return NamXB;
+    }
+
+    public void setNamXB(int NamXB) {
+        this.NamXB = NamXB;
+    }
+
+    public String getMaTheLoai() {
+        return MaTheLoai;
+    }
+
+    public void setMaTheLoai(String MaTheLoai) {
+        this.MaTheLoai = MaTheLoai;
     }
 
     public String getMaTG() {
@@ -49,6 +84,46 @@ public class TaiLieu {
 
     public void setMaTG(String MaTG) {
         this.MaTG = MaTG;
+    }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int SoLuong) {
+        this.SoLuong = SoLuong;
+    }
+
+    public int getConLai() {
+        return ConLai;
+    }
+
+    public void setConLai(int ConLai) {
+        this.ConLai = ConLai;
+    }
+
+    public String getKeSach() {
+        return KeSach;
+    }
+
+    public void setKeSach(String KeSach) {
+        this.KeSach = KeSach;
+    }
+
+    public String getTinhTrang() {
+        return TinhTrang;
+    }
+
+    public void setTinhTrang(String TinhTrang) {
+        this.TinhTrang = TinhTrang;
+    }
+
+    public String getGhiChu() {
+        return GhiChu;
+    }
+
+    public void setGhiChu(String GhiChu) {
+        this.GhiChu = GhiChu;
     }
     
     
