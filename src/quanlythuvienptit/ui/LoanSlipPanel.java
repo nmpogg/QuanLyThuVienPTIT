@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.TitledBorder;
 
-public class LoanSlipPanel extends JFrame {
+public class LoanSlipPanel extends JPanel {
     private JTable table;
     private DefaultTableModel tableModel;
 

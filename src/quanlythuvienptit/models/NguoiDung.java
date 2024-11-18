@@ -4,7 +4,8 @@
  */
 package quanlythuvienptit.models;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 /**
  *
@@ -14,11 +15,24 @@ public class NguoiDung {
     private String username;
     private String password;
     private String hoTen;
-    private Date ngaySinh;
-    private String gioTinh;
-    private String chucDanh;
+    private String ngaySinh;
+    private String gioiTinh;
+    private String quyenHan;
     private String email;
     private String dienThoai;
+    private LocalDate ngayTao;
+
+    public NguoiDung(String username, String password, String hoTen, String ngaySinh, String gioiTinh, String dienThoai, String email, String quyenHan,  LocalDate ngaytao) {
+        this.username = username;
+        this.password = password;
+        this.hoTen = hoTen;
+        this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
+        this.quyenHan = quyenHan;
+        this.email = email;
+        this.dienThoai = dienThoai;
+        this.ngayTao = LocalDate.now();
+    }
 
     public String getUsername() {
         return username;
@@ -32,16 +46,16 @@ public class NguoiDung {
         return hoTen;
     }
 
-    public Date getNgaySinh() {
+    public String getNgaySinh() {
         return ngaySinh;
     }
 
     public String getGioTinh() {
-        return gioTinh;
+        return gioiTinh;
     }
 
-    public String getChucDanh() {
-        return chucDanh;
+    public String getQuyenHan() {
+        return quyenHan;
     }
 
     public String getEmail() {
@@ -64,16 +78,13 @@ public class NguoiDung {
         this.hoTen = hoTen;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
-        this.ngaySinh = ngaySinh;
-    }
 
     public void setGioTinh(String gioTinh) {
-        this.gioTinh = gioTinh;
+        this.gioiTinh = gioTinh;
     }
 
     public void setChucDanh(String chucDanh) {
-        this.chucDanh = chucDanh;
+        this.quyenHan = chucDanh;
     }
 
     public void setEmail(String email) {
@@ -83,8 +94,9 @@ public class NguoiDung {
     public void setDienThoai(String dienThoai) {
         this.dienThoai = dienThoai;
     }
-    
-    public void ThemNguoiDung(){
-        
+
+    public String getNgayTao() {
+        return this.ngayTao.toString();
     }
+    
 }
