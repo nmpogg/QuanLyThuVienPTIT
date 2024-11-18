@@ -9,9 +9,11 @@ import java.awt.event.MouseListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvienptit.controllers.QLPMListener;
+import quanlythuvienptit.database.dao.DocGiaDAO;
 import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
 
@@ -652,6 +654,9 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jButton35.setActionCommand("resetSach");
         this.jButton35.addActionListener(ac);
         this.jTable8.addMouseListener(ml);
+        this.jButton36.addActionListener(ac);
+        this.jButton27.setActionCommand("searchNguoiMuon");
+        this.jButton27.addActionListener(ac);
     }
     
     public void searchSach(){
@@ -719,6 +724,39 @@ public class JP_QLPM extends javax.swing.JPanel {
             PhieuMuonTraDAO pmd = new PhieuMuonTraDAO();
             String tinhTrang = pmd.getTinhTrang(id);
             this.jTextArea1.setText(tinhTrang);
+        }
+    }
+    
+    public String getMaPhieu(){
+        int row = this.jTable8.getSelectedRow();
+        String id = "";
+        if(row >= 0){
+           id = (String)this.jTable8.getValueAt(row, 1);
+        }
+        return id;
+    }
+    
+    public void traSach(){
+        String s = this.getMaPhieu();
+        PhieuMuonTraDAO pmd = new PhieuMuonTraDAO();
+        if(!s.isEmpty()){
+            pmd.deletePhieu(s);
+            JOptionPane.showMessageDialog(null, "Trả sách thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Lỗi!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void searchNguoiMuon(){
+        String id = this.jTextField29.getText();
+        DocGiaDAO dgd = new DocGiaDAO();
+        String tenDG = dgd.getTenDG(id);
+        if(!tenDG.isEmpty()){
+            this.jTextField30.setText(tenDG);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Số thẻ không hợp lệ!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     

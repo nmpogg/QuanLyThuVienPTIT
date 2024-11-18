@@ -84,4 +84,19 @@ public class PhieuMuonTraDAO {
         }
         return tinhTrang;
     }
+    
+    public void deletePhieu(String s){
+        try {
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "DELETE FROM PhieuMuonTra " +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, s);
+            ps.executeUpdate();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

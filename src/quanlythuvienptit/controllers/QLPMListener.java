@@ -36,6 +36,12 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
         else if(s.equals("resetSach")){
             qlpm.resetSach();
         }
+        else if(s.equals("Trả sách")){
+            qlpm.traSach();
+        }
+        else if(s.equals("searchNguoiMuon")){
+            qlpm.searchNguoiMuon();
+        }
     }
 
     @Override
@@ -46,6 +52,7 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
         }
         else if(source == qlpm.getTable8()){
             qlpm.getThongTinTraSach();
+            qlpm.getMaPhieu();
         }
     }
 }
