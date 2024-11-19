@@ -10,33 +10,18 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import quanlythuvienptit.database.DataBaseConnection;
 import quanlythuvienptit.models.DocGia;
 /**
  *
  * @author Admin
  */
 public class DocGiaDAO {
-    private static String DB_URL = "jdbc:mysql://localhost:3306/btloop";
-    private static String USER_NAME = "root";
-    private static String PASSWORD = "123456";
-    public static Connection getConnection(String dbURL, String userName, 
-            String password) {
-        Connection connect = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connect = DriverManager.getConnection(dbURL, userName, password);
-            System.out.println("connect successfully!");
-        } 
-        catch (Exception ex) {
-            System.out.println("connect failure!");
-            ex.printStackTrace();
-        }
-        return connect;
-    }
+    
     public ArrayList<DocGia> getListDG(){
             ArrayList<DocGia> list = new ArrayList<>();
             String sql = "select MaDG,HoTen,NamSinh,GioiTinh,MaNganh from docgia";
-            try(Connection conn = getConnection(DB_URL, USER_NAME, PASSWORD)){
+            try(Connection conn = DataBaseConnection.getConnection()){
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
@@ -54,7 +39,7 @@ public class DocGiaDAO {
             return list;
     }
     public static boolean delDG(String s) { //check trung username
-        try ( Connection c = getConnection(DB_URL, USER_NAME, PASSWORD)) {
+        try ( Connection c = DataBaseConnection.getConnection()) {
             String del = String.format("delete from docgia where MaDG ='%s';",s);
             PreparedStatement ps = c.prepareStatement(del);
             int row = ps.executeUpdate(del);//ap dung cho insert update delete;
@@ -67,7 +52,7 @@ public class DocGiaDAO {
     public ArrayList<DocGia> getListMaThe(String s){
             ArrayList<DocGia> list = new ArrayList<>();
             String sql = String.format("select MaDG,HoTen,NamSinh,GioiTinh,MaNganh from docgia where MaDG = '%s';",s);
-            try(Connection conn = getConnection(DB_URL, USER_NAME, PASSWORD)){
+            try(Connection conn = DataBaseConnection.getConnection()){
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
@@ -85,7 +70,7 @@ public class DocGiaDAO {
             return list;
     }
     public static boolean insertDocGia(DocGia dg) { 
-        try ( Connection c = getConnection(DB_URL, USER_NAME, PASSWORD)) {
+        try ( Connection c = DataBaseConnection.getConnection()) {
             String insert = String.format("insert into docgia (MaDG, HoTen, NamSinh, GioiTinh, MaNganh, MaKhoa, MaLop, NguoiCN, NgayCN) values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",dg.getSoThe(),dg.getHoTen(),dg.getNamSinh(),dg.getGioTinh(),dg.getMaNganh(),dg.getMaKhoa(),dg.getMaLop(),dg.getNguoiCN(),dg.getNgayCN());
             PreparedStatement ps = c.prepareStatement(insert);
             int row = ps.executeUpdate(insert);//ap dung cho insert update delete;
@@ -96,7 +81,7 @@ public class DocGiaDAO {
         return true;
     }
     public static boolean isExist(String soThe) { //check trung username
-        try ( Connection c = getConnection(DB_URL, USER_NAME, PASSWORD)) {
+        try ( Connection c = DataBaseConnection.getConnection()) {
             String select = String.format("select * from docgia where MaDG = '%s'", soThe);//truyen cau lenh truy van trong database
             PreparedStatement ps = c.prepareStatement(select);
             ResultSet rs = ps.executeQuery();//ket qua tra ve rs
@@ -109,4 +94,4 @@ public class DocGiaDAO {
         }
         return true;
     }
-}
+}   
