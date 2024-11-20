@@ -23,20 +23,19 @@ public class TaiLieuDAO {
         try {
             Connection con = DataBaseConnection.getConnection();
             String sql = "INSERT INTO TaiLieu " +
-                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, t.getMaTL());
             ps.setString(2, t.getTenTL());
             ps.setString(3, t.getMaKhoa());
             ps.setString(4, t.getMaNXB());
             ps.setInt(5, t.getNamXB());
-            ps.setString(6, t.getMaTheLoai());
-            ps.setString(7, t.getMaTG());
-            ps.setInt(8, t.getSoLuong());
-            ps.setInt(9, t.getConLai());
-            ps.setString(10, t.getKeSach());
-            ps.setString(11, t.getTinhTrang());
-            ps.setString(12, t.getGhiChu());
+            ps.setString(6, t.getMaTG());
+            ps.setInt(7, t.getSoLuong());
+            ps.setInt(8, t.getConLai());
+            ps.setString(9, t.getKeSach());
+            ps.setString(10, t.getTinhTrang());
+            ps.setString(11, t.getGhiChu());
      
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Thêm sách thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);

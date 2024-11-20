@@ -5,8 +5,14 @@
 package quanlythuvienptit.ui;
 
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvienptit.controllers.QLSListener;
+import quanlythuvienptit.database.dao.KhoaDAO;
+import quanlythuvienptit.database.dao.NhaXuatBanDAO;
+import quanlythuvienptit.database.dao.TacGiaDAO;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
 import quanlythuvienptit.models.TaiLieu;
 
@@ -22,6 +28,7 @@ public class JP_QLS extends javax.swing.JPanel {
     public JP_QLS() {
         initComponents();
         this.addAction();
+        this.initComboBox();
     }
 
     /**
@@ -56,15 +63,10 @@ public class JP_QLS extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
         jTextField16 = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -75,6 +77,9 @@ public class JP_QLS extends javax.swing.JPanel {
         jTextField6 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         jPanel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -145,13 +150,13 @@ public class JP_QLS extends javax.swing.JPanel {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã tài liệu", "Tên tài liệu", "Mã khoa", "Mã NXB", "Năm XB", "Mã thể loại", "Mã tác giả", "Số lượng", "Còn lại", "Kệ sách", "Tình trạng", "Ghi chú"
+                "STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "NXB", "Năm XB", "Tác giả", "Số lượng", "Còn lại", "Kệ sách", "Tình trạng", "Ghi chú"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
@@ -164,7 +169,7 @@ public class JP_QLS extends javax.swing.JPanel {
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -201,10 +206,10 @@ public class JP_QLS extends javax.swing.JPanel {
         jLabel15.setText("Mã tài liệu:");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel16.setText("Mã khoa:");
+        jLabel16.setText("Khoa:");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setText("Mã NXB:");
+        jLabel17.setText("NXB:");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel18.setText("Năm xuất bản:");
@@ -216,10 +221,6 @@ public class JP_QLS extends javax.swing.JPanel {
 
         jTextField13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jTextField14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        jTextField15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         jTextField16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jButton13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -228,15 +229,8 @@ public class JP_QLS extends javax.swing.JPanel {
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton14.setText("Xóa");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Mã thể loại");
-
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Mã tác giả:");
-
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Tác giả:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Số lương:");
@@ -263,6 +257,12 @@ public class JP_QLS extends javax.swing.JPanel {
 
         jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -281,35 +281,31 @@ public class JP_QLS extends javax.swing.JPanel {
                                 .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(55, 55, 55)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField16, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
+                            .addComponent(jTextField16)
+                            .addComponent(jTextField13)
+                            .addComponent(jTextField12)
                             .addComponent(jTextField3)
                             .addComponent(jTextField4)
                             .addComponent(jTextField5)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField7))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                .addGap(0, 135, Short.MAX_VALUE)
-                .addComponent(jButton13)
-                .addGap(87, 87, 87)
-                .addComponent(jButton14)
-                .addGap(209, 209, 209))
+                            .addComponent(jTextField7)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jButton13)
+                        .addGap(89, 89, 89)
+                        .addComponent(jButton14)))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,25 +321,21 @@ public class JP_QLS extends javax.swing.JPanel {
                     .addComponent(jLabel19)
                     .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -364,11 +356,11 @@ public class JP_QLS extends javax.swing.JPanel {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton14)
-                    .addComponent(jButton13))
-                .addGap(21, 21, 21))
+                    .addComponent(jButton13)
+                    .addComponent(jButton14))
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -406,23 +398,64 @@ public class JP_QLS extends javax.swing.JPanel {
         this.jButton19.addActionListener(ac);
         this.jButton18.addActionListener(ac);
     }
+    
+    public void initComboBox() {
+        KhoaDAO kd = new KhoaDAO();
+        ArrayList<String> dsTenKhoa = kd.getTenKhoa();
+        for(int i = 0; i < dsTenKhoa.size(); i++){
+            this.jComboBox1.addItem(dsTenKhoa.get(i));
+        }
+        
+        NhaXuatBanDAO xbd = new NhaXuatBanDAO();
+        ArrayList<String> dsTenNXB = xbd.getTenNXB();
+        for(int i = 0; i < dsTenNXB.size(); i++){
+            this.jComboBox2.addItem(dsTenNXB.get(i));
+        }
+        
+        TacGiaDAO tgd = new TacGiaDAO();
+        ArrayList<String> dsTenTG = tgd.getTenTG();
+        for(int i = 0; i < dsTenTG.size(); i++){
+            this.jComboBox3.addItem(dsTenTG.get(i));
+        }
+    }
+    
     public void insert(){
         try{
             TaiLieuDAO tld = new TaiLieuDAO();
+            
             String maTL = this.jTextField12.getText();
             String tenTL = this.jTextField13.getText();
-            String maKhoa = this.jTextField14.getText();
-            String maNXB = this.jTextField15.getText();
-            int namXB = Integer.parseInt(this.jTextField16.getText());
-            String maTheLoai = this.jTextField1.getText();
-            String maTG = this.jTextField2.getText();
-            int soLuong = Integer.parseInt(this.jTextField3.getText());
-            int conLai = Integer.parseInt(this.jTextField4.getText());
+            
+            int index = this.jComboBox1.getSelectedIndex();
+            String khoa = this.jComboBox1.getItemAt(index);
+            KhoaDAO kd = new KhoaDAO();
+            String maKhoa = kd.searchMaKhoa(khoa);
+            
+            index = this.jComboBox2.getSelectedIndex();
+            String NXB = this.jComboBox2.getItemAt(index);
+            NhaXuatBanDAO xbd = new NhaXuatBanDAO();
+            String maNXB = xbd.searchMaNXB(NXB);
+            
+            String namXB = this.jTextField16.getText();
+            
+            index = this.jComboBox3.getSelectedIndex();
+            String tacGia = this.jComboBox3.getItemAt(index);
+            TacGiaDAO tgd = new TacGiaDAO();
+            String maTG = tgd.searchMaTG(tacGia);
+            
+            String soLuong = this.jTextField3.getText();
+            String conLai = this.jTextField4.getText();
             String keSach = this.jTextField5.getText();
             String tinhTrang = this.jTextField6.getText();
             String ghiChu = this.jTextField7.getText();
-            TaiLieu tl = new TaiLieu(maTL, tenTL, maKhoa, maNXB, namXB, maTheLoai, maTG, soLuong, conLai, keSach, tinhTrang, ghiChu);
-            tld.insert(tl);
+            if(maTL.isEmpty() || tenTL.isEmpty() || maKhoa.isEmpty() || maNXB.isEmpty() || namXB.isEmpty() || maTG.isEmpty() || soLuong.isEmpty() 
+                    || conLai.isEmpty() || keSach.isEmpty() || tinhTrang.isEmpty() || ghiChu.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                TaiLieu tl = new TaiLieu(maTL, tenTL, maKhoa, maNXB, Integer.parseInt(namXB), maTG, Integer.parseInt(soLuong), Integer.parseInt(conLai), keSach, tinhTrang, ghiChu);
+                tld.insert(tl);
+            }
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -431,11 +464,10 @@ public class JP_QLS extends javax.swing.JPanel {
         try{
             this.jTextField12.setText("");
             this.jTextField13.setText("");
-            this.jTextField14.setText("");
-            this.jTextField15.setText("");
+            this.jComboBox1.setSelectedIndex(0);
+            this.jComboBox2.setSelectedIndex(0);
             this.jTextField16.setText("");
-            this.jTextField1.setText("");
-            this.jTextField2.setText("");
+            this.jComboBox3.setSelectedIndex(0);
             this.jTextField3.setText("");
             this.jTextField4.setText("");
             this.jTextField5.setText("");
@@ -466,8 +498,10 @@ public class JP_QLS extends javax.swing.JPanel {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -488,14 +522,10 @@ public class JP_QLS extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;

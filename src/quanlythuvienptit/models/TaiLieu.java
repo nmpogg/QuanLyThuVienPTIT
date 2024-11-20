@@ -11,17 +11,16 @@ package quanlythuvienptit.models;
 public class TaiLieu {
     private String MaTL, TenTL, MaKhoa, MaNXB;
     private int NamXB;
-    private String MaTheLoai, MaTG;
+    private String MaTG;
     private int SoLuong, ConLai;
     private String KeSach, TinhTrang, GhiChu;
 
-    public TaiLieu(String MaTL, String TenTL, String MaKhoa, String MaNXB, int NamXB, String MaTheLoai, String MaTG, int SoLuong, int ConLai, String KeSach, String TinhTrang, String GhiChu) {
+    public TaiLieu(String MaTL, String TenTL, String MaKhoa, String MaNXB, int NamXB, String MaTG, int SoLuong, int ConLai, String KeSach, String TinhTrang, String GhiChu) {
         this.MaTL = MaTL;
         this.TenTL = TenTL;
         this.MaKhoa = MaKhoa;
         this.MaNXB = MaNXB;
         this.NamXB = NamXB;
-        this.MaTheLoai = MaTheLoai;
         this.MaTG = MaTG;
         this.SoLuong = SoLuong;
         this.ConLai = ConLai;
@@ -68,14 +67,6 @@ public class TaiLieu {
 
     public void setNamXB(int NamXB) {
         this.NamXB = NamXB;
-    }
-
-    public String getMaTheLoai() {
-        return MaTheLoai;
-    }
-
-    public void setMaTheLoai(String MaTheLoai) {
-        this.MaTheLoai = MaTheLoai;
     }
 
     public String getMaTG() {
