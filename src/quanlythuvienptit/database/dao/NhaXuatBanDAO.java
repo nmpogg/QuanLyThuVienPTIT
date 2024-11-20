@@ -14,7 +14,7 @@ import quanlythuvienptit.database.DataBaseConnection;
  */
 public class NhaXuatBanDAO {
     
-    public ArrayList<String> getTenNXB() {
+    public static ArrayList<String> getTenNXB() {
         ArrayList<String> dsTenNXB = new ArrayList<>();
         dsTenNXB.add("none");
         try{
@@ -31,7 +31,7 @@ public class NhaXuatBanDAO {
         return dsTenNXB;
     }
     
-    public String searchMaNXB(String tenNXB){
+    public static String searchMaNXB(String tenNXB){
         String maNXB = "";
         try{
             Connection con = DataBaseConnection.getConnection();

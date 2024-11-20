@@ -14,7 +14,7 @@ import quanlythuvienptit.database.DataBaseConnection;
  */
 public class KhoaDAO {
     
-    public ArrayList<String> getTenKhoa() {
+    public static ArrayList<String> getTenKhoa() {
         ArrayList<String> dsTenKhoa = new ArrayList<>();
         dsTenKhoa.add("none");
         try{
@@ -31,7 +31,7 @@ public class KhoaDAO {
         return dsTenKhoa;
     }
     
-    public String searchMaKhoa(String tenKhoa){
+    public static String searchMaKhoa(String tenKhoa){
         String maKhoa = "";
         try{
             Connection con = DataBaseConnection.getConnection();

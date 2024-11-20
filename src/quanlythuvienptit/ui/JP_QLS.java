@@ -101,7 +101,6 @@ public class JP_QLS extends javax.swing.JPanel {
         jButton19.setText("Tìm kiếm");
 
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -150,13 +149,13 @@ public class JP_QLS extends javax.swing.JPanel {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "NXB", "Năm XB", "Tác giả", "Số lượng", "Còn lại", "Kệ sách", "Tình trạng", "Ghi chú"
+                "STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Số lượng", "Còn lại"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
@@ -289,17 +288,18 @@ public class JP_QLS extends javax.swing.JPanel {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(55, 55, 55)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField16)
                             .addComponent(jTextField13)
                             .addComponent(jTextField12)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4)
                             .addComponent(jTextField5)
                             .addComponent(jTextField7)
                             .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jTextField3)
+                            .addComponent(jTextField4)
+                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField16, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGap(130, 130, 130)
                         .addComponent(jButton13)
@@ -397,6 +397,7 @@ public class JP_QLS extends javax.swing.JPanel {
         this.jButton14.addActionListener(ac);
         this.jButton19.addActionListener(ac);
         this.jButton18.addActionListener(ac);
+        this.jComboBox4.addActionListener(ac);
     }
     
     public void initComboBox() {
@@ -404,6 +405,7 @@ public class JP_QLS extends javax.swing.JPanel {
         ArrayList<String> dsTenKhoa = kd.getTenKhoa();
         for(int i = 0; i < dsTenKhoa.size(); i++){
             this.jComboBox1.addItem(dsTenKhoa.get(i));
+            this.jComboBox4.addItem(dsTenKhoa.get(i));
         }
         
         NhaXuatBanDAO xbd = new NhaXuatBanDAO();
@@ -421,27 +423,23 @@ public class JP_QLS extends javax.swing.JPanel {
     
     public void insert(){
         try{
-            TaiLieuDAO tld = new TaiLieuDAO();
             
             String maTL = this.jTextField12.getText();
             String tenTL = this.jTextField13.getText();
             
             int index = this.jComboBox1.getSelectedIndex();
             String khoa = this.jComboBox1.getItemAt(index);
-            KhoaDAO kd = new KhoaDAO();
-            String maKhoa = kd.searchMaKhoa(khoa);
+            String maKhoa = KhoaDAO.searchMaKhoa(khoa);
             
             index = this.jComboBox2.getSelectedIndex();
             String NXB = this.jComboBox2.getItemAt(index);
-            NhaXuatBanDAO xbd = new NhaXuatBanDAO();
-            String maNXB = xbd.searchMaNXB(NXB);
+            String maNXB = NhaXuatBanDAO.searchMaNXB(NXB);
             
             String namXB = this.jTextField16.getText();
             
             index = this.jComboBox3.getSelectedIndex();
             String tacGia = this.jComboBox3.getItemAt(index);
-            TacGiaDAO tgd = new TacGiaDAO();
-            String maTG = tgd.searchMaTG(tacGia);
+            String maTG = TacGiaDAO.searchMaTG(tacGia);
             
             String soLuong = this.jTextField3.getText();
             String conLai = this.jTextField4.getText();
@@ -454,7 +452,7 @@ public class JP_QLS extends javax.swing.JPanel {
             }
             else{
                 TaiLieu tl = new TaiLieu(maTL, tenTL, maKhoa, maNXB, Integer.parseInt(namXB), maTG, Integer.parseInt(soLuong), Integer.parseInt(conLai), keSach, tinhTrang, ghiChu);
-                tld.insert(tl);
+                TaiLieuDAO.insert(tl);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -479,15 +477,17 @@ public class JP_QLS extends javax.swing.JPanel {
     }
     public void search(){
         String s = this.jTextField17.getText();
-        TaiLieuDAO tld = new TaiLieuDAO();
-        this.jTable3.setModel(tld.search(s));
+        int index = this.jComboBox4.getSelectedIndex();
+        String tenKhoa = this.jComboBox4.getItemAt(index);
+        this.jTable3.setModel(TaiLieuDAO.search(s, tenKhoa));
     }
     
     public void reset(){
-        String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Mã khoa", "Mã NXB", "Năm XB", "Mã thể loại", "Mã tác giả", "Số lượng", "Còn lại", "Kệ sách", "Tình trạng", "Ghi chú"};
+        String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Số lượng", "Còn lại"};
         DefaultTableModel model = new DefaultTableModel(col, 4);
         this.jTable3.setModel(model);
         this.jTextField17.setText("");
+        this.jComboBox4.setSelectedIndex(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

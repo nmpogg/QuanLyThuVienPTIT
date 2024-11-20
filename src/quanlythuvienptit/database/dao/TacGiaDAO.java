@@ -13,7 +13,7 @@ import quanlythuvienptit.database.DataBaseConnection;
  */
 public class TacGiaDAO {
     
-    public ArrayList<String> getTenTG() {
+    public static ArrayList<String> getTenTG() {
         ArrayList<String> dsTenTG = new ArrayList<>();
         dsTenTG.add("none");
         try{
@@ -30,7 +30,7 @@ public class TacGiaDAO {
         return dsTenTG;
     }
     
-    public String searchMaTG(String tenTG){
+    public static String searchMaTG(String tenTG){
         String maTG = "";
         try{
             Connection con = DataBaseConnection.getConnection();
