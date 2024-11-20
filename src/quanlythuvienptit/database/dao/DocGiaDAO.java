@@ -12,7 +12,7 @@ import java.sql.*;
  */
 public class DocGiaDAO {
     
-    public String getTenDG(String s){
+    public static String getTenDG(String s){
         String tenDG = "";
         try {
             Connection con = DataBaseConnection.getConnection();

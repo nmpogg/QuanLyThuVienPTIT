@@ -14,7 +14,7 @@ import quanlythuvienptit.database.DataBaseConnection;
  */
 public class PhieuMuonTraDAO {
     
-    public DefaultTableModel search(String s) {
+    public static DefaultTableModel search(String s) {
         DefaultTableModel model = new DefaultTableModel();
         try {
             Connection con = DataBaseConnection.getConnection();
@@ -64,7 +64,7 @@ public class PhieuMuonTraDAO {
         }
         return model;
     }
-    public String getTinhTrang(String s){
+    public static String getTinhTrang(String s){
         String tinhTrang = "";
         try {
             Connection con = DataBaseConnection.getConnection();
@@ -85,7 +85,7 @@ public class PhieuMuonTraDAO {
         return tinhTrang;
     }
     
-    public void deletePhieu(String s){
+    public static void deletePhieu(String s){
         try {
             Connection con = DataBaseConnection.getConnection();
             String sql = "DELETE FROM PhieuMuonTra " +

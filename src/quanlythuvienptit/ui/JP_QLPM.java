@@ -661,9 +661,8 @@ public class JP_QLPM extends javax.swing.JPanel {
     
     public void searchSach(){
         try{
-            TaiLieuDAO tld = new TaiLieuDAO();
             String s = this.jTextField33.getText();
-            this.jTable5.setModel(tld.qlpm_SearchSach(s));
+            this.jTable5.setModel(TaiLieuDAO.qlpm_SearchSach(s));
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -691,8 +690,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     
     public void searchPhieu(){
         String s = this.jTextField34.getText();
-        PhieuMuonTraDAO pmd = new PhieuMuonTraDAO();
-        this.jTable8.setModel(pmd.search(s));
+        this.jTable8.setModel(PhieuMuonTraDAO.search(s));
     }
     
     public void getThongTinTraSach(){
@@ -721,8 +719,7 @@ public class JP_QLPM extends javax.swing.JPanel {
             long phat = soNgayMuon * 50000;
             this.jTextField37.setText("" + phat + " VND");
             String id = (String) this.jTable8.getValueAt(row, 1);
-            PhieuMuonTraDAO pmd = new PhieuMuonTraDAO();
-            String tinhTrang = pmd.getTinhTrang(id);
+            String tinhTrang = PhieuMuonTraDAO.getTinhTrang(id);
             this.jTextArea1.setText(tinhTrang);
         }
     }
@@ -738,9 +735,8 @@ public class JP_QLPM extends javax.swing.JPanel {
     
     public void traSach(){
         String s = this.getMaPhieu();
-        PhieuMuonTraDAO pmd = new PhieuMuonTraDAO();
         if(!s.isEmpty()){
-            pmd.deletePhieu(s);
+            PhieuMuonTraDAO.deletePhieu(s);
             JOptionPane.showMessageDialog(null, "Trả sách thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
@@ -750,8 +746,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     
     public void searchNguoiMuon(){
         String id = this.jTextField29.getText();
-        DocGiaDAO dgd = new DocGiaDAO();
-        String tenDG = dgd.getTenDG(id);
+        String tenDG = DocGiaDAO.getTenDG(id);
         if(!tenDG.isEmpty()){
             this.jTextField30.setText(tenDG);
         }
