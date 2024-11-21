@@ -170,7 +170,21 @@ public class TaiLieuDAO {
         return model;
     }
     
-    
+    public static String getMaTL_Max(){
+        String maTL = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT MAX(MaTL) AS MaTLMax FROM TaiLieu";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                maTL = rs.getString("MaTLMax");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return maTL;
+    }
     
     //qlpm:
     public static DefaultTableModel qlpm_SearchSach(String s){

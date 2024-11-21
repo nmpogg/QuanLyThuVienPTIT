@@ -697,15 +697,15 @@ public class JP_QLPM extends javax.swing.JPanel {
         int row = this.jTable8.getSelectedRow();
         if(row >= 0){
             String hanTra = (String) this.jTable8.getValueAt(row, 6);
-            int d1 = Integer.parseInt(hanTra.substring(0, 2));
-            int m1 = Integer.parseInt(hanTra.substring(3, 5));
-            int y1 = Integer.parseInt(hanTra.substring(6));
+            int d1 = Integer.parseInt(hanTra.substring(8));
+            int m1 = Integer.parseInt(hanTra.substring(5, 7));
+            int y1 = Integer.parseInt(hanTra.substring(0, 4));
             LocalDate today = LocalDate.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String ngayTra = today.format(formatter);
-            int d2 = Integer.parseInt(ngayTra.substring(0, 2));
-            int m2 = Integer.parseInt(ngayTra.substring(3, 5));
-            int y2 = Integer.parseInt(ngayTra.substring(6));
+            int d2 = Integer.parseInt(ngayTra.substring(8));
+            int m2 = Integer.parseInt(ngayTra.substring(5, 7));
+            int y2 = Integer.parseInt(ngayTra.substring(0, 4));
             this.jTextField35.setText(ngayTra);
             LocalDate startDate = LocalDate.of(y1, m1, d1);
             LocalDate endDate = LocalDate.of(y2, m2, d2);
