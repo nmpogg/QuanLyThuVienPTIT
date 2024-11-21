@@ -548,13 +548,13 @@ public class JP_QLPM extends javax.swing.JPanel {
 
         jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"
+                "STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả", "Trạng thái"
             }
         ));
         jScrollPane8.setViewportView(jTable8);
@@ -726,19 +726,20 @@ public class JP_QLPM extends javax.swing.JPanel {
         }
     }
     
-    public String getMaPhieu(){
-        int row = this.jTable8.getSelectedRow();
-        String id = "";
-        if(row >= 0){
-           id = (String)this.jTable8.getValueAt(row, 1);
-        }
-        return id;
-    }
-    
     public void traSach(){
-        String s = this.getMaPhieu();
-        if(!s.isEmpty()){
-            PhieuMuonTraDAO.deletePhieu(s);
+        int row = this.jTable8.getSelectedRow();
+        String idPM = "";
+        String idTL = "";
+        String tinhTrang = this.jTextArea1.getText();
+        if(row >= 0){
+           idPM = (String)this.jTable8.getValueAt(row, 1);
+           idTL = (String)this.jTable8.getValueAt(row, 2);
+        }
+        if(!idPM.isEmpty() && !idTL.isEmpty()){
+            PhieuMuonTraDAO.updateNgayTra(idPM);
+            PhieuMuonTraDAO.updateTrangThaiMT(idPM);
+            PhieuMuonTraDAO.updateTinhTrangTra(idPM, tinhTrang);
+            TaiLieuDAO.updateTinhTrang(idTL, tinhTrang);
             JOptionPane.showMessageDialog(null, "Trả sách thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
@@ -765,7 +766,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     }
     
     public void resetSach(){
-        String[] col = {"STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
+        String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả", "Trạng thái"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
         this.jTable8.setModel(model);
     }
@@ -791,15 +792,16 @@ public class JP_QLPM extends javax.swing.JPanel {
         String ngayMuon = this.jTextField32.getText();
         String nguoiChoMuon = this.jTextField39.getText();
         String hanTra = this.jTextField38.getText();
-        String trangThaiMuonTra = "khong";
+        String trangThaiMuonTra = "chua tra";
         String nguoiNhan = this.jTextField30.getText();
-        String tinhTrangMuon = "khong";
-        String tinhTrangTra = "khong";
+        String tinhTrangMuon = TaiLieuDAO.getTinhTrang(maTL);
+        String tinhTrangTra = "";
+        String ngayTra = "";
         if(maDG.isEmpty() || nguoiNhan.isEmpty() || kieuMuon.isEmpty() || ngayMuon.isEmpty() || hanTra.isEmpty() || nguoiChoMuon.isEmpty()){
             JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
-            PhieuMuonTra pm = new PhieuMuonTra(idMuonTra, maDG, maTL, kieuMuon, ngayMuon, nguoiChoMuon, hanTra, trangThaiMuonTra, nguoiNhan, tinhTrangMuon, tinhTrangTra);
+            PhieuMuonTra pm = new PhieuMuonTra(idMuonTra, maDG, maTL, kieuMuon, ngayMuon, nguoiChoMuon, hanTra, trangThaiMuonTra, nguoiNhan, tinhTrangMuon, tinhTrangTra, ngayTra);
             PhieuMuonTraDAO.insertPhieu(pm);
         }
     }

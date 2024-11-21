@@ -10,9 +10,9 @@ package quanlythuvienptit.models;
  */
 public class PhieuMuonTra {
     private String ID_MuonTra, MaDG, MaTL, KieuMuon, NgayMuon, NguoiChoMuon, HanTra,
-            TrangThaiMuonTra, NguoiNhan, TinhTrangMuon, TinhTrangTra;
+            TrangThaiMuonTra, NguoiNhan, TinhTrangMuon, TinhTrangTra, NgayTra;
 
-    public PhieuMuonTra(String ID_MuonTra, String MaDG, String MaTL, String KieuMuon, String NgayMuon, String NguoiChoMuon, String HanTra, String TrangThaiMuonTra, String NguoiNhan, String TinhTrangMuon, String TinhTrangTra) {
+    public PhieuMuonTra(String ID_MuonTra, String MaDG, String MaTL, String KieuMuon, String NgayMuon, String NguoiChoMuon, String HanTra, String TrangThaiMuonTra, String NguoiNhan, String TinhTrangMuon, String TinhTrangTra, String NgayTra) {
         this.ID_MuonTra = ID_MuonTra;
         this.MaDG = MaDG;
         this.MaTL = MaTL;
@@ -24,6 +24,7 @@ public class PhieuMuonTra {
         this.NguoiNhan = NguoiNhan;
         this.TinhTrangMuon = TinhTrangMuon;
         this.TinhTrangTra = TinhTrangTra;
+        this.NgayTra = NgayTra;
     }
 
     public String getID_MuonTra() {
@@ -80,6 +81,14 @@ public class PhieuMuonTra {
 
     public void setHanTra(String HanTra) {
         this.HanTra = HanTra;
+    }
+
+    public String getNgayTra() {
+        return NgayTra;
+    }
+
+    public void setNgayTra(String NgayTra) {
+        this.NgayTra = NgayTra;
     }
 
     public String getTrangThaiMuonTra() {

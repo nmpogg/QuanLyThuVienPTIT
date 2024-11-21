@@ -58,7 +58,6 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
         }
         else if(source == qlpm.getTable8()){
             qlpm.getThongTinTraSach();
-            qlpm.getMaPhieu();
         }
     }
 }

@@ -113,7 +113,7 @@ public class TaiLieuDAO {
                 Connection con = DataBaseConnection.getConnection();
                 String idKhoa = KhoaDAO.searchMaKhoa(khoa);
                 String sql1 = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu " +
-                             "WHERE tenTL LIKE ? AND MaKhoa = ?";
+                              "WHERE tenTL LIKE ? AND MaKhoa = ?";
                 PreparedStatement ps = con.prepareStatement(sql1);
                 ps.setString(1, "%" + s + "%");
                 ps.setString(2, idKhoa);
@@ -239,5 +239,34 @@ public class TaiLieuDAO {
             Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return model;
+    }
+    
+    public static String getTinhTrang(String id){
+        String tinhTrang = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TinhTrang FROM TaiLieu " +
+                         "WHERE MaTL = " + "'" + id + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                tinhTrang = rs.getString("TinhTrang");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return tinhTrang;
+    }
+    
+    public static void updateTinhTrang(String id, String tinhTrang){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE TaiLieu SET TinhTrang = " + "'" + tinhTrang + "' " +
+                         "WHERE MaTL = " + "'" + id + "'";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
