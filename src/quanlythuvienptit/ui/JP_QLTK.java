@@ -4,6 +4,7 @@
  */
 package quanlythuvienptit.ui;
 
+<<<<<<< HEAD
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,6 +13,14 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvienptit.database.dao.UserDAO;
 import quanlythuvienptit.models.NguoiDung;
+=======
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
+>>>>>>> vanh
 
 /**
  *
@@ -24,6 +33,21 @@ public class JP_QLTK extends javax.swing.JPanel {
      */
     public JP_QLTK() {
         initComponents();
+        init();
+    }
+    
+    private void init() {
+        set_header(jScrollPane1, jTable1);
+    }
+    
+    private void set_header(JScrollPane jScrollPane, JTable jTable) {
+        jScrollPane.getViewport().setBackground(Color.WHITE);
+
+        JTableHeader header = jTable.getTableHeader();
+        header.setPreferredSize(new Dimension(100, 40)); // Tăng kích thước chiều cao header
+        header.setFont(new Font("Arial", Font.PLAIN, 14)); // Thay đổi font chữ
+        header.setBackground(Color.RED); // Đặt màu nền
+        jTable.setTableHeader(header);
     }
 
     /**
@@ -44,6 +68,7 @@ public class JP_QLTK extends javax.swing.JPanel {
         find = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -69,24 +94,49 @@ public class JP_QLTK extends javax.swing.JPanel {
         them_bt = new javax.swing.JButton();
         xoa_bt = new javax.swing.JButton();
 
+        jTabbedPane2.setBackground(new java.awt.Color(255, 102, 102));
+        jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTabbedPane2.setOpaque(true);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+<<<<<<< HEAD
         capNhat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         capNhat.setText("Cập nhật");
         capNhat.addActionListener(new java.awt.event.ActionListener() {
+=======
+        jButton1.setBackground(new java.awt.Color(153, 255, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setText("Cập nhật");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> vanh
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 capNhatActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD
         xoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         xoa.setText("Xóa");
         xoa.addActionListener(new java.awt.event.ActionListener() {
+=======
+        jButton2.setBackground(new java.awt.Color(153, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setText("Xóa");
+
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> vanh
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 xoaActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD
         search_string.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         search_string.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +146,13 @@ public class JP_QLTK extends javax.swing.JPanel {
 
         find.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         find.setText("Tìm kiếm");
+=======
+        jButton3.setBackground(new java.awt.Color(153, 255, 255));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton3.setText("Tìm kiếm");
+>>>>>>> vanh
 
+        jComboBox1.setBackground(new java.awt.Color(153, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Admin", "Thủ thư" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -105,8 +161,13 @@ public class JP_QLTK extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(153, 255, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton4.setText("Làm mới");
+
+        jButton5.setBackground(new java.awt.Color(153, 255, 255));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton5.setText("Chi tiết");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -122,7 +183,13 @@ public class JP_QLTK extends javax.swing.JPanel {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(capNhat)
                         .addGap(50, 50, 50)
+<<<<<<< HEAD
                         .addComponent(xoa)))
+=======
+                        .addComponent(jButton2)
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton5)))
+>>>>>>> vanh
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4)
@@ -134,9 +201,16 @@ public class JP_QLTK extends javax.swing.JPanel {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
                     .addComponent(xoa)
                     .addComponent(capNhat)
                     .addComponent(jComboBox1))
+=======
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(jComboBox1)
+                    .addComponent(jButton5))
+>>>>>>> vanh
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -146,16 +220,26 @@ public class JP_QLTK extends javax.swing.JPanel {
                 .addGap(22, 22, 22))
         );
 
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
+<<<<<<< HEAD
                 "STT", "Họ tên", "Quyền hạn", "Tài khoản", "Mật khẩu", "Số điện thoại"
+=======
+                "STT", "Họ tên", "Chức vụ", "Tài khoản", "Năm sinh", "Số điện thoại"
+>>>>>>> vanh
             }
         ));
+        jTable1.setGridColor(new java.awt.Color(0, 255, 255));
+        jTable1.setSelectionBackground(new java.awt.Color(204, 255, 255));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -194,10 +278,15 @@ public class JP_QLTK extends javax.swing.JPanel {
 
         jTabbedPane2.addTab("Quản lý tài khoản", jPanel5);
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setBackground(new java.awt.Color(153, 255, 255));
+        jLabel1.setBackground(new java.awt.Color(255, 102, 102));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("THÊM MỚI TÀI KHOẢN");
         jLabel1.setOpaque(true);
 
@@ -248,6 +337,7 @@ public class JP_QLTK extends javax.swing.JPanel {
             }
         });
 
+<<<<<<< HEAD
         them_bt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         them_bt.setText("Thêm");
         them_bt.addActionListener(new java.awt.event.ActionListener() {
@@ -263,6 +353,15 @@ public class JP_QLTK extends javax.swing.JPanel {
                 xoa_btActionPerformed(evt);
             }
         });
+=======
+        jButton11.setBackground(new java.awt.Color(153, 255, 255));
+        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton11.setText("Thêm");
+
+        jButton12.setBackground(new java.awt.Color(153, 255, 255));
+        jButton12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton12.setText("Xóa");
+>>>>>>> vanh
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -291,6 +390,7 @@ public class JP_QLTK extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(mk_ip, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,16 +405,29 @@ public class JP_QLTK extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(168, 168, 168))
+=======
+                            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(118, 118, 118))
+>>>>>>> vanh
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(131, 131, 131)
                 .addComponent(them_bt)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -457,6 +570,7 @@ public class JP_QLTK extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> gioiTinh_choose;
     private javax.swing.JTextField hoTen_ip;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

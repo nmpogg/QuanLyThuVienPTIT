@@ -28,7 +28,10 @@ public class JP_BDK extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Bảng điều khiển");
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Đang cập nhật");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -37,14 +40,14 @@ public class JP_BDK extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(431, 431, 431)
                 .addComponent(jLabel1)
-                .addContainerGap(707, Short.MAX_VALUE))
+                .addContainerGap(672, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(297, 297, 297)
                 .addComponent(jLabel1)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addContainerGap(313, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
