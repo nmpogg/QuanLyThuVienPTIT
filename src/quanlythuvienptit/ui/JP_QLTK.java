@@ -4,7 +4,6 @@
  */
 package quanlythuvienptit.ui;
 
-<<<<<<< HEAD
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,14 +12,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvienptit.database.dao.UserDAO;
 import quanlythuvienptit.models.NguoiDung;
-=======
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
->>>>>>> vanh
 
 /**
  *
