@@ -28,7 +28,10 @@ public class JP_SLKP extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Sao lưu khôi phục");
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Đang cập nhật");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -37,14 +40,14 @@ public class JP_SLKP extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(368, 368, 368)
                 .addComponent(jLabel1)
-                .addContainerGap(764, Short.MAX_VALUE))
+                .addContainerGap(738, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(259, 259, 259)
                 .addComponent(jLabel1)
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
