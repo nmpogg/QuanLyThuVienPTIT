@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvienptit.database.DataBaseConnection;
+import quanlythuvienptit.models.PhieuMuonTra;
 /**
  *
  * @author NguyenXuanKhuong
@@ -64,6 +65,8 @@ public class PhieuMuonTraDAO {
         }
         return model;
     }
+    
+    /*
     public static String getTinhTrang(String s){
         String tinhTrang = "";
         try {
@@ -84,7 +87,7 @@ public class PhieuMuonTraDAO {
         }
         return tinhTrang;
     }
-    
+    */
     public static void deletePhieu(String s){
         try {
             Connection con = DataBaseConnection.getConnection();
@@ -98,5 +101,45 @@ public class PhieuMuonTraDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public static void insertPhieu(PhieuMuonTra t){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "INSERT INTO PhieuMuonTra " +
+                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, t.getID_MuonTra());
+            ps.setString(2, t.getMaDG());
+            ps.setString(3, t.getMaTL());
+            ps.setString(4, t.getKieuMuon());
+            ps.setString(5, t.getNgayMuon());
+            ps.setString(6, t.getNguoiChoMuon());
+            ps.setString(7, t.getHanTra());
+            ps.setString(8, t.getTinhTrangMuon());
+            ps.setString(9, t.getNguoiNhan());
+            ps.setString(10, t.getTinhTrangMuon());
+            ps.setString(11, t.getTinhTrangTra());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Tạo phiếu thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Không tạo được phiếu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    public static String getID_MuonTraMax(){
+        String idMuonTraMax = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT MAX(ID_MuonTra) AS ID_MuonTraMax FROM PhieuMuonTra";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                idMuonTraMax = rs.getString("ID_MuonTraMax");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return idMuonTraMax;
     }
 }

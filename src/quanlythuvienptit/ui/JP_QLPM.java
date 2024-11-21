@@ -16,6 +16,7 @@ import quanlythuvienptit.controllers.QLPMListener;
 import quanlythuvienptit.database.dao.DocGiaDAO;
 import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
+import quanlythuvienptit.models.PhieuMuonTra;
 
 /**
  *
@@ -285,7 +286,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel48.setOpaque(true);
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel35.setText("ID phiếu mượn:");
+        jLabel35.setText("Kiểu mượn:");
 
         jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel36.setText("Ngày mượn:");
@@ -328,11 +329,9 @@ public class JP_QLPM extends javax.swing.JPanel {
                                     .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(36, 36, 36)
-                                        .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(jButton30)))
@@ -657,6 +656,9 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jButton36.addActionListener(ac);
         this.jButton27.setActionCommand("searchNguoiMuon");
         this.jButton27.addActionListener(ac);
+        this.jButton30.addActionListener(ac);
+        this.jTextField32.setActionCommand("getToday");
+        this.jTextField32.addActionListener(ac);
     }
     
     public void searchSach(){
@@ -716,11 +718,11 @@ public class JP_QLPM extends javax.swing.JPanel {
             else{
                 this.jTextField36.setText(soNgayMuon + "");
             }
-            long phat = soNgayMuon * 50000;
+            long phat = Integer.parseInt(this.jTextField36.getText()) * 50000;
             this.jTextField37.setText("" + phat + " VND");
-            String id = (String) this.jTable8.getValueAt(row, 1);
-            String tinhTrang = PhieuMuonTraDAO.getTinhTrang(id);
-            this.jTextArea1.setText(tinhTrang);
+            //String id = (String) this.jTable8.getValueAt(row, 1);
+            //String tinhTrang = PhieuMuonTraDAO.getTinhTrang(id);
+            //this.jTextArea1.setText(tinhTrang);
         }
     }
     
@@ -766,6 +768,40 @@ public class JP_QLPM extends javax.swing.JPanel {
         String[] col = {"STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
         this.jTable8.setModel(model);
+    }
+    
+    public void getToday(){
+        LocalDate today = LocalDate.now();
+        this.jTextField32.setText(today.toString());
+    }
+    
+    public void insertPhieu(){
+        int id;
+        if(PhieuMuonTraDAO.getID_MuonTraMax().isEmpty()){
+            id = 0;
+        }
+        else{
+            id = Integer.parseInt(PhieuMuonTraDAO.getID_MuonTraMax().substring(2));
+        }
+        ++id;
+        String idMuonTra = String.format("MT%03d", id);
+        String maDG = this.jTextField29.getText();
+        String maTL = (String)this.jTable6.getValueAt(0, 0);
+        String kieuMuon = this.jTextField31.getText();
+        String ngayMuon = this.jTextField32.getText();
+        String nguoiChoMuon = this.jTextField39.getText();
+        String hanTra = this.jTextField38.getText();
+        String trangThaiMuonTra = "khong";
+        String nguoiNhan = this.jTextField30.getText();
+        String tinhTrangMuon = "khong";
+        String tinhTrangTra = "khong";
+        if(maDG.isEmpty() || nguoiNhan.isEmpty() || kieuMuon.isEmpty() || ngayMuon.isEmpty() || hanTra.isEmpty() || nguoiChoMuon.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            PhieuMuonTra pm = new PhieuMuonTra(idMuonTra, maDG, maTL, kieuMuon, ngayMuon, nguoiChoMuon, hanTra, trangThaiMuonTra, nguoiNhan, tinhTrangMuon, tinhTrangTra);
+            PhieuMuonTraDAO.insertPhieu(pm);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -9,10 +9,10 @@ package quanlythuvienptit.models;
  * @author NguyenXuanKhuong
  */
 public class PhieuMuonTra {
-    private String ID_MuonTra, MaDG, MaTL, KieuMuon, NgayMuon, NguoiChoMuon, HanTra, NgayTra,
+    private String ID_MuonTra, MaDG, MaTL, KieuMuon, NgayMuon, NguoiChoMuon, HanTra,
             TrangThaiMuonTra, NguoiNhan, TinhTrangMuon, TinhTrangTra;
 
-    public PhieuMuonTra(String ID_MuonTra, String MaDG, String MaTL, String KieuMuon, String NgayMuon, String NguoiChoMuon, String HanTra, String NgayTra, String TrangThaiMuonTra, String NguoiNhan, String TinhTrangMuon, String TinhTrangTra) {
+    public PhieuMuonTra(String ID_MuonTra, String MaDG, String MaTL, String KieuMuon, String NgayMuon, String NguoiChoMuon, String HanTra, String TrangThaiMuonTra, String NguoiNhan, String TinhTrangMuon, String TinhTrangTra) {
         this.ID_MuonTra = ID_MuonTra;
         this.MaDG = MaDG;
         this.MaTL = MaTL;
@@ -20,7 +20,6 @@ public class PhieuMuonTra {
         this.NgayMuon = NgayMuon;
         this.NguoiChoMuon = NguoiChoMuon;
         this.HanTra = HanTra;
-        this.NgayTra = NgayTra;
         this.TrangThaiMuonTra = TrangThaiMuonTra;
         this.NguoiNhan = NguoiNhan;
         this.TinhTrangMuon = TinhTrangMuon;
@@ -81,14 +80,6 @@ public class PhieuMuonTra {
 
     public void setHanTra(String HanTra) {
         this.HanTra = HanTra;
-    }
-
-    public String getNgayTra() {
-        return NgayTra;
-    }
-
-    public void setNgayTra(String NgayTra) {
-        this.NgayTra = NgayTra;
     }
 
     public String getTrangThaiMuonTra() {
