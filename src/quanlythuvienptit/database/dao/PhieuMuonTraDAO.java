@@ -90,7 +90,7 @@ public class PhieuMuonTraDAO {
         return tinhTrang;
     }
     */
-    /*
+    
     public static void deletePhieu(String s){
         try {
             Connection con = DataBaseConnection.getConnection();
@@ -99,13 +99,10 @@ public class PhieuMuonTraDAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, s);
             ps.executeUpdate();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-    */
     
     public static void insertPhieu(PhieuMuonTra t){
         try{
@@ -183,5 +180,33 @@ public class PhieuMuonTraDAO {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    public static ArrayList<Object[]> thongKePhieu(){
+        ArrayList<Object[]> dsPhieu = new ArrayList<>();
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT ID_MuonTra, MaDG, NgayMuon, HanTra, TrangThaiMuonTra FROM PhieuMuonTra";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            int cnt = 1;
+            while(rs.next()){
+                Object[] row = new Object[9];
+                row[0] = cnt++;
+                row[1] = rs.getString("ID_MuonTra");
+                row[2] = rs.getString("MaDG");
+                String tenDG = DocGiaDAO.getTenDG((String)row[2]);
+                row[3] = tenDG;
+                row[4] = "null";
+                row[5] = "null";
+                row[6] = rs.getString("NgayMuon");
+                row[7] = rs.getString("HanTra");
+                row[8] = rs.getString("TrangThaiMuonTra");
+                dsPhieu.add(row);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return dsPhieu;
     }
 }

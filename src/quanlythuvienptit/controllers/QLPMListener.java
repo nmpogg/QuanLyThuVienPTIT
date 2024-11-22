@@ -48,6 +48,12 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
         else if(s.equals("getToday")){
             qlpm.getToday();
         }
+        else if(s.equals("resetPhieu")){
+            qlpm.ThongKePhieu();
+        }
+        else if(s.equals("deletePhieu")){
+            qlpm.deletePhieu();
+        }
     }
 
     @Override

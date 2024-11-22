@@ -388,6 +388,8 @@ public class JP_QLS extends javax.swing.JPanel {
         this.jButton19.addActionListener(ac);
         this.jButton18.addActionListener(ac);
         this.jComboBox4.addActionListener(ac);
+        this.jButton16.setActionCommand("deleteSach");
+        this.jButton16.addActionListener(ac);
     }
     
     public void initComboBox() {
@@ -485,6 +487,18 @@ public class JP_QLS extends javax.swing.JPanel {
         this.jTable3.setModel(model);
         this.jTextField17.setText("");
         this.jComboBox4.setSelectedIndex(0);
+    }
+    
+    public void deleteSach(){
+        try{
+            int row = this.jTable3.getSelectedRow();
+            String id = (String)this.jTable3.getValueAt(row, 1);
+            TaiLieuDAO.deleteSach(id);
+            JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

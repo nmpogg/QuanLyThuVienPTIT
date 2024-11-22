@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -659,6 +660,10 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jButton30.addActionListener(ac);
         this.jTextField32.setActionCommand("getToday");
         this.jTextField32.addActionListener(ac);
+        this.jButton32.setActionCommand("resetPhieu");
+        this.jButton32.addActionListener(ac);
+        this.jButton33.setActionCommand("deletePhieu");
+        this.jButton33.addActionListener(ac);
     }
     
     public void searchSach(){
@@ -803,6 +808,29 @@ public class JP_QLPM extends javax.swing.JPanel {
         else{
             PhieuMuonTra pm = new PhieuMuonTra(idMuonTra, maDG, maTL, kieuMuon, ngayMuon, nguoiChoMuon, hanTra, trangThaiMuonTra, nguoiNhan, tinhTrangMuon, tinhTrangTra, ngayTra);
             PhieuMuonTraDAO.insertPhieu(pm);
+        }
+    }
+    
+    public void ThongKePhieu(){
+        String[] col = {"STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số sách trả", "Ngày mượn", "Hạn trả", "Tình trạng"};
+        ArrayList<Object[]> dsPhieu = PhieuMuonTraDAO.thongKePhieu();
+        Object[][] row = new Object[dsPhieu.size()][9];
+        for(int i = 0; i < dsPhieu.size(); i++){
+            row[i] = dsPhieu.get(i);
+        }
+        DefaultTableModel model = new DefaultTableModel(row, col);
+        this.jTable7.setModel(model);
+    }
+    
+    public void deletePhieu(){
+        try{
+            int row = this.jTable7.getSelectedRow();
+            String id = (String)this.jTable7.getValueAt(row, 1);
+            PhieuMuonTraDAO.deletePhieu(id);
+            JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 

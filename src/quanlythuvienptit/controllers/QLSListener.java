@@ -34,6 +34,9 @@ public class QLSListener implements ActionListener {
         else if(s.equals("Làm mới")){
             qls.reset();
         }
+        else if(s.equals("deleteSach")){
+            qls.deleteSach();
+        }
     }
     
 }

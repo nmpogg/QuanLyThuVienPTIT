@@ -186,6 +186,18 @@ public class TaiLieuDAO {
         return maTL;
     }
     
+    public static void deleteSach(String id){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "DELETE FROM TaiLieu " +
+                         "WHERE MaTL = " + "'" + id + "'";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     //qlpm:
     public static DefaultTableModel qlpm_SearchSach(String s){
         DefaultTableModel model = null;
