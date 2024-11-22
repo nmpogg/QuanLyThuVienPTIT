@@ -36,7 +36,6 @@ public class JP_QLDG extends javax.swing.JPanel {
      * Creates new form JP_QLDG
      */
     private ArrayList<DocGia> listDG;
-    private String position;
     private void showdata(){
         listDG = new DocGiaDAO().getListDG();
         DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
@@ -48,8 +47,7 @@ public class JP_QLDG extends javax.swing.JPanel {
             });
         }
     }
-    public JP_QLDG(String a) {
-        position = a;
+    public JP_QLDG() {
         initComponents();
         init();
     }
@@ -461,10 +459,6 @@ public class JP_QLDG extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        if(!position.equals("admin")){
-            JOptionPane.showMessageDialog(JComboBox, "Ban khong co quyen");
-            return;
-        }
         DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
         int removeIndex = jTable4.getSelectedRow();
         if(removeIndex == -1){
