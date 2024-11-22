@@ -7,9 +7,13 @@ package quanlythuvienptit.ui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import quanlythuvienptit.database.dao.UserDAO;
+import quanlythuvienptit.models.NguoiDung;
 
 /**
  *
@@ -51,13 +55,13 @@ public class JP_QLTK extends javax.swing.JPanel {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        update = new javax.swing.JButton();
+        xoas = new javax.swing.JButton();
+        textSearchField = new javax.swing.JTextField();
+        find = new javax.swing.JButton();
+        filter = new javax.swing.JComboBox<>();
+        refresh = new javax.swing.JButton();
+        chitiet = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -93,46 +97,51 @@ public class JP_QLTK extends javax.swing.JPanel {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setBackground(new java.awt.Color(153, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Cập nhật");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        update.setBackground(new java.awt.Color(153, 255, 255));
+        update.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        update.setText("Cập nhật");
+        update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                updateActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(153, 255, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Xóa");
+        xoas.setBackground(new java.awt.Color(153, 255, 255));
+        xoas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        xoas.setText("Xóa");
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        textSearchField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        find.setBackground(new java.awt.Color(153, 255, 255));
+        find.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        find.setText("Tìm kiếm");
+        find.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                findActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(153, 255, 255));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setText("Tìm kiếm");
-
-        jComboBox1.setBackground(new java.awt.Color(153, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Admin", "Thủ thư" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        filter.setBackground(new java.awt.Color(153, 255, 255));
+        filter.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Admin", "Thủ thư" }));
+        filter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                filterActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(153, 255, 255));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton4.setText("Làm mới");
+        refresh.setBackground(new java.awt.Color(153, 255, 255));
+        refresh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        refresh.setText("Làm mới");
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(153, 255, 255));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton5.setText("Chi tiết");
+        chitiet.setBackground(new java.awt.Color(153, 255, 255));
+        chitiet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chitiet.setText("Chi tiết");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -142,19 +151,19 @@ public class JP_QLTK extends javax.swing.JPanel {
                 .addGap(68, 68, 68)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addComponent(jButton3))
+                        .addComponent(find))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(update)
                         .addGap(50, 50, 50)
-                        .addComponent(jButton2)
+                        .addComponent(xoas)
                         .addGap(54, 54, 54)
-                        .addComponent(jButton5)))
+                        .addComponent(chitiet)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(refresh)
+                    .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(159, 159, 159))
         );
         jPanel9Layout.setVerticalGroup(
@@ -162,16 +171,16 @@ public class JP_QLTK extends javax.swing.JPanel {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jComboBox1)
-                    .addComponent(jButton5))
+                    .addComponent(xoas)
+                    .addComponent(update)
+                    .addComponent(filter)
+                    .addComponent(chitiet))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton4))
+                        .addComponent(find)
+                        .addComponent(textSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(refresh))
                 .addGap(22, 22, 22))
         );
 
@@ -409,28 +418,59 @@ public class JP_QLTK extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        
+    }//GEN-LAST:event_updateActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterActionPerformed
+//        ArrayList<NguoiDung> dsnd = UserDAO.getAllUser();
+//        String fieldFilter = (String) filter.getSelectedItem();
+//        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+//        int cnt = 1;
+//        for(NguoiDung nd : dsnd){
+////            if(nd.getQuyenHan().equals(fieldFilter.toLowerCase())){
+//                Object[] row = {String.format("%d", cnt++) ,nd.getHoTen(), nd.getQuyenHan(), nd.getUsername(), nd.getNgaySinh(), nd.getDienThoai()};
+//                model.addRow(row);
+////            }
+//        }
+    }//GEN-LAST:event_filterActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+        ArrayList<NguoiDung> dsnd = UserDAO.getAllUser();
+        String fieldFilter = (String) filter.getSelectedItem();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        int cnt = 1;
+        System.out.println(UserDAO.quyenHan);
+        for(NguoiDung user : dsnd){
+            if(user.getQuyenHan().toLowerCase().equals(fieldFilter.toLowerCase()) || fieldFilter.equals("Tất cả")){
+                Object[] row = {String.format("%d", cnt++) ,user.getHoTen(), user.getQuyenHan(), user.getUsername(), user.getNgaySinh(), user.getDienThoai()};
+                model.addRow(row);
+            }
+        }
+    }//GEN-LAST:event_refreshActionPerformed
+
+    private void findActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findActionPerformed
+        String searchText = textSearchField.getText();
+        ArrayList<NguoiDung> dsnd = UserDAO.getAllUser();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        int cnt = 1;
+        for(NguoiDung user : dsnd){
+            if(user.getHoTen().toLowerCase().contains(searchText.toLowerCase()) || user.getUsername().toLowerCase().contains(searchText.toLowerCase())){
+                Object[] row = {String.format("%d", cnt++) ,user.getHoTen(), user.getQuyenHan(), user.getUsername(), user.getNgaySinh(), user.getDienThoai()};
+                model.addRow(row);
+            }
+        }
+    }//GEN-LAST:event_findActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton chitiet;
+    private javax.swing.JComboBox<String> filter;
+    private javax.swing.JButton find;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
@@ -450,12 +490,15 @@ public class JP_QLTK extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JButton refresh;
+    private javax.swing.JTextField textSearchField;
+    private javax.swing.JButton update;
+    private javax.swing.JButton xoas;
     // End of variables declaration//GEN-END:variables
 }

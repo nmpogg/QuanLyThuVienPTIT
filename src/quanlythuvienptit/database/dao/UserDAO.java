@@ -16,11 +16,12 @@ import quanlythuvienptit.models.NguoiDung;
  * @author Admin
  */
 public class UserDAO {
-    public ArrayList<NguoiDung> getAllUser(){
+    public static String quyenHan;
+    public static ArrayList<NguoiDung> getAllUser(){
         ArrayList<NguoiDung> dsUser = new ArrayList<>();
         String query = "SELECT * FROM NguoiDung";
         
-        try (java.sql.Connection conn = DataBaseConnection.getConnection();
+        try (Connection conn = DataBaseConnection.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
              System.out.println("Ket noi thanh cong");
@@ -29,12 +30,12 @@ public class UserDAO {
                     rs.getString("Username"),
                     rs.getString("Password"),
                     rs.getString("HoTen"),
-                    rs.getString("NamSinh"), // Chuyển đổi từ Date sang LocalDate
+                    rs.getString("NamSinh"), 
                     rs.getString("gioiTinh"),
                     rs.getString("quyenHan"),
                     rs.getString("email"),
                     rs.getString("DienThoai"),
-                    rs.getDate("NgayTao").toLocalDate() // Chuyển đổi từ Date sang LocalDate
+                    rs.getDate("NgayTao").toLocalDate()
                 );
                 dsUser.add(x);
             }
@@ -46,7 +47,24 @@ public class UserDAO {
         }
         return dsUser;
     }
-    
+    public static boolean isValidUser(String user, String pass){
+        String query = "SELECT QuyenHan FROM NguoiDung WHERE Username = ? AND Password = ?";
+        try{
+            Connection conn = DataBaseConnection.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, user);
+            pstmt.setString(2, pass);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                UserDAO.quyenHan = rs.getString("QuyenHan");
+                return true;
+            }
+        }
+        catch(ClassNotFoundException | SQLException e){
+            return false;
+        }
+        return false;
+    }
     public static boolean addUser(NguoiDung x) {
         String query = "INSERT INTO NguoiDung (Username, Password, HoTen, NamSinh, gioiTinh, quyenHan, email, DienThoai, NgayTao) " +
                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
