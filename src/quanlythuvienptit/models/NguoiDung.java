@@ -21,6 +21,7 @@ public class NguoiDung {
     private String email;
     private String dienThoai;
     private LocalDate ngayTao;
+    private String status;
 
     public NguoiDung(String username, String password, String hoTen, String ngaySinh, String gioiTinh, String dienThoai, String email, String quyenHan,  LocalDate ngaytao) {
         this.username = username;
@@ -28,10 +29,11 @@ public class NguoiDung {
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
-        this.quyenHan = quyenHan;
-        this.email = email;
         this.dienThoai = dienThoai;
+        this.email = email;
+        this.quyenHan = quyenHan;
         this.ngayTao = LocalDate.now();
+        this.status = "Đang Hoạt Động";
     }
 
     public String getUsername() {
@@ -83,8 +85,8 @@ public class NguoiDung {
         this.gioiTinh = gioTinh;
     }
 
-    public void setChucDanh(String chucDanh) {
-        this.quyenHan = chucDanh;
+    public void setQuyenHan(String quyenHan) {
+        this.quyenHan = quyenHan;
     }
 
     public void setEmail(String email) {
@@ -97,6 +99,22 @@ public class NguoiDung {
 
     public String getNgayTao() {
         return this.ngayTao.toString();
+    }
+
+    public void setNgaySinh(String ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public void setNgayTao(LocalDate ngayTao) {
+        this.ngayTao = ngayTao;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
 }
