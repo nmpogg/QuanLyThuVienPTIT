@@ -65,7 +65,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        DOCGIA = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -243,22 +243,22 @@ public class Main_Gui extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Connect.png"))); // NOI18N
-        jLabel6.setText("Quản lý đọc giả");
-        jLabel6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
-        jLabel6.setPreferredSize(new java.awt.Dimension(130, 40));
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        DOCGIA.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        DOCGIA.setForeground(new java.awt.Color(255, 255, 255));
+        DOCGIA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DOCGIA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Connect.png"))); // NOI18N
+        DOCGIA.setText("Quản lý đọc giả");
+        DOCGIA.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
+        DOCGIA.setPreferredSize(new java.awt.Dimension(130, 40));
+        DOCGIA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                DOCGIAMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel6MouseEntered(evt);
+                DOCGIAMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel6MouseExited(evt);
+                DOCGIAMouseExited(evt);
             }
         });
 
@@ -337,7 +337,7 @@ public class Main_Gui extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DOCGIA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -363,7 +363,7 @@ public class Main_Gui extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DOCGIA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -506,17 +506,17 @@ public class Main_Gui extends javax.swing.JFrame {
         handleMouseExited(jLabel5);
     }//GEN-LAST:event_jLabel5MouseExited
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void DOCGIAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DOCGIAMouseClicked
         handleMouseClicked(new JP_QLDG());
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_DOCGIAMouseClicked
 
-    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-        handleMouseEntered(jLabel6);
-    }//GEN-LAST:event_jLabel6MouseEntered
+    private void DOCGIAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DOCGIAMouseEntered
+        handleMouseEntered(DOCGIA);
+    }//GEN-LAST:event_DOCGIAMouseEntered
 
-    private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
-        handleMouseExited(jLabel6);
-    }//GEN-LAST:event_jLabel6MouseExited
+    private void DOCGIAMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DOCGIAMouseExited
+        handleMouseExited(DOCGIA);
+    }//GEN-LAST:event_DOCGIAMouseExited
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         handleMouseClicked(new JP_DSTG());
@@ -619,6 +619,7 @@ public class Main_Gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DOCGIA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -627,7 +628,6 @@ public class Main_Gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
