@@ -225,10 +225,10 @@ public class JFMain extends javax.swing.JFrame {
            setVisible(false);        
            Main_Gui dashBoard = new Main_Gui();
            dashBoard.setVisible(true);
-           JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "POPUP", JOptionPane.INFORMATION_MESSAGE);
+           JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "POPUP", JOptionPane.INFORMATION_MESSAGE);
            return;
        }
-        JOptionPane.showMessageDialog(this, "Tài Khoản Không Tồn Tại", "ERROR", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại!", "ERROR", JOptionPane.ERROR_MESSAGE);
         return;
     }//GEN-LAST:event_jButton1ActionPerformed
 
