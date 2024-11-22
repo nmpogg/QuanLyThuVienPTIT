@@ -108,7 +108,7 @@ public class PhieuMuonTraDAO {
         try{
             Connection con = DataBaseConnection.getConnection();
             String sql = "INSERT INTO PhieuMuonTra " +
-                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL)";
+                         "VALUES (?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, NULL)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, t.getID_MuonTra());
             ps.setString(2, t.getMaDG());
