@@ -655,7 +655,7 @@ public class JP_QLPM extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số đã trả", "Ngày mượn", "Hạn trả", "Tình trạng"
+                "STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số đã trả", "Ngày mượn", "Hạn trả"
             }
         ));
         jTable7.setSelectionBackground(new java.awt.Color(204, 255, 255));
@@ -873,9 +873,9 @@ public class JP_QLPM extends javax.swing.JPanel {
     }
     
     public void ThongKePhieu(){
-        String[] col = {"STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số sách trả", "Ngày mượn", "Hạn trả", "Tình trạng"};
+        String[] col = {"STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số sách trả", "Ngày mượn", "Hạn trả"};
         ArrayList<Object[]> dsPhieu = PhieuMuonTraDAO.thongKePhieu();
-        Object[][] row = new Object[dsPhieu.size()][9];
+        Object[][] row = new Object[dsPhieu.size()][8];
         for(int i = 0; i < dsPhieu.size(); i++){
             row[i] = dsPhieu.get(i);
         }

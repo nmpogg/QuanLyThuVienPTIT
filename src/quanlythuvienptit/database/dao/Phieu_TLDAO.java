@@ -60,4 +60,40 @@ public class Phieu_TLDAO {
         }
     }
     
+    public static int getSoSachMuon(String id){
+        int cnt = 0;
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT COUNT(ID_MuonTra) AS SoSachMuon FROM Phieu_TaiLieu " + 
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                cnt = rs.getInt("SoSachMuon");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return cnt;
+    }
+    
+    public static int getSoSachDaTra(String id){
+        int cnt = 0;
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT COUNT(ID_MuonTra) AS SoSachDaTra FROM Phieu_TaiLieu " + 
+                         "WHERE ID_MuonTra = ? AND TrangThaiMuonTra = 'Đã trả'";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                cnt = rs.getInt("SoSachDaTra");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return cnt;
+    }
+    
 }

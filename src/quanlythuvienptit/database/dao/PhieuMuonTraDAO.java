@@ -190,22 +190,23 @@ public class PhieuMuonTraDAO {
         ArrayList<Object[]> dsPhieu = new ArrayList<>();
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "SELECT ID_MuonTra, MaDG, NgayMuon, HanTra, TrangThaiMuonTra FROM PhieuMuonTra";
+            String sql = "SELECT ID_MuonTra, MaDG, NgayMuon, HanTra FROM PhieuMuonTra";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             int cnt = 1;
             while(rs.next()){
-                Object[] row = new Object[9];
+                Object[] row = new Object[8];
                 row[0] = cnt++;
                 row[1] = rs.getString("ID_MuonTra");
                 row[2] = rs.getString("MaDG");
                 String tenDG = DocGiaDAO.getTenDG((String)row[2]);
                 row[3] = tenDG;
-                row[4] = "null";
-                row[5] = "null";
+                int soSachMuon = Phieu_TLDAO.getSoSachMuon((String)row[1]);
+                int soSachDaTra = Phieu_TLDAO.getSoSachDaTra((String)row[1]);
+                row[4] = soSachMuon;
+                row[5] = soSachDaTra;
                 row[6] = rs.getString("NgayMuon");
                 row[7] = rs.getString("HanTra");
-                row[8] = rs.getString("TrangThaiMuonTra");
                 dsPhieu.add(row);
             }
         }catch(Exception e){
