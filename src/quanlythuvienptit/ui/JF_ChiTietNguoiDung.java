@@ -62,7 +62,6 @@ public class JF_ChiTietNguoiDung extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thông Tin Người Dùng");
         setBackground(new java.awt.Color(255, 204, 204));
-        setLocationByPlatform(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
 
