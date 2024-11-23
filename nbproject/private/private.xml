@@ -4,17 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/LopDAO.java</file>
-            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/BookInfoPanel.java</file>
             <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_QLDG.java</file>
             <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/models/TacGia.java</file>
             <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/TacGiaDAO.java</file>
             <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/Main_Gui.java</file>
-            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_BDK.java</file>
-            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/ChiTietPhieuMuon.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JF_PhieuMuon.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/ChiTietTacGia.java</file>
             <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/NganhHocDAO.java</file>
             <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_DSTG.java</file>
             <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/database/DataBaseConnection.java</file>
-            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/DocGiaDAO.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/UserDAO.java</file>
         </group>
     </open-files>
 </project-private>

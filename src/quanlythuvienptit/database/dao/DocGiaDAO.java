@@ -20,17 +20,18 @@ public class DocGiaDAO {
     
     public ArrayList<DocGia> getListDG(){
             ArrayList<DocGia> list = new ArrayList<>();
-            String sql = "select MaDG,HoTen,NamSinh,GioiTinh,MaNganh from docgia ORDER BY MaDG ASC";
+            String sql = "select MaDG,HoTen,NgaySinh,GioiTinh,MaNganh,status from docgia ORDER BY MaDG ASC";
             try(Connection conn = DataBaseConnection.getConnection()){
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     DocGia a = new DocGia();
-                    a.setSoThe(rs.getString("MaDG"));
+                    a.setMaDG(rs.getString("MaDG"));
                     a.setHoTen(rs.getString("HoTen"));
-                    a.setNamSinh(rs.getString("NamSinh"));
+                    a.setNgaySinh(rs.getString("NgaySinh"));
                     a.setGioTinh(rs.getString("GioiTinh"));
                     a.setMaNganh(rs.getString("MaNganh"));
+                    a.setStatus(rs.getString("status"));
                     list.add(a);
                 }
             } catch(Exception e){
@@ -40,7 +41,7 @@ public class DocGiaDAO {
     }
     public static boolean delDG(String s) { //check trung username
         try ( Connection c = DataBaseConnection.getConnection()) {
-            String del = String.format("delete from docgia where MaDG ='%s';",s);
+            String del = String.format("update docgia set status = 'khong hoat dong' where MaDG ='%s';",s);
             PreparedStatement ps = c.prepareStatement(del);
             int row = ps.executeUpdate(del);//ap dung cho insert update delete;
             return row >0 ? true:false;
@@ -51,15 +52,15 @@ public class DocGiaDAO {
     }
     public ArrayList<DocGia> getListMaThe(String s){
             ArrayList<DocGia> list = new ArrayList<>();
-            String sql = String.format("select MaDG,HoTen,NamSinh,GioiTinh,MaNganh from docgia where MaDG = '%s';",s);
+            String sql = String.format("select MaDG,HoTen,NgaySinh,GioiTinh,MaNganh from docgia where MaDG = '%s' OR HoTen = '%s';",s,s);
             try(Connection conn = DataBaseConnection.getConnection()){
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
                     DocGia a = new DocGia();
-                    a.setSoThe(rs.getString("MaDG"));
+                    a.setMaDG(rs.getString("MaDG"));
                     a.setHoTen(rs.getString("HoTen"));
-                    a.setNamSinh(rs.getString("NamSinh"));
+                    a.setNgaySinh(rs.getString("NgaySinh"));
                     a.setGioTinh(rs.getString("GioiTinh"));
                     a.setMaNganh(rs.getString("MaNganh"));
                     list.add(a);
@@ -71,7 +72,7 @@ public class DocGiaDAO {
     }
     public static boolean insertDocGia(DocGia dg) { 
         try ( Connection c = DataBaseConnection.getConnection()) {
-            String insert = String.format("insert into docgia (MaDG, HoTen, NamSinh, GioiTinh, MaNganh, MaKhoa, MaLop, NguoiCN, NgayCN) values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",dg.getSoThe(),dg.getHoTen(),dg.getNamSinh(),dg.getGioTinh(),dg.getMaNganh(),dg.getMaKhoa(),dg.getMaLop(),dg.getNguoiCN(),dg.getNgayCN());
+            String insert = String.format("insert into docgia (MaDG, HoTen, NgaySinh, GioiTinh, MaNganh, MaKhoa, MaLop, NguoiCN, NgayCN,status) values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','dang hoat dong');",dg.getMaDG(),dg.getHoTen(),dg.getNgaySinh(),dg.getGioTinh(),dg.getMaNganh(),dg.getMaKhoa(),dg.getMaLop(),dg.getNguoiCN(),dg.getNgayCN());
             PreparedStatement ps = c.prepareStatement(insert);
             int row = ps.executeUpdate(insert);//ap dung cho insert update delete;
             return row >0 ? true:false;
@@ -89,6 +90,57 @@ public class DocGiaDAO {
                 return true;
             }
             return false;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return true;
+    }
+    public int maxmadg(){
+        int b = 0;
+        String sql = "SELECT MAX(MaDG) AS MaxMaDG FROM DocGia;";
+        try(Connection conn = DataBaseConnection.getConnection()){
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                String a = rs.getString("MaxMaDG");
+                b = Integer.parseInt(a.substring(2));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return b;
+    }
+
+    public DocGia DG(String selectedMaDG) {
+        DocGia a = new DocGia();
+            String sql = String.format("select * from docgia where MaDG = '%s';",selectedMaDG);
+            try(Connection conn = DataBaseConnection.getConnection()){
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                    a.setMaDG(selectedMaDG);
+                    a.setNgaySinh(rs.getString("NgaySinh"));
+                    a.setGioTinh(rs.getString("GioiTinh"));
+                    a.setHoTen(rs.getString("HoTen"));
+                    a.setNgayCN(rs.getString("NgayCN"));
+                    a.setGhiChu(rs.getString("GhiChu"));
+                    a.setMaNganh(rs.getString("MaNganh"));
+                    a.setMaKhoa(rs.getString("MaKhoa"));
+                    a.setMaLop(rs.getString("MaLop"));
+                    a.setNguoiCN(rs.getString("NguoiCN"));
+                    a.setStatus(rs.getString("status"));
+                }
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+            return a;
+    }
+    public static boolean updateDG(DocGia a) { //check trung username
+        try ( Connection c = DataBaseConnection.getConnection()) {
+            String insert = String.format("UPDATE docgia SET HoTen = '%s',GioiTinh = '%s', NgaySinh = '%s',GhiChu = '%s',MaNganh ='%s',MaKhoa='%s',MaLop = '%s',status = '%s',NguoiCN = '%s',NgayCN = '%s' WHERE MaDG = '%s'",a.getHoTen(),a.getGioTinh(),a.getNgaySinh(),a.getGhiChu(),a.getMaNganh(),a.getMaKhoa(),a.getMaLop(),a.getStatus(),a.getNguoiCN(),a.getNgayCN(),a.getMaDG());
+            PreparedStatement ps = c.prepareStatement(insert);
+            int row = ps.executeUpdate(insert);
+            return row >0 ? true:false;
         } catch (Exception ex) {
             ex.printStackTrace();
         }

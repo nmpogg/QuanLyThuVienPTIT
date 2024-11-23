@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author Admin
  */
 public class DataBaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/btloop";
+    private static final String URL = "jdbc:mysql://localhost:3306/btloop1";
     private static final String USER = "root";
     private static final String PASSWORD = "123456";
 

@@ -16,7 +16,8 @@ import quanlythuvienptit.models.NguoiDung;
  * @author Admin
  */
 public class UserDAO {
-    public static String quyenHan;
+    public static String quyenHan = "Admin";
+    public static String TenUser = "user";
     public static ArrayList<NguoiDung> getAllUser(){
         ArrayList<NguoiDung> dsUser = new ArrayList<>();
         String query = "SELECT * FROM NguoiDung";
@@ -49,7 +50,7 @@ public class UserDAO {
         return dsUser;
     }
     public static boolean isValidUser(String user, String pass){
-        String query = "SELECT QuyenHan FROM NguoiDung WHERE Username = ? AND Password = ?";
+        String query = "SELECT QuyenHan,HoTen FROM NguoiDung WHERE Username = ? AND Password = ?";
         try{
             Connection conn = DataBaseConnection.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
@@ -58,6 +59,7 @@ public class UserDAO {
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()){
                 UserDAO.quyenHan = rs.getString("QuyenHan");
+                TenUser = rs.getString("HoTen");
                 return true;
             }
         }

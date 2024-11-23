@@ -51,7 +51,7 @@ public class TacGiaDAO {
     }
     public ArrayList<TacGia> getListtenTG(String s){
             ArrayList<TacGia> list = new ArrayList<>();
-            String sql = String.format("select MaTG,TenTG,GioiTinh,NamSinh from tacgia where TenTG = '%s';",s);
+            String sql = String.format("select MaTG,TenTG,GioiTinh,NamSinh from tacgia where TenTG = '%s' OR MaTG = '%s';",s,s);
             try(Connection conn = DataBaseConnection.getConnection()){
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
@@ -59,8 +59,8 @@ public class TacGiaDAO {
                     TacGia a = new TacGia();
                     a.setMaTG(rs.getString("MaTG"));
                     a.setTenTG(rs.getString("TenTG"));
-                    a.setGioitinh("GioiTinh");
-                    a.setNamSinh("NamSinh");
+                    a.setGioitinh(rs.getString("GioiTinh"));
+                    a.setNamSinh(rs.getString("NamSinh"));
                     list.add(a);
                 }
             } catch(Exception e){
@@ -92,5 +92,50 @@ public class TacGiaDAO {
             ex.printStackTrace();
         }
         return true;
+    }
+    public TacGia TG(String s){
+            TacGia a = new TacGia();
+            String sql = String.format("select * from tacgia where MaTG = '%s';",s);
+            try(Connection conn = DataBaseConnection.getConnection()){
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                    a.setMaTG(s);
+                    a.setNamSinh(rs.getString("NamSinh"));
+                    a.setGioitinh(rs.getString("GioiTinh"));
+                    a.setTenTG(rs.getString("TenTG"));
+                    a.setNgayTao(rs.getString("NgayTao"));
+                    a.setGhiChu(rs.getString("GhiChu"));
+                }
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+            return a;
+    }
+    public static boolean updateTG(TacGia a) { //check trung username
+        try ( Connection c = DataBaseConnection.getConnection()) {
+            String insert = String.format("UPDATE tacgia SET TenTG = '%s',GioiTinh = '%s', NamSinh = '%s',GhiChu = '%s' WHERE MaTG = '%s'",a.getTenTG(),a.getGioitinh(),a.getNamSinh(),a.getGhiChu(),a.getMaTG());
+            PreparedStatement ps = c.prepareStatement(insert);
+            int row = ps.executeUpdate(insert);
+            return row >0 ? true:false;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return true;
+    }
+    public int maxmatg(){
+        int b = 0;
+        String sql = "SELECT MAX(MaTG) AS MaxMaTG FROM TacGia;";
+        try(Connection conn = DataBaseConnection.getConnection()){
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                String a = rs.getString("MaxMaTG");
+                b = Integer.parseInt(a.substring(2));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return b;
     }
 }
