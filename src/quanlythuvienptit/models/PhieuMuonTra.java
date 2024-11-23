@@ -8,32 +8,24 @@ package quanlythuvienptit.models;
  *
  * @author NguyenXuanKhuong
  */
-public class MuonTra {
-    private int ID_MuonTra;
-    private String SoThe, MaCaBiet, KieuMuon, NgayMuon, NguoiChoMuon, HanTra, NguoiNhan;
+public class PhieuMuonTra {
+    private String ID_MuonTra;
+    private String MaDG, KieuMuon, NgayMuon, NguoiChoMuon, HanTra, NguoiNhan;
 
-    public int getID_MuonTra() {
+    public String getID_MuonTra() {
         return ID_MuonTra;
     }
 
-    public void setID_MuonTra(int ID_MuonTra) {
+    public void setID_MuonTra(String ID_MuonTra) {
         this.ID_MuonTra = ID_MuonTra;
     }
 
-    public String getSoThe() {
-        return SoThe;
+    public String getMaDG() {
+        return MaDG;
     }
 
-    public void setSoThe(String SoThe) {
-        this.SoThe = SoThe;
-    }
-
-    public String getMaCaBiet() {
-        return MaCaBiet;
-    }
-
-    public void setMaCaBiet(String MaCaBiet) {
-        this.MaCaBiet = MaCaBiet;
+    public void setMaDG(String MaDG) {
+        this.MaDG = MaDG;
     }
 
     public String getKieuMuon() {
