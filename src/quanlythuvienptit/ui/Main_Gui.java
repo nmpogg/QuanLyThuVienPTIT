@@ -531,7 +531,7 @@ public class Main_Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        handleMouseClicked(new JP_TKBC());
+        handleMouseClicked(new JP_TLTL());
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
