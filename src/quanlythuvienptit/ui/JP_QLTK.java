@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -511,6 +512,7 @@ public class JP_QLTK extends javax.swing.JPanel {
         JF_ChiTietNguoiDung chiTiet = null;
         try {
             chiTiet = new JF_ChiTietNguoiDung();
+            chiTiet.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         } catch (ParseException ex) {
             Logger.getLogger(JP_QLTK.class.getName()).log(Level.SEVERE, null, ex);
         }
