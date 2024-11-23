@@ -12,11 +12,25 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.ScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.*;
 import javax.swing.plaf.TableUI;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import quanlythuvienptit.controllers.QLPMListener;
+import quanlythuvienptit.database.dao.DocGiaDAO;
+import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
+import quanlythuvienptit.database.dao.Phieu_TLDAO;
+import quanlythuvienptit.database.dao.TaiLieuDAO;
+import quanlythuvienptit.models.PhieuMuonTra;
 
 /**
  *
@@ -29,6 +43,7 @@ public class JP_QLPM extends javax.swing.JPanel {
      */
     public JP_QLPM() {
         initComponents();
+        this.addAction();
         init();
 
     }
@@ -82,12 +97,10 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton29 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel48 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jButton30 = new javax.swing.JButton();
-        jTextField31 = new javax.swing.JTextField();
         jTextField32 = new javax.swing.JTextField();
         jTextField38 = new javax.swing.JTextField();
         jTextField39 = new javax.swing.JTextField();
@@ -138,11 +151,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel33.setText("Số thẻ:");
 
         jTextField29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField29ActionPerformed(evt);
-            }
-        });
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel34.setText("Họ tên");
@@ -152,18 +160,8 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton27.setText("Tìm kiếm");
         jButton27.setAlignmentY(0.0F);
         jButton27.setPreferredSize(new java.awt.Dimension(65, 30));
-        jButton27.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton27ActionPerformed(evt);
-            }
-        });
 
         jTextField30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField30.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField30ActionPerformed(evt);
-            }
-        });
 
         jLabel38.setBackground(new java.awt.Color(255, 102, 102));
         jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -220,11 +218,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         jPanel33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jTextField33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField33.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField33ActionPerformed(evt);
-            }
-        });
 
         jButton28.setBackground(new java.awt.Color(153, 255, 255));
         jButton28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -236,7 +229,7 @@ public class JP_QLPM extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã tài liệu", "Tên tài liệu", "Tác giả", "Ngành", "Còn lại"
+                "Mã tài liệu", "Tên tài liệu", "Tác giả", "Khoa", "Còn lại"
             }
         ));
         jTable5.setSelectionBackground(new java.awt.Color(204, 255, 255));
@@ -342,9 +335,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel48.setText("Thông tin phiếu mượn");
         jLabel48.setOpaque(true);
 
-        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel35.setText("ID phiếu mượn:");
-
         jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel36.setText("Ngày mượn:");
 
@@ -358,33 +348,11 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton30.setText("Tạo phiếu mượn");
 
-        jTextField31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField31ActionPerformed(evt);
-            }
-        });
-
         jTextField32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField32ActionPerformed(evt);
-            }
-        });
 
         jTextField38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField38.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField38ActionPerformed(evt);
-            }
-        });
 
         jTextField39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField39.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField39ActionPerformed(evt);
-            }
-        });
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel50.setText("Người cho mượn:");
@@ -403,7 +371,6 @@ public class JP_QLPM extends javax.swing.JPanel {
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel35)
                             .addComponent(jLabel36)
                             .addComponent(jLabel49)
                             .addComponent(jLabel50))
@@ -411,27 +378,20 @@ public class JP_QLPM extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(31, 31, 31)
-                                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(jButton30)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel35)
-                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
                     .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -475,7 +435,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                         .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 23, Short.MAX_VALUE)))
+                        .addGap(0, 29, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -602,11 +562,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton35.setBackground(new java.awt.Color(153, 255, 255));
         jButton35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton35.setText("Làm mới");
-        jButton35.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton35ActionPerformed(evt);
-            }
-        });
 
         jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -685,29 +640,14 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton31.setBackground(new java.awt.Color(153, 255, 255));
         jButton31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton31.setText("Chi tiết");
-        jButton31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton31ActionPerformed(evt);
-            }
-        });
 
         jButton32.setBackground(new java.awt.Color(153, 255, 255));
         jButton32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton32.setText("Làm mới");
-        jButton32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton32ActionPerformed(evt);
-            }
-        });
 
         jButton33.setBackground(new java.awt.Color(153, 255, 255));
         jButton33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton33.setText("Xóa");
-        jButton33.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton33ActionPerformed(evt);
-            }
-        });
 
         jTable7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
@@ -760,56 +700,200 @@ public class JP_QLPM extends javax.swing.JPanel {
             .addComponent(jTabbedPane8)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField29ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField29ActionPerformed
-
-    private void jTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField30ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField30ActionPerformed
-
-    private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField33ActionPerformed
-
-    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
-        LoanSlipPanel tmp = new LoanSlipPanel();
-        tmp.setVisible(true);
-    }//GEN-LAST:event_jButton31ActionPerformed
-
-    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton32ActionPerformed
-
-    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton33ActionPerformed
-
-    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton35ActionPerformed
-
-    private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField31ActionPerformed
-
-    private void jTextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField32ActionPerformed
-
-    private void jTextField38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField38ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField38ActionPerformed
-
-    private void jTextField39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField39ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField39ActionPerformed
-
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton27ActionPerformed
-
+     public void addAction(){
+        ActionListener ac = new QLPMListener(this);
+        this.jButton28.setActionCommand("searchSach");
+        this.jButton28.addActionListener(ac);
+        MouseListener ml = new QLPMListener(this);
+        this.jTable5.addMouseListener(ml);
+        this.jButton29.setActionCommand("deleteSach");
+        this.jButton29.addActionListener(ac);
+        this.jButton34.addActionListener(ac);
+        this.jButton35.setActionCommand("resetSach");
+        this.jButton35.addActionListener(ac);
+        this.jTable8.addMouseListener(ml);
+        this.jButton36.addActionListener(ac);
+        this.jButton27.setActionCommand("searchNguoiMuon");
+        this.jButton27.addActionListener(ac);
+        this.jButton30.addActionListener(ac);
+        this.jTextField32.setActionCommand("getToday");
+        this.jTextField32.addActionListener(ac);
+        this.jButton32.setActionCommand("resetPhieu");
+        this.jButton32.addActionListener(ac);
+        this.jButton33.setActionCommand("deletePhieu");
+        this.jButton33.addActionListener(ac);
+    }
+    
+    public void searchSach(){
+        try{
+            String s = this.jTextField33.getText();
+            this.jTable5.setModel(TaiLieuDAO.qlpm_SearchSach(s));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void selectSach(){
+        int row = this.jTable5.getSelectedRow();
+        if(row >= 0){
+            String idTaiLieu = (String) this.jTable5.getValueAt(row, 0);
+            String tenTaiLieu = (String) this.jTable5.getValueAt(row, 1);
+            DefaultTableModel model = (DefaultTableModel)this.jTable6.getModel();
+            String[] r = {idTaiLieu, tenTaiLieu};
+            model.addRow(r);
+            this.jTable6.setModel(model);
+            
+        }
+    }
+    
+    public void deleteSach(){
+        String[] col = {"Mã tài liệu", "Tên tài liệu"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+        this.jTable6.setModel(model);
+    }
+    
+    public void searchPhieu(){
+        String s = this.jTextField34.getText();
+        this.jTable8.setModel(PhieuMuonTraDAO.search(s));
+    }
+    
+    public void getThongTinTraSach(){
+        int row = this.jTable8.getSelectedRow();
+        if(row >= 0){
+            String hanTra = (String) this.jTable8.getValueAt(row, 6);
+            int d1 = Integer.parseInt(hanTra.substring(8));
+            int m1 = Integer.parseInt(hanTra.substring(5, 7));
+            int y1 = Integer.parseInt(hanTra.substring(0, 4));
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String ngayTra = today.format(formatter);
+            int d2 = Integer.parseInt(ngayTra.substring(8));
+            int m2 = Integer.parseInt(ngayTra.substring(5, 7));
+            int y2 = Integer.parseInt(ngayTra.substring(0, 4));
+            this.jTextField35.setText(ngayTra);
+            LocalDate startDate = LocalDate.of(y1, m1, d1);
+            LocalDate endDate = LocalDate.of(y2, m2, d2);
+            long soNgayMuon = ChronoUnit.DAYS.between(startDate, endDate);
+            if(soNgayMuon <= 0){
+                this.jTextField36.setText("0");
+            }
+            else{
+                this.jTextField36.setText(soNgayMuon + "");
+            }
+            long phat = Integer.parseInt(this.jTextField36.getText()) * 5000;
+            this.jTextField37.setText("" + phat + " VND");
+            //String id = (String) this.jTable8.getValueAt(row, 1);
+            //String tinhTrang = PhieuMuonTraDAO.getTinhTrang(id);
+            //this.jTextArea1.setText(tinhTrang);
+        }
+    }
+    
+    public void traSach(){
+        int row = this.jTable8.getSelectedRow();
+        String idPM = "";
+        String idTL = "";
+        String tinhTrang = this.jTextArea1.getText();
+        if(row >= 0){
+           idPM = (String)this.jTable8.getValueAt(row, 1);
+           idTL = (String)this.jTable8.getValueAt(row, 2);
+        }
+        if(!idPM.isEmpty() && !idTL.isEmpty()){
+            Phieu_TLDAO.updateTrangThaiMT(idPM, idTL);
+            TaiLieuDAO.updateTinhTrang(idTL, tinhTrang);
+            JOptionPane.showMessageDialog(null, "Trả sách thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Lỗi!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void searchNguoiMuon(){
+        String id = this.jTextField29.getText();
+        String tenDG = DocGiaDAO.getTenDG(id);
+        if(!tenDG.isEmpty()){
+            this.jTextField30.setText(tenDG);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Số thẻ không hợp lệ!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public JTable getTable5(){
+        return jTable5;
+    }
+    public JTable getTable8(){
+        return jTable8;
+    }
+    
+    public void resetSach(){
+        String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+        this.jTable8.setModel(model);
+    }
+    
+    public void getToday(){
+        LocalDate today = LocalDate.now();
+        this.jTextField32.setText(today.toString());
+    }
+    
+    public void insertPhieu(){
+        int id;
+        if(PhieuMuonTraDAO.getID_MuonTraMax().isEmpty()){
+            id = 0;
+        }
+        else{
+            id = Integer.parseInt(PhieuMuonTraDAO.getID_MuonTraMax().substring(2));
+        }
+        ++id;
+        String idMuonTra = String.format("MT%03d", id);
+        String maDG = this.jTextField29.getText();
+        String maTL = (String)this.jTable6.getValueAt(0, 0);
+        int index = this.jComboBox1.getSelectedIndex();
+        String kieuMuon = this.jComboBox1.getItemAt(index);
+        String ngayMuon = this.jTextField32.getText();
+        String nguoiChoMuon = this.jTextField39.getText();
+        String hanTra = this.jTextField38.getText();
+        String trangThaiMuonTra = "chua tra";
+        String nguoiNhan = this.jTextField30.getText();
+        String tinhTrangMuon = TaiLieuDAO.getTinhTrang(maTL);
+        String tinhTrangTra = "";
+        if(maDG.isEmpty() || nguoiNhan.isEmpty() || ngayMuon.isEmpty() || hanTra.isEmpty() || nguoiChoMuon.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            PhieuMuonTra pm = new PhieuMuonTra(idMuonTra, maDG, kieuMuon, ngayMuon, nguoiChoMuon, hanTra, nguoiNhan);
+            PhieuMuonTraDAO.insertPhieu(pm);
+            DefaultTableModel model = (DefaultTableModel)this.jTable6.getModel();
+            int row = model.getRowCount();
+            for(int i = 0; i < row; i++){
+                String idTL = (String)model.getValueAt(i, 0);
+                Phieu_TLDAO.insertSachMuon(idMuonTra, idTL);
+            }
+        }
+    }
+    
+    public void ThongKePhieu(){
+        String[] col = {"STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số sách trả", "Ngày mượn", "Hạn trả", "Tình trạng"};
+        ArrayList<Object[]> dsPhieu = PhieuMuonTraDAO.thongKePhieu();
+        Object[][] row = new Object[dsPhieu.size()][9];
+        for(int i = 0; i < dsPhieu.size(); i++){
+            row[i] = dsPhieu.get(i);
+        }
+        DefaultTableModel model = new DefaultTableModel(row, col);
+        this.jTable7.setModel(model);
+    }
+    
+    public void deletePhieu(){
+        try{
+            int row = this.jTable7.getSelectedRow();
+            String id = (String)this.jTable7.getValueAt(row, 1);
+            PhieuMuonTraDAO.deletePhieu(id);
+            JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton27;
@@ -826,7 +910,6 @@ public class JP_QLPM extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
@@ -865,7 +948,6 @@ public class JP_QLPM extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;

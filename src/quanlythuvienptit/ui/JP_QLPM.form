@@ -89,7 +89,7 @@
                               <Component id="jPanel30" min="-2" pref="189" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -165,9 +165,6 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField29ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel34">
                   <Properties>
@@ -191,9 +188,6 @@
                       <Dimension value="[65, 30]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton27ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField30">
                   <Properties>
@@ -201,9 +195,6 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField30ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel38">
                   <Properties>
@@ -320,9 +311,6 @@
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField33ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton28">
                       <Properties>
@@ -352,7 +340,7 @@
                                 <Column editable="true" title="M&#xe3; t&#xe0;i li&#x1ec7;u" type="java.lang.Object"/>
                                 <Column editable="true" title="T&#xea;n t&#xe0;i li&#x1ec7;u" type="java.lang.Object"/>
                                 <Column editable="true" title="T&#xe1;c gi&#x1ea3;" type="java.lang.Object"/>
-                                <Column editable="true" title="Ng&#xe0;nh" type="java.lang.Object"/>
+                                <Column editable="true" title="Khoa" type="java.lang.Object"/>
                                 <Column editable="true" title="C&#xf2;n l&#x1ea1;i" type="java.lang.Object"/>
                               </Table>
                             </Property>
@@ -530,7 +518,6 @@
                                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel37" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
-                                      <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel50" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -540,10 +527,6 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jTextField38" min="-2" pref="184" max="-2" attributes="0"/>
                                           <Component id="jTextField32" min="-2" pref="184" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                              <Component id="jTextField31" min="-2" pref="153" max="-2" attributes="0"/>
-                                          </Group>
                                       </Group>
                                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                           <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
@@ -556,7 +539,7 @@
                                   <Component id="jButton30" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="31" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -564,12 +547,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel48" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField31" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField32" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -613,14 +591,6 @@
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel35">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="ID phi&#x1ebf;u m&#x1b0;&#x1ee3;n:"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel36">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -656,25 +626,12 @@
                     <Property name="text" type="java.lang.String" value="T&#x1ea1;o phi&#x1ebf;u m&#x1b0;&#x1ee3;n"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField31">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField31ActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JTextField" name="jTextField32">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField32ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField38">
                   <Properties>
@@ -682,9 +639,6 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField38ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField39">
                   <Properties>
@@ -692,9 +646,6 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField39ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel50">
                   <Properties>
@@ -1069,9 +1020,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton35ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane8">
                   <AuxValues>
@@ -1198,9 +1146,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Chi ti&#x1ebf;t"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton31ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton32">
               <Properties>
@@ -1212,9 +1157,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton32ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton33">
               <Properties>
@@ -1226,9 +1168,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton33ActionPerformed"/>
-              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane7">
               <AuxValues>
