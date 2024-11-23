@@ -80,4 +80,28 @@ public class TacGiaDAO {
         }
         return namSinh;
     }
+    
+    public static void updateTenTG(String id, String tenTG){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE TacGia SET TenTG = " + "'" + tenTG + "' " +
+                         "WHERE MaTG = " + "'" + id + "'";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void updateNamSinh(String id, String namSinh){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE TacGia SET NamSinh = " + "'" + namSinh + "' " +
+                         "WHERE MaTG = " + "'" + id + "'";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

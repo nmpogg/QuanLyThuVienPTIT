@@ -64,4 +64,15 @@ public class NhaXuatBanDAO {
         }
         return tenNXB;
     }
+    public static void updateTenNXB(String id, String tenNXB){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE NhaXuatBan SET TenNXB = " + "'" + tenNXB + "' " +
+                         "WHERE MaNXB = " + "'" + id + "'";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

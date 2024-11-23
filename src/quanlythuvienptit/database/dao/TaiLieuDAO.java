@@ -287,7 +287,7 @@ public class TaiLieuDAO {
         ResultSet rs = null;
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "SELECT TenTL, MaNXB, NamXB, MaTG, KeSach, TinhTrang FROM TaiLieu " + 
+            String sql = "SELECT MaTL, TenTL, MaNXB, NamXB, MaTG, KeSach, TinhTrang, GhiChu FROM TaiLieu " + 
                          "WHERE MaTL = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, id);
@@ -296,5 +296,58 @@ public class TaiLieuDAO {
             e.printStackTrace();
         }
         return rs;
+    }
+    
+    public static void update(String id, String tenTL, String namXB, String keSach, String tinhTrang, String ghiChu){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE TaiLieu SET TenTL = ?, NamXB = ?, KeSach = ?, TinhTrang = ?, GhiChu = ? " +
+                         "WHERE MaTL = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenTL);
+            ps.setString(2, namXB);
+            ps.setString(3, keSach);
+            ps.setString(4, tinhTrang);
+            ps.setString(5, ghiChu);
+            ps.setString(6, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static String searchMaNXB(String maTL){
+        String maNXB = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT MaNXB FROM TaiLieu " + 
+                         "WHERE MaTL = " + "'" + maTL + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                maNXB = rs.getString("MaNXB");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return maNXB;
+    }
+    
+    public static String searchMaTG(String maTL){
+        String maTG = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT MaTG FROM TaiLieu " + 
+                         "WHERE MaTL = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maTL);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                maTG = rs.getString("MaTG");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return maTG;
     }
 }
