@@ -46,4 +46,38 @@ public class TacGiaDAO {
         }
         return maTG;
     }
+    
+    public static String searchTenTG(String maTG){
+        String tenTG = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TenTG FROM TacGia " +
+                         "WHERE MaTG = " + "'" + maTG + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                tenTG = rs.getString("TenTG");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return tenTG;
+    }
+    
+    public static String searchNamSinh(String maTG){
+        String namSinh = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT NamSinh FROM TacGia " +
+                         "WHERE MaTG = " + "'" + maTG + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                namSinh = rs.getString("NamSinh");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return namSinh;
+    }
 }

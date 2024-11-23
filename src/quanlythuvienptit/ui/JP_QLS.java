@@ -8,7 +8,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -63,7 +65,6 @@ public class JP_QLS extends javax.swing.JPanel {
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
-        jButton15 = new javax.swing.JButton();
         jTextField17 = new javax.swing.JTextField();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
@@ -107,10 +108,6 @@ public class JP_QLS extends javax.swing.JPanel {
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton15.setBackground(new java.awt.Color(153, 255, 255));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton15.setText("Cập nhật");
-
         jTextField17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jButton16.setBackground(new java.awt.Color(153, 255, 255));
@@ -141,8 +138,7 @@ public class JP_QLS extends javax.swing.JPanel {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(jButton15)
-                        .addGap(44, 44, 44)
+                        .addGap(131, 131, 131)
                         .addComponent(jButton16)
                         .addGap(46, 46, 46)
                         .addComponent(jButton17))
@@ -161,7 +157,6 @@ public class JP_QLS extends javax.swing.JPanel {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton15)
                     .addComponent(jButton16)
                     .addComponent(jButton17)
                     .addComponent(jButton18))
@@ -185,7 +180,7 @@ public class JP_QLS extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Phân loại", "Tác giả", "Nhà xuất bản", "Số lượng", "Còn lại"
+                "STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Nhà xuất bản", "Số lượng", "Còn lại"
             }
         ));
         jTable3.setSelectionBackground(new java.awt.Color(204, 255, 255));
@@ -421,6 +416,7 @@ public class JP_QLS extends javax.swing.JPanel {
         this.jComboBox4.addActionListener(ac);
         this.jButton16.setActionCommand("deleteSach");
         this.jButton16.addActionListener(ac);
+        this.jButton17.addActionListener(ac);
     }
     
     public void initComboBox() {
@@ -528,11 +524,28 @@ public class JP_QLS extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void dislayChiTietSach() throws SQLException{
+        int row = this.jTable3.getSelectedRow();
+        if(row >= 0){
+            String maTL = (String)this.jTable3.getValueAt(row, 1);
+            JP_ChiTietTL chiTietTL = new JP_ChiTietTL();
+            chiTietTL.dislay(maTL);
+            JFrame newFrame = new JFrame("New Frame");
+            newFrame.setSize(392, 503);
+            newFrame.setLocationRelativeTo(null);
+            newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+            newFrame.add(chiTietTL);
+            newFrame.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn sach!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;

@@ -6,7 +6,11 @@ package quanlythuvienptit.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import quanlythuvienptit.ui.JP_ChiTietTL;
 import quanlythuvienptit.ui.JP_QLS;
 
 /**
@@ -36,6 +40,13 @@ public class QLSListener implements ActionListener {
         }
         else if(s.equals("deleteSach")){
             qls.deleteSach();
+        }
+        else if(s.equals("Chi tiết")){
+            try {
+                qls.dislayChiTietSach();
+            } catch (SQLException ex) {
+                Logger.getLogger(QLSListener.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     

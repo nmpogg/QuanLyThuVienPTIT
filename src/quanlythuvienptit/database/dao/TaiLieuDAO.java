@@ -282,4 +282,19 @@ public class TaiLieuDAO {
             e.printStackTrace();
         }
     }
+    
+    public static ResultSet getChiTietSach(String id){
+        ResultSet rs = null;
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TenTL, MaNXB, NamXB, MaTG, KeSach, TinhTrang FROM TaiLieu " + 
+                         "WHERE MaTL = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return rs;
+    }
 }

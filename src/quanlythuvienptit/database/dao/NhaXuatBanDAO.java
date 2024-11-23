@@ -47,4 +47,21 @@ public class NhaXuatBanDAO {
         }
         return maNXB;
     }
+    
+    public static String searchTenNXB(String maNXB){
+        String tenNXB = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TenNXB FROM NhaXuatBan " +
+                         "WHERE MaNXB = " + "'" + maNXB + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                tenNXB = rs.getString("TenNXB");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return tenNXB;
+    }
 }
