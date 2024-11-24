@@ -62,6 +62,7 @@ public class JP_QLDG extends javax.swing.JPanel {
     }
     public JP_QLDG() {
         initComponents();
+        showdata();
         init();
     }
     
@@ -469,19 +470,21 @@ public class JP_QLDG extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        String s = jTextField18.getText();
+        String s = jTextField18.getText().toLowerCase();
         if(s.equals("")){
             JOptionPane.showMessageDialog(JComboBox, "Hay nhap thong tin");
         }
         else{
-            listDG = new DocGiaDAO().getListMaThe(s);
+            listDG = new DocGiaDAO().getListDG();
             DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
             model.setRowCount(0);
             int cnt = 1;
             for(DocGia a : listDG){
-                model.addRow(new Object[]{
-                    cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getMaNganh()
-                });
+                if(a.getMaDG().toLowerCase().contains(s)||a.getHoTen().toLowerCase().contains(s)){
+                    model.addRow(new Object[]{
+                        cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getMaNganh()
+                    });
+                }
             } 
         }
     }//GEN-LAST:event_jButton24ActionPerformed
