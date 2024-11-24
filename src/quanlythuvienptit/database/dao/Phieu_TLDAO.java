@@ -96,4 +96,22 @@ public class Phieu_TLDAO {
         return cnt;
     }
     
+    public static String getTrangThaiMuonTra(String maPhieu, String maTL){
+        String trangThai = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TrangThaiMuonTra FROM Phieu_TaiLieu " + 
+                         "WHERE ID_MuonTra = ? AND MaTL = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maPhieu);
+            ps.setString(2, maTL);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                trangThai = rs.getString("TrangThaiMuonTra");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return trangThai;
+    }
 }

@@ -166,5 +166,40 @@ public class DocGiaDAO {
         return tenDG;
     }
     
+    public static String searchMaLop(String maDG){
+        String maLop = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT MaLop FROM DocGia " + 
+                         "WHERE MaDG = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maDG);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                maLop = rs.getString("MaLop");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return maLop;
+    }
+    
+    public static String searchMaNganh(String maDG){
+        String maNganh = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT MaNganh FROM DocGia " + 
+                         "WHERE MaDG = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maDG);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                maNganh = rs.getString("MaNganh");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return maNganh;
+    }
 }   
 

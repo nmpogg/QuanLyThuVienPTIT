@@ -41,6 +41,7 @@ public class JP_QLS extends javax.swing.JPanel {
     
     private void init() {
         set_header(jScrollPane3, jTable3);
+        this.jTable3.setModel(TaiLieuDAO.dislaySach());
     }
     
     private void set_header(JScrollPane jScrollPane, JTable jTable) {
@@ -128,7 +129,6 @@ public class JP_QLS extends javax.swing.JPanel {
 
         jComboBox4.setBackground(new java.awt.Color(153, 255, 255));
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lọc theo khoa" }));
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -146,7 +146,7 @@ public class JP_QLS extends javax.swing.JPanel {
                         .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(64, 64, 64)
                         .addComponent(jButton19)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -532,7 +532,7 @@ public class JP_QLS extends javax.swing.JPanel {
             JP_ChiTietTL chiTietTL = new JP_ChiTietTL();
             chiTietTL.dislay(maTL);
             JFrame newFrame = new JFrame("New Frame");
-            newFrame.setSize(402, 540);
+            newFrame.setSize(420, 600);
             newFrame.setLocationRelativeTo(null);
             newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
             newFrame.add(chiTietTL);

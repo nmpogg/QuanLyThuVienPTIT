@@ -37,4 +37,22 @@ public class LopDAO {
             }
             return list;
     }
+     
+     public static String searchTenLop(String maLop){
+        String tenLop = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT tenLop FROM Lop " + 
+                         "WHERE MaLop = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maLop);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                tenLop = rs.getString("TenLop");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return tenLop;
+    }
 }
