@@ -49,7 +49,7 @@ public class JP_QLTK extends javax.swing.JPanel {
         JTableHeader header = jTable.getTableHeader();
         header.setPreferredSize(new Dimension(100, 40)); // Tăng kích thước chiều cao header
         header.setFont(new Font("Arial", Font.PLAIN, 14)); // Thay đổi font chữ
-        header.setBackground(Color.RED); // Đặt màu nền
+        header.setBackground(new Color(255, 102, 102)); // Đặt màu nền
         jTable.setTableHeader(header);
     }
 

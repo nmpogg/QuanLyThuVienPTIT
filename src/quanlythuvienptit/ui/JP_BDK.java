@@ -4,6 +4,16 @@
  */
 package quanlythuvienptit.ui;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.util.ArrayList;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
+import quanlythuvienptit.database.dao.KhoaDAO;
+import quanlythuvienptit.models.Khoa;
+
 /**
  *
  * @author admin
@@ -15,8 +25,21 @@ public class JP_BDK extends javax.swing.JPanel {
      */
     public JP_BDK() {
         initComponents();
+        init();
     }
+    private void init() {
+        set_header(jScrollPane1, jTable1);
+    }
+    
+    private void set_header(JScrollPane jScrollPane, JTable jTable) {
+        jScrollPane.getViewport().setBackground(Color.WHITE);
 
+        JTableHeader header = jTable.getTableHeader();
+        header.setPreferredSize(new Dimension(100, 40)); // Tăng kích thước chiều cao header
+        header.setFont(new Font("Arial", Font.PLAIN, 14)); // Thay đổi font chữ
+        header.setBackground(new Color(255, 102, 102)); // Đặt màu nền
+        jTable.setTableHeader(header);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
