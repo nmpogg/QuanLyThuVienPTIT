@@ -263,7 +263,9 @@ public class JF_ChiTietNguoiDung extends javax.swing.JFrame {
     private void showData() throws ParseException{
         hoTen.setText(user.getHoTen());
         userField.setText(user.getUsername());
+        userField.setEnabled(false);
         passField.setText(user.getPassword());
+        passField.setEnabled(false);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         dateField.setDate(sdf.parse(user.getNgaySinh()));
         gioiTinhField.setSelectedItem(user.getGioTinh());

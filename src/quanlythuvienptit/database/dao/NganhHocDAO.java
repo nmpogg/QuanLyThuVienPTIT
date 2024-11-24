@@ -54,4 +54,21 @@ public class NganhHocDAO {
             }
             return list;
     }
+    public static String searchTenNganh(String maNganh){
+        String tenNganh = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT tenNganh FROM NganhHoc " + 
+                         "WHERE MaNganh = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maNganh);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                tenNganh = rs.getString("TenNganh");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return tenNganh;
+    }
 }

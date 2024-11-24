@@ -14,6 +14,7 @@ import java.awt.RenderingHints;
 import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -53,6 +54,8 @@ public class JP_QLPM extends javax.swing.JPanel {
         set_header(jScrollPane6, jTable6);
         set_header(jScrollPane7, jTable7);
         set_header(jScrollPane8, jTable8);
+        LocalDate today = LocalDate.now();
+        this.jTextField32.setText(today.toString());
     }
     
     private void set_header(JScrollPane jScrollPane, JTable jTable) {
@@ -640,6 +643,11 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton31.setBackground(new java.awt.Color(153, 255, 255));
         jButton31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton31.setText("Chi tiết");
+        jButton31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton31ActionPerformed(evt);
+            }
+        });
 
         jButton32.setBackground(new java.awt.Color(153, 255, 255));
         jButton32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -700,6 +708,10 @@ public class JP_QLPM extends javax.swing.JPanel {
             .addComponent(jTabbedPane8)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton31ActionPerformed
      public void addAction(){
         ActionListener ac = new QLPMListener(this);
         this.jButton28.setActionCommand("searchSach");
@@ -716,12 +728,11 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jButton27.setActionCommand("searchNguoiMuon");
         this.jButton27.addActionListener(ac);
         this.jButton30.addActionListener(ac);
-        this.jTextField32.setActionCommand("getToday");
-        this.jTextField32.addActionListener(ac);
         this.jButton32.setActionCommand("resetPhieu");
         this.jButton32.addActionListener(ac);
         this.jButton33.setActionCommand("deletePhieu");
         this.jButton33.addActionListener(ac);
+        this.jButton31.addActionListener(ac);
     }
     
     public void searchSach(){
@@ -831,14 +842,9 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jTable8.setModel(model);
     }
     
-    public void getToday(){
-        LocalDate today = LocalDate.now();
-        this.jTextField32.setText(today.toString());
-    }
-    
     public void insertPhieu(){
         int id;
-        if(PhieuMuonTraDAO.getID_MuonTraMax().isEmpty()){
+        if(PhieuMuonTraDAO.getID_MuonTraMax() == null){
             id = 0;
         }
         else{
@@ -892,6 +898,19 @@ public class JP_QLPM extends javax.swing.JPanel {
         }catch(Exception e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void dislayChiTietPhieu() throws SQLException{
+        int row = this.jTable7.getSelectedRow();
+        if(row >= 0){
+            String maPhieu = (String)this.jTable7.getValueAt(row, 1);
+            JF_PhieuMuon pm = new JF_PhieuMuon();
+            pm.dislay(maPhieu);
+            pm.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn phiếu!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }
 
