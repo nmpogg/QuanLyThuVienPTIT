@@ -38,7 +38,7 @@ public class KhoaDAO {
     }
     public static ArrayList<String> getTenKhoa() {
         ArrayList<String> dsTenKhoa = new ArrayList<>();
-        dsTenKhoa.add("none");
+        dsTenKhoa.add("Tất cả");
         try{
             Connection con = DataBaseConnection.getConnection();
             String sql = "SELECT TenKhoa FROM Khoa";
@@ -68,7 +68,37 @@ public class KhoaDAO {
             e.printStackTrace();
         }
         return maKhoa;
-
+    }
+    
+    public static String searchTenKhoa(String maKhoa){
+        String tenKhoa = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TenKhoa FROM Khoa " +
+                         "WHERE MaKhoa = " + "'" + maKhoa + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                tenKhoa = rs.getString("TenKhoa");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return tenKhoa;
    }
+    
+    public static void updateTenKhoa(String id, String tenKhoa){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE Khoa SET TenKhoa = ?" +
+                         "WHERE MaKhoa = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenKhoa);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
 

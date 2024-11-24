@@ -214,4 +214,19 @@ public class PhieuMuonTraDAO {
         }
         return dsPhieu;
     }
+    
+    public static ResultSet getChiTietPhieu(String maPhieu){
+        ResultSet rs = null;
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT ID_MuonTra, MaDG, KieuMuon, NgayMuon, NguoiChoMuon, HanTra FROM PhieuMuonTra " +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maPhieu);
+            rs = ps.executeQuery();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return rs;
+    }
 }
