@@ -402,17 +402,18 @@ public class JP_DSTG extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-         String s = jTextField3.getText();
+         String s = jTextField3.getText().toLowerCase();
         if(s.equals("")){
             JOptionPane.showMessageDialog(jButton10, "Hay nhap thong tin");
         }
         else{
-            listTG = new TacGiaDAO().getListtenTG(s);
+            listTG = new TacGiaDAO().getListTG();
             
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
             model.setRowCount(0);
             int cnt = 1;
             for(TacGia a : listTG){
+                if(a.getMaTG().toLowerCase().contains(s)||a.getTenTG().toLowerCase().contains(s))
                 model.addRow(new Object[]{
                     cnt++,a.getMaTG(),a.getTenTG(),a.getGioitinh(),a.getNamSinh()
                 });
