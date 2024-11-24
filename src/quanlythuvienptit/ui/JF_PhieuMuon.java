@@ -299,6 +299,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                 model.addRow(row);
             }
             this.dstailieu.setModel(model);
+            this.dstailieu.setEnabled(false);
         }
         
     }
