@@ -25,12 +25,12 @@ public class PhieuMuonTraDAO {
                          "WHERE MaDG = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, s);
-            String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
+            String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả", "Trạng thái"};
             ResultSet rs = ps.executeQuery();
             ArrayList<Object[]> arr = new ArrayList<>();
             int cnt = 1;
             while(rs.next()){
-                Object[] row = new Object[7];
+                Object[] row = new Object[8];
                 row[0] = cnt++;
                 row[1] = rs.getString("ID_MuonTra");
                 row[3] = rs.getString("MaDG");
@@ -47,6 +47,7 @@ public class PhieuMuonTraDAO {
                     if(rs2.next()){
                         row[4] = rs2.getString("TenTL");
                     }
+                    row[7] = Phieu_TLDAO.getTrangThaiMuonTra((String)row[1], (String)row[2]);
                     Object[] rowClone = row.clone();
                     arr.add(rowClone);
                 }

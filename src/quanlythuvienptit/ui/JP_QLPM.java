@@ -568,7 +568,7 @@ public class JP_QLPM extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"
+                "STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả", "Trạng thái"
             }
         ));
         jScrollPane8.setViewportView(jTable8);
@@ -655,7 +655,7 @@ public class JP_QLPM extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số đã trả", "Ngày mượn", "Hạn trả"
+                "STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số đã trả", "Ngày mượn", "Hạn trả", "Trạng thái"
             }
         ));
         jTable7.setSelectionBackground(new java.awt.Color(204, 255, 255));
@@ -672,8 +672,11 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addComponent(jButton32)
                 .addGap(36, 36, 36)
                 .addComponent(jButton33)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1224, Short.MAX_VALUE)
+                .addContainerGap(845, Short.MAX_VALUE))
+            .addGroup(jPanel35Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -886,8 +889,9 @@ public class JP_QLPM extends javax.swing.JPanel {
     public void deletePhieu(){
         try{
             int row = this.jTable7.getSelectedRow();
-            String id = (String)this.jTable7.getValueAt(row, 1);
-            PhieuMuonTraDAO.deletePhieu(id);
+            String maPhieu = (String)this.jTable7.getValueAt(row, 1);
+            Phieu_TLDAO.delete(maPhieu);
+            PhieuMuonTraDAO.deletePhieu(maPhieu);
             JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception e){
             e.printStackTrace();

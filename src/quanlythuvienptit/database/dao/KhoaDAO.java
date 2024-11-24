@@ -38,7 +38,7 @@ public class KhoaDAO {
     }
     public static ArrayList<String> getTenKhoa() {
         ArrayList<String> dsTenKhoa = new ArrayList<>();
-        dsTenKhoa.add("none");
+        dsTenKhoa.add("Tất cả");
         try{
             Connection con = DataBaseConnection.getConnection();
             String sql = "SELECT TenKhoa FROM Khoa";

@@ -52,7 +52,7 @@ public class TaiLieuDAO {
     
     public static DefaultTableModel search(String s, String khoa){
         DefaultTableModel model = null;
-        if(khoa == "none"){
+        if(khoa == "Tất cả"){
             try {
                 Connection con = DataBaseConnection.getConnection();
                 String sql = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu " +
