@@ -48,9 +48,6 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
         else if(s.equals("Tạo phiếu mượn")){
             qlpm.insertPhieu();
         }
-        else if(s.equals("getToday")){
-            qlpm.getToday();
-        }
         else if(s.equals("resetPhieu")){
             qlpm.ThongKePhieu();
         }

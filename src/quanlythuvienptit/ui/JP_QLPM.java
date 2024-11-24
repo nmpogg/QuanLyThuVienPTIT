@@ -54,6 +54,8 @@ public class JP_QLPM extends javax.swing.JPanel {
         set_header(jScrollPane6, jTable6);
         set_header(jScrollPane7, jTable7);
         set_header(jScrollPane8, jTable8);
+        LocalDate today = LocalDate.now();
+        this.jTextField32.setText(today.toString());
     }
     
     private void set_header(JScrollPane jScrollPane, JTable jTable) {
@@ -720,8 +722,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jButton27.setActionCommand("searchNguoiMuon");
         this.jButton27.addActionListener(ac);
         this.jButton30.addActionListener(ac);
-        this.jTextField32.setActionCommand("getToday");
-        this.jTextField32.addActionListener(ac);
         this.jButton32.setActionCommand("resetPhieu");
         this.jButton32.addActionListener(ac);
         this.jButton33.setActionCommand("deletePhieu");
@@ -834,11 +834,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
         this.jTable8.setModel(model);
-    }
-    
-    public void getToday(){
-        LocalDate today = LocalDate.now();
-        this.jTextField32.setText(today.toString());
     }
     
     public void insertPhieu(){
