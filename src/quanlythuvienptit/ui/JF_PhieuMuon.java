@@ -83,24 +83,16 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
 
         dstailieu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã Tài Liệu", "Tên Tài Liệu", "NXB", "Tác Giả", "Thể Loại", "Trạng Thái"
+                "Mã Tài Liệu", "Tên Tài Liệu", "NXB", "Tác Giả", "Trạng Thái"
             }
         ));
         jScrollPane1.setViewportView(dstailieu);
-        if (dstailieu.getColumnModel().getColumnCount() > 0) {
-            dstailieu.getColumnModel().getColumn(0).setHeaderValue("Mã Tài Liệu");
-            dstailieu.getColumnModel().getColumn(1).setHeaderValue("Tên Tài Liệu");
-            dstailieu.getColumnModel().getColumn(2).setHeaderValue("NXB");
-            dstailieu.getColumnModel().getColumn(3).setHeaderValue("Tác Giả");
-            dstailieu.getColumnModel().getColumn(4).setHeaderValue("Thể Loại");
-            dstailieu.getColumnModel().getColumn(5).setHeaderValue("Trạng Thái");
-        }
 
         capNhat.setText("Cập nhật phiếu");
         capNhat.addActionListener(new java.awt.event.ActionListener() {
