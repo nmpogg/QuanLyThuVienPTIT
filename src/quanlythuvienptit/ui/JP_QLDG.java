@@ -62,6 +62,7 @@ public class JP_QLDG extends javax.swing.JPanel {
     }
     public JP_QLDG() {
         initComponents();
+        showdata();
         init();
     }
     

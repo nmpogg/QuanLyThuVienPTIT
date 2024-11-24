@@ -44,6 +44,7 @@ public class JP_DSTG extends javax.swing.JPanel {
     }
     public JP_DSTG() {
         initComponents();
+        showdata();
         jScrollPane2.getViewport().setBackground(Color.WHITE);
 
         JTableHeader header = jTable2.getTableHeader();
