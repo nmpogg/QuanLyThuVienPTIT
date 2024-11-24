@@ -36,7 +36,7 @@ public class Lop {
     }
     @Override
     public String toString() {
-        return MaLop; // Biểu diễn đối tượng dưới dạng chuỗi
+        return TenLop; // Biểu diễn đối tượng dưới dạng chuỗi
     }
    
     
