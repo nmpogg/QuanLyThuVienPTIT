@@ -13,6 +13,22 @@ public class TaiLieu {
     private int soLuong, conLai;
     private String keSach, tinhTrang, ghiChu, status;
 
+    public TaiLieu(String MaTL, String TenTL, String MaKhoa, String MaNXB, String NamXB, String MaTG, int soLuong, int conLai, String keSach, String tinhTrang, String ghiChu, String status) {
+        this.MaTL = MaTL;
+        this.TenTL = TenTL;
+        this.MaKhoa = MaKhoa;
+        this.MaNXB = MaNXB;
+        this.NamXB = NamXB;
+        this.MaTG = MaTG;
+        this.soLuong = soLuong;
+        this.conLai = conLai;
+        this.keSach = keSach;
+        this.tinhTrang = tinhTrang;
+        this.ghiChu = ghiChu;
+        this.status = status;
+    }
+
+    
     public String getMaTL() {
         return MaTL;
     }

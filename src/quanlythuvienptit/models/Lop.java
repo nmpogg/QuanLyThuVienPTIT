@@ -34,7 +34,10 @@ public class Lop {
     public void setMaNganhHoc(String MaNganhHoc) {
         this.MaNganhHoc = MaNganhHoc;
     }
-
+    @Override
+    public String toString() {
+        return MaLop; // Biểu diễn đối tượng dưới dạng chuỗi
+    }
    
     
 }

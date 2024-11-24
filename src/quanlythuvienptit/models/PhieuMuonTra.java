@@ -12,6 +12,18 @@ public class PhieuMuonTra {
     private String ID_MuonTra;
     private String MaDG, KieuMuon, NgayMuon, NguoiChoMuon, HanTra, NguoiNhan;
 
+    public PhieuMuonTra(String ID_MuonTra, String MaDG, String KieuMuon, String NgayMuon, String NguoiChoMuon, String HanTra, String NguoiNhan) {
+        this.ID_MuonTra = ID_MuonTra;
+        this.MaDG = MaDG;
+        this.KieuMuon = KieuMuon;
+        this.NgayMuon = NgayMuon;
+        this.NguoiChoMuon = NguoiChoMuon;
+        this.HanTra = HanTra;
+        this.NguoiNhan = NguoiNhan;
+    }
+
+    
+    
     public String getID_MuonTra() {
         return ID_MuonTra;
     }

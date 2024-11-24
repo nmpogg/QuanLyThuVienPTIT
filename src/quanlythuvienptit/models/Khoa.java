@@ -36,5 +36,9 @@ public class Khoa {
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
+    @Override
+    public String toString() {
+        return maKhoa; // Biểu diễn đối tượng dưới dạng chuỗi
+    }
     
 }

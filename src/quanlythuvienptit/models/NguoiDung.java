@@ -23,7 +23,7 @@ public class NguoiDung {
     private LocalDate ngayTao;
     private String status;
 
-    public NguoiDung(String username, String password, String hoTen, String ngaySinh, String gioiTinh, String dienThoai, String email, String quyenHan,  LocalDate ngaytao) {
+    public NguoiDung(String username, String password, String hoTen, String ngaySinh, String gioiTinh, String dienThoai, String email, String quyenHan, String status) {
         this.username = username;
         this.password = password;
         this.hoTen = hoTen;
@@ -33,7 +33,7 @@ public class NguoiDung {
         this.email = email;
         this.quyenHan = quyenHan;
         this.ngayTao = LocalDate.now();
-        this.status = "Đang Hoạt Động";
+        this.status = status;
     }
 
     public String getUsername() {
@@ -115,6 +115,14 @@ public class NguoiDung {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getGioiTinh() {
+        return gioiTinh;
     }
     
 }
