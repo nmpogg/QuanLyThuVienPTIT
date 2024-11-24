@@ -287,7 +287,7 @@ public class TaiLieuDAO {
         ResultSet rs = null;
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "SELECT MaTL, TenTL, MaNXB, NamXB, MaTG, KeSach, TinhTrang, GhiChu FROM TaiLieu " + 
+            String sql = "SELECT MaTL, TenTL, MaKhoa, MaNXB, NamXB, MaTG, KeSach, TinhTrang, GhiChu FROM TaiLieu " + 
                          "WHERE MaTL = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, id);
@@ -349,5 +349,41 @@ public class TaiLieuDAO {
             e.printStackTrace();
         }
         return maTG;
+    }
+    
+    public static int searchSoLuong(String maTL){
+        int soLuong = 0;
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT SoLuong FROM TaiLieu " + 
+                         "WHERE MaTL = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maTL);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                soLuong = rs.getInt("SoLuong");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return soLuong;
+    }
+    
+    public static int searchConLai(String maTL){
+        int conLai = 0;
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT ConLai FROM TaiLieu " + 
+                         "WHERE MaTL = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maTL);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                conLai = rs.getInt("ConLai");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return conLai;
     }
 }

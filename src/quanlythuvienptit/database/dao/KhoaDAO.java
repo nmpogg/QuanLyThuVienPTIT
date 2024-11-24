@@ -69,6 +69,23 @@ public class KhoaDAO {
         }
         return maKhoa;
 
+    }
+    public static String searchTenKhoa(String maKhoa){
+        String tenKhoa = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TenKhoa FROM Khoa " +
+                         "WHERE MaKhoa = " + "'" + maKhoa + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                tenKhoa = rs.getString("TenKhoa");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return tenKhoa;
+
    }
 }
 

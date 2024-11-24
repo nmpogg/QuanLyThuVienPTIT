@@ -655,7 +655,7 @@ public class JP_QLPM extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số đã trả", "Ngày mượn", "Hạn trả", "Trạng thái"
+                "STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số đã trả", "Ngày mượn", "Hạn trả"
             }
         ));
         jTable7.setSelectionBackground(new java.awt.Color(204, 255, 255));

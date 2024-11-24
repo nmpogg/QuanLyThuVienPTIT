@@ -531,7 +531,7 @@ public class JP_QLS extends javax.swing.JPanel {
             JP_ChiTietTL chiTietTL = new JP_ChiTietTL();
             chiTietTL.dislay(maTL);
             JFrame newFrame = new JFrame("New Frame");
-            newFrame.setSize(402, 540);
+            newFrame.setSize(420, 700);
             newFrame.setLocationRelativeTo(null);
             newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
             newFrame.add(chiTietTL);
