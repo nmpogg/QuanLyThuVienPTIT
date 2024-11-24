@@ -96,14 +96,19 @@ public class ChiTietDocGia extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Mã Đọc Giả:");
 
+        MaDG.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MaDG.setText(a.getMaDG());
 
+        Ten.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Ten.setText(a.getHoTen());
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Tên Đọc Giả:");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Ngày Sinh:");
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -115,16 +120,21 @@ public class ChiTietDocGia extends javax.swing.JFrame {
         catch(ParseException e){
             System.out.println("Lỗi định dạng: " + e.getMessage());
         }
+        NgaySinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        GioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         GioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
         GioiTinh.setSelectedItem(a.getGioTinh());
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Giới Tính:");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Khoa:");
 
         ArrayList<Khoa> listKhoa = new KhoaDAO().getListKhoa();
         String[] stringArray = listKhoa.stream().map(Khoa::toString).toArray(String[]::new);
+        MaKhoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MaKhoa.setModel(new javax.swing.DefaultComboBoxModel<>(stringArray));
         MaKhoa.setSelectedItem(a.getMaKhoa());
         MaKhoa.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +146,7 @@ public class ChiTietDocGia extends javax.swing.JFrame {
         String khoa = (String)MaKhoa.getSelectedItem();
         ArrayList<NganhHoc> listNganhHoc  = new NganhHocDAO().getListNganhHoc(khoa);
         String[] stringArray1 = listNganhHoc.stream().map(NganhHoc::toString).toArray(String[]::new);
+        MaNganh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MaNganh.setModel(new javax.swing.DefaultComboBoxModel<>(stringArray1));
         MaNganh.setSelectedItem(a.getMaNganh());
         MaNganh.addActionListener(new java.awt.event.ActionListener() {
@@ -144,15 +155,19 @@ public class ChiTietDocGia extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Ngành học:");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Lớp:");
 
+        NguoiCN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NguoiCN.setText(a.getNguoiCN());
 
         String nganh = (String)MaNganh.getSelectedItem();
         ArrayList<Lop> listLop  = new LopDAO().getListLop(nganh);
         String[] stringArray2 = listLop.stream().map(Lop::toString).toArray(String[]::new);
+        MaLop.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MaLop.setModel(new javax.swing.DefaultComboBoxModel<>(stringArray2));
         MaLop.setSelectedItem(a.getMaLop());
         MaLop.addActionListener(new java.awt.event.ActionListener() {
@@ -161,20 +176,29 @@ public class ChiTietDocGia extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Người Cập Nhật:");
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Ngày Cập Nhật:");
 
+        NgayCN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NgayCN.setText(a.getNgayCN());
 
+        GhiChu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         GhiChu.setText(a.getGhiChu());
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("Ghi Chú:");
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setText("Trạng thái:");
 
+        TrangThai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         TrangThai.setText(a.getStatus());
 
+        jButton2.setBackground(new java.awt.Color(153, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton2.setText("Access");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +206,8 @@ public class ChiTietDocGia extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(153, 255, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Cập Nhật");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,11 +243,12 @@ public class ChiTietDocGia extends javax.swing.JFrame {
                     .addComponent(MaLop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(NguoiCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(NgayCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(GioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(GhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(GioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(TrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(GhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(6, 6, 6)))
                 .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -278,7 +305,7 @@ public class ChiTietDocGia extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(TrangThai))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
@@ -303,11 +330,8 @@ public class ChiTietDocGia extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(306, 306, 306)
                         .addComponent(jLabel16)
-                        .addContainerGap(129, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))))
+                        .addContainerGap())
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();

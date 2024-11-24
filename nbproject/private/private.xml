@@ -3,19 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/models/NguoiDung.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/ChiTietPhieuMuon.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/DocGiaDAO.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/database/DataBaseConnection.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/Main_Gui.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_QLTK.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_QLS.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_ChiTietTL.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JFMain.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/KhoaDAO.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/UserDAO.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JF_ChiTietNguoiDung.java</file>
-            <file>file:/D:/Project/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_QLPM.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_MemberID.java</file>
         </group>
     </open-files>
 </project-private>
