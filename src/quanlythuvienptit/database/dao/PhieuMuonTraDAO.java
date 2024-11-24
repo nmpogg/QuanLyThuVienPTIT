@@ -142,6 +142,7 @@ public class PhieuMuonTraDAO {
             if(rs.next()){
                 idMuonTraMax = rs.getString("ID_MuonTraMax");
             }
+            else idMuonTraMax = "";
         }catch(Exception e){
             e.printStackTrace();
         }

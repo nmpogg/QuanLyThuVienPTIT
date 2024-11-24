@@ -1146,6 +1146,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Chi ti&#x1ebf;t"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton31ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton32">
               <Properties>
