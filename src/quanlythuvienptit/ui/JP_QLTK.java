@@ -36,6 +36,7 @@ public class JP_QLTK extends javax.swing.JPanel {
     public JP_QLTK() {
         initComponents();
         init();
+        showData();
     }
     
     private void init() {
@@ -48,7 +49,7 @@ public class JP_QLTK extends javax.swing.JPanel {
         JTableHeader header = jTable.getTableHeader();
         header.setPreferredSize(new Dimension(100, 40)); // Tăng kích thước chiều cao header
         header.setFont(new Font("Arial", Font.PLAIN, 14)); // Thay đổi font chữ
-        header.setBackground(Color.RED); // Đặt màu nền
+        header.setBackground(new Color(255, 102, 102)); // Đặt màu nền
         jTable.setTableHeader(header);
     }
 
@@ -427,7 +428,18 @@ public class JP_QLTK extends javax.swing.JPanel {
             .addComponent(jTabbedPane2)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    private void showData(){
+        ArrayList<NguoiDung> dsnd = UserDAO.getAllUser();
+        DefaultTableModel model = (DefaultTableModel) bang.getModel();
+        model.setRowCount(0);
+        
+        int cnt = 1;
+ //       System.out.println(UserDAO.quyenHan);
+        for(NguoiDung user : dsnd){
+            Object[] row = {String.format("%d", cnt++) ,user.getHoTen(), user.getQuyenHan(), user.getUsername(), user.getNgaySinh(), user.getDienThoai(), user.getStatus()};
+            model.addRow(row);
+        }
+    }
     private void filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterActionPerformed
 //        ArrayList<NguoiDung> dsnd = UserDAO.getAllUser();
 //        String fieldFilter = (String) filter.getSelectedItem();
