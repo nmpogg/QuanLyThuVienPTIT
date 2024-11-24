@@ -4,6 +4,18 @@
  */
 package quanlythuvienptit.ui;
 
+import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
+import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import quanlythuvienptit.database.dao.DocGiaDAO;
+import quanlythuvienptit.database.dao.LopDAO;
+import quanlythuvienptit.database.dao.NganhHocDAO;
+import quanlythuvienptit.database.dao.NhaXuatBanDAO;
+import quanlythuvienptit.database.dao.Phieu_TLDAO;
+import quanlythuvienptit.database.dao.TacGiaDAO;
+import quanlythuvienptit.database.dao.TaiLieuDAO;
+
 /**
  *
  * @author Admin
@@ -33,7 +45,6 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         tenDG = new javax.swing.JLabel();
         lop = new javax.swing.JLabel();
         chuyenNganh = new javax.swing.JLabel();
-        sdt = new javax.swing.JLabel();
         ngayMuon = new javax.swing.JLabel();
         ngaytra = new javax.swing.JLabel();
         maPhieu = new javax.swing.JLabel();
@@ -43,9 +54,16 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         xoa = new javax.swing.JButton();
         xuatPhieu = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -69,24 +87,18 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         chuyenNganh.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         chuyenNganh.setText("Chuyên Ngành");
 
-        sdt.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        sdt.setText("Số Điện Thoại");
-
         ngayMuon.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         ngayMuon.setText("Ngày Mượn");
 
         ngaytra.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        ngaytra.setText("Ngày Phải Trả");
+        ngaytra.setText("Hạn trả");
 
         maPhieu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         maPhieu.setText("Mã Phiếu");
 
         dstailieu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Mã Tài Liệu", "Tên Tài Liệu", "NXB", "Tác Giả", "Trạng Thái"
@@ -95,113 +107,122 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         jScrollPane1.setViewportView(dstailieu);
 
         capNhat.setText("Cập nhật phiếu");
-        capNhat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                capNhatActionPerformed(evt);
-            }
-        });
 
         xoa.setText("Xóa");
-        xoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                xoaActionPerformed(evt);
-            }
-        });
 
         xuatPhieu.setText("Xuất Phiếu");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel9.setText("Kiểu Mượn");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mượn Tại Chỗ", "Mang Về" }));
-
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel10.setText("Người Tạo Phiếu");
-
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel11.setText("Ghi Chú");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(phieumuon))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(maDG)
+                                    .addComponent(tenDG))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(48, 48, 48)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(maPhieu))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField6)
+                                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lop)
+                                            .addComponent(chuyenNganh))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                            .addComponent(jTextField3))))
+                                .addGap(47, 47, 47)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ngayMuon)
+                                    .addComponent(ngaytra))
+                                .addGap(15, 15, 15)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField8)
+                                    .addComponent(jTextField9))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(capNhat)
                 .addGap(18, 18, 18)
                 .addComponent(xoa)
                 .addGap(18, 18, 18)
                 .addComponent(xuatPhieu)
-                .addGap(24, 24, 24))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(phieumuon))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(maDG)
-                            .addComponent(tenDG)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(lop)
-                                    .addComponent(chuyenNganh)
-                                    .addComponent(sdt))
-                                .addGap(164, 164, 164)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(ngaytra)
-                                    .addComponent(ngayMuon)
-                                    .addComponent(maPhieu)
-                                    .addComponent(jLabel9))
-                                .addGap(15, 15, 15)))
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(phieumuon, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(maDG)
-                    .addComponent(maPhieu))
+                    .addComponent(maPhieu)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maDG))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tenDG)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lop)
-                    .addComponent(ngayMuon))
+                    .addComponent(ngayMuon)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ngaytra)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chuyenNganh))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chuyenNganh)
-                    .addComponent(ngaytra))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sdt)
-                    .addComponent(jLabel11))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(58, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(xuatPhieu)
-                            .addComponent(xoa)
-                            .addComponent(capNhat))
-                        .addGap(15, 15, 15))))
+                    .addComponent(capNhat)
+                    .addComponent(xoa)
+                    .addComponent(xuatPhieu))
+                .addGap(76, 76, 76))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,15 +244,37 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capNhatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_capNhatActionPerformed
-
-    private void xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_xoaActionPerformed
-
+    
+    public void dislay(String id) throws SQLException{
+        ResultSet rs = PhieuMuonTraDAO.getChiTietPhieu(id);
+        if(rs.next()){
+            this.jTextField1.setText(rs.getString("MaDG"));
+            this.jTextField1.setEditable(false);
+            this.jTextField6.setText(rs.getString("ID_MuonTra"));
+            this.jTextField6.setEditable(false);
+            this.jTextField7.setText(rs.getString("KieuMuon"));
+            this.jTextField8.setText(rs.getString("NgayMuon"));
+            this.jTextField9.setText(rs.getString("HanTra"));
+            this.jTextField2.setText(DocGiaDAO.getTenDG(rs.getString("MaDG")));
+            this.jTextField5.setText(rs.getString("NguoiChoMuon"));
+            this.jTextField3.setText(LopDAO.searchTenLop(DocGiaDAO.searchMaLop(rs.getString("MaDG"))));
+            this.jTextField4.setText(NganhHocDAO.searchTenNganh(DocGiaDAO.searchMaNganh(rs.getString("MaDG"))));
+            ArrayList<String> dsMaTL = Phieu_TLDAO.getMaTL(rs.getString("ID_MuonTra"));
+            DefaultTableModel model = (DefaultTableModel)this.dstailieu.getModel();
+            for(String maTL : dsMaTL){
+                String[] row = new String[5];
+                row[0] = maTL;
+                row[1] = TaiLieuDAO.searchTenTL(maTL);
+                row[2] = NhaXuatBanDAO.searchTenNXB(TaiLieuDAO.searchMaNXB(maTL));
+                row[3] = TacGiaDAO.searchTenTG(TaiLieuDAO.searchMaTG(maTL));
+                row[4] = Phieu_TLDAO.getTrangThaiMuonTra(rs.getString("ID_MuonTra"), maTL);
+                model.addRow(row);
+            }
+            this.dstailieu.setModel(model);
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -272,19 +315,25 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
     private javax.swing.JLabel chuyenNganh;
     private javax.swing.JTable dstailieu;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lop;
     private javax.swing.JLabel maDG;
     private javax.swing.JLabel maPhieu;
     private javax.swing.JLabel ngayMuon;
     private javax.swing.JLabel ngaytra;
     private javax.swing.JLabel phieumuon;
-    private javax.swing.JLabel sdt;
     private javax.swing.JLabel tenDG;
     private javax.swing.JButton xoa;
     private javax.swing.JButton xuatPhieu;

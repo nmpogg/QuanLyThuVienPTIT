@@ -386,4 +386,22 @@ public class TaiLieuDAO {
         }
         return conLai;
     }
+    
+    public static String searchTenTL(String maTL){
+        String tenTL = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TenTL FROM TaiLieu " + 
+                         "WHERE MaTL = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maTL);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                tenTL = rs.getString("TenTL");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return tenTL;
+    }
 }

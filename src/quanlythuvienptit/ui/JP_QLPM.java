@@ -14,6 +14,7 @@ import java.awt.RenderingHints;
 import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -725,6 +726,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jButton32.addActionListener(ac);
         this.jButton33.setActionCommand("deletePhieu");
         this.jButton33.addActionListener(ac);
+        this.jButton31.addActionListener(ac);
     }
     
     public void searchSach(){
@@ -896,6 +898,19 @@ public class JP_QLPM extends javax.swing.JPanel {
         }catch(Exception e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void dislayChiTietPhieu() throws SQLException{
+        int row = this.jTable7.getSelectedRow();
+        if(row >= 0){
+            String maPhieu = (String)this.jTable7.getValueAt(row, 1);
+            JF_PhieuMuon pm = new JF_PhieuMuon();
+            pm.dislay(maPhieu);
+            pm.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn phiếu!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }
 
