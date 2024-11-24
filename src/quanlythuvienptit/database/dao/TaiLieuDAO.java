@@ -297,7 +297,7 @@ public class TaiLieuDAO {
         }
         return rs;
     }
-    
+    /*
     public static void update(String id, String tenTL, String namXB, String keSach, String tinhTrang, String ghiChu){
         try{
             Connection con = DataBaseConnection.getConnection();
@@ -315,7 +315,7 @@ public class TaiLieuDAO {
             e.printStackTrace();
         }
     }
-    
+    */
     public static String searchMaNXB(String maTL){
         String maNXB = "";
         try{

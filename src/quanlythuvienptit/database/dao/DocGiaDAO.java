@@ -200,5 +200,20 @@ public class DocGiaDAO {
         }
         return maNganh;
     }
+    
+    public static void updatetenDG(String id, String tenDG){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE DocGia SET HoTen = ?" +
+                         "WHERE MaDG = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenDG);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
 }   
 

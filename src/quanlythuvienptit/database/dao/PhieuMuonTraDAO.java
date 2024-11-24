@@ -231,4 +231,46 @@ public class PhieuMuonTraDAO {
         }
         return rs;
     }
+    
+    public static void updateNguoiChoMuon(String id, String nguoiChoMuon){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE PhieuMuonTra SET NguoiChoMuon = ?" +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nguoiChoMuon);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void updateKieuMuon(String id, String kieuMuon){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE PhieuMuonTra SET KieuMuon = ?" +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, kieuMuon);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void updateHanTra(String id, String hanTra){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE PhieuMuonTra SET HanTra = ?" +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, hanTra);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
