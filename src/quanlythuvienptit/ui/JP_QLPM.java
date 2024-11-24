@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -898,6 +899,8 @@ public class JP_QLPM extends javax.swing.JPanel {
             String maPhieu = (String)this.jTable7.getValueAt(row, 1);
             JF_PhieuMuon pm = new JF_PhieuMuon();
             pm.dislay(maPhieu);
+            pm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            pm.setLocationRelativeTo(null);
             pm.setVisible(true);
         }
         else{

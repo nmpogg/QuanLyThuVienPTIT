@@ -48,7 +48,9 @@ public class PhieuMuonTraDAO {
                         row[4] = rs2.getString("TenTL");
                     }
                     Object[] rowClone = row.clone();
-                    arr.add(rowClone);
+                    if(Phieu_TLDAO.getTrangThaiMuonTra((String)row[1], idTL).equals("Chưa trả")){
+                        arr.add(rowClone);
+                    }
                 }
             }
             if(!arr.isEmpty()){
