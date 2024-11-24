@@ -53,7 +53,7 @@ public class NganhHocDAO {
                 e.printStackTrace();
             }
             return list;
-    
+    }
     public static String searchTenNganh(String maNganh){
         String tenNganh = "";
         try{
