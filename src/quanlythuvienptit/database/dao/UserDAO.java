@@ -150,6 +150,30 @@ public class UserDAO {
         }
         return false;
     }
+    
+    public static boolean updateUserInfo(String username, String hoTen, String dienThoai, String email, String gioiTinh, String ngaySinh) {
+        String sql = "UPDATE nguoidung SET HoTen = ?, DienThoai = ?, Email = ?, GioiTinh = ?, NgaySinh = ? WHERE Username = ?";
+        try (Connection conn = DataBaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, hoTen);
+            stmt.setString(2, dienThoai);
+            stmt.setString(3, email);
+            stmt.setString(4, gioiTinh);
+            stmt.setString(5, ngaySinh);
+            stmt.setString(6, username);
+
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi cập nhật thông tin người dùng: " + e.getMessage());
+            return false;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
     public static NguoiDung getUserByUsername(String username) {
         String query = "SELECT * FROM NguoiDung WHERE Username = ?";
@@ -175,6 +199,24 @@ public class UserDAO {
         }
         return null;
     }
+    public static boolean updatePassword(String username, String newPassword) {
+        String sql = "UPDATE nguoidung SET password = ? WHERE username = ?";
+        try (Connection conn = DataBaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+            stmt.setString(1, newPassword);
+            stmt.setString(2, username);
+
+            int updateOK = stmt.executeUpdate();
+            return updateOK > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi cập nhật mật khẩu: " + e.getMessage());
+            return false;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }
 

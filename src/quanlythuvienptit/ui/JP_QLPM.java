@@ -137,7 +137,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         jPanel35 = new javax.swing.JPanel();
         jButton31 = new javax.swing.JButton();
         jButton32 = new javax.swing.JButton();
-        jButton33 = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
 
@@ -651,10 +650,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton32.setText("Làm mới");
 
-        jButton33.setBackground(new java.awt.Color(153, 255, 255));
-        jButton33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton33.setText("Xóa");
-
         jTable7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -676,8 +671,6 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addComponent(jButton31)
                 .addGap(38, 38, 38)
                 .addComponent(jButton32)
-                .addGap(36, 36, 36)
-                .addComponent(jButton33)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1224, Short.MAX_VALUE)
         );
@@ -687,8 +680,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton31)
-                    .addComponent(jButton32)
-                    .addComponent(jButton33))
+                    .addComponent(jButton32))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE))
         );
@@ -724,8 +716,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jButton30.addActionListener(ac);
         this.jButton32.setActionCommand("resetPhieu");
         this.jButton32.addActionListener(ac);
-        this.jButton33.setActionCommand("deletePhieu");
-        this.jButton33.addActionListener(ac);
         this.jButton31.addActionListener(ac);
     }
     
@@ -797,14 +787,18 @@ public class JP_QLPM extends javax.swing.JPanel {
         int row = this.jTable8.getSelectedRow();
         String idPM = "";
         String idTL = "";
+        int conLai = 0;
         String tinhTrang = this.jTextArea1.getText();
         if(row >= 0){
            idPM = (String)this.jTable8.getValueAt(row, 1);
            idTL = (String)this.jTable8.getValueAt(row, 2);
+           conLai = TaiLieuDAO.searchConLai(idTL);
         }
-        if(!idPM.isEmpty() && !idTL.isEmpty()){
+        if(!idPM.isEmpty() && !idTL.isEmpty() && conLai > 0){
             Phieu_TLDAO.updateTrangThaiMT(idPM, idTL);
             TaiLieuDAO.updateTinhTrang(idTL, tinhTrang);
+            --conLai;
+            TaiLieuDAO.updateSachConLai(idTL, conLai);
             JOptionPane.showMessageDialog(null, "Trả sách thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
@@ -886,6 +880,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jTable7.setModel(model);
     }
     
+    /*
     public void deletePhieu(){
         try{
             int row = this.jTable7.getSelectedRow();
@@ -897,7 +892,8 @@ public class JP_QLPM extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+    */
+
     public void dislayChiTietPhieu() throws SQLException{
         int row = this.jTable7.getSelectedRow();
         if(row >= 0){
@@ -920,7 +916,6 @@ public class JP_QLPM extends javax.swing.JPanel {
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;

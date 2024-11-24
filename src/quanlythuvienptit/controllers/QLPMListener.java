@@ -51,9 +51,6 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
         else if(s.equals("resetPhieu")){
             qlpm.ThongKePhieu();
         }
-        else if(s.equals("deletePhieu")){
-            qlpm.deletePhieu();
-        }
         else if(s.equals("Chi tiết")){
             try {
                 qlpm.dislayChiTietPhieu();

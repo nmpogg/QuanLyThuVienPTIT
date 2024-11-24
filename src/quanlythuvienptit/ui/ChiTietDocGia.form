@@ -299,7 +299,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaKhoaActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="MaKhoa.setSelectedItem(a.getMaKhoa());"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Khoa b: listKhoa){&#xa;    if(b.getMaKhoa().equals(a.getMaKhoa())){&#xa;        MaKhoa.setSelectedItem(b.getTenKhoa());&#xa;        break;&#xa;    }&#xa;}"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ArrayList&lt;Khoa&gt; listKhoa = new KhoaDAO().getListKhoa();&#xa;String[] stringArray = listKhoa.stream().map(Khoa::toString).toArray(String[]::new);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -317,8 +317,8 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaNganhActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="MaNganh.setSelectedItem(a.getMaNganh());"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String khoa = (String)MaKhoa.getSelectedItem();&#xa;ArrayList&lt;NganhHoc&gt; listNganhHoc  = new NganhHocDAO().getListNganhHoc(khoa);&#xa;String[] stringArray1 = listNganhHoc.stream().map(NganhHoc::toString).toArray(String[]::new);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(NganhHoc b: listNganhHoc){&#xa;    if(b.getMaNganhHoc().equals(a.getMaNganh())){&#xa;        MaNganh.setSelectedItem(b.getTenNganhHoc());&#xa;        break;&#xa;    }&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ArrayList&lt;NganhHoc&gt; listNganhHoc  = new NganhHocDAO().getListNganhHoc(a.getMaKhoa());&#xa;String[] stringArray1 = listNganhHoc.stream().map(NganhHoc::toString).toArray(String[]::new);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
@@ -361,8 +361,8 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaLopActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="MaLop.setSelectedItem(a.getMaLop());"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String nganh = (String)MaNganh.getSelectedItem();&#xa;ArrayList&lt;Lop&gt; listLop  = new LopDAO().getListLop(nganh);&#xa;String[] stringArray2 = listLop.stream().map(Lop::toString).toArray(String[]::new);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Lop b: listLop){&#xa;    if(b.getMaLop().equals(a.getMaLop())){&#xa;        MaLop.setSelectedItem(b.getTenLop());&#xa;        break;&#xa;    }&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ArrayList&lt;Lop&gt; listLop  = new LopDAO().getListLop(a.getMaNganh());&#xa;String[] stringArray2 = listLop.stream().map(Lop::toString).toArray(String[]::new);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>

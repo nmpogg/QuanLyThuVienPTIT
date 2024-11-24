@@ -506,11 +506,10 @@ public class JP_QLS extends javax.swing.JPanel {
     }
     
     public void reset(){
-        String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Số lượng", "Còn lại"};
-        DefaultTableModel model = new DefaultTableModel(col, 4);
+        int index = this.jComboBox4.getSelectedIndex();
+        String khoa = this.jComboBox4.getItemAt(index);
+        DefaultTableModel model = TaiLieuDAO.getDSTL(khoa);
         this.jTable3.setModel(model);
-        this.jTextField17.setText("");
-        this.jComboBox4.setSelectedIndex(0);
     }
     
     public void deleteSach(){

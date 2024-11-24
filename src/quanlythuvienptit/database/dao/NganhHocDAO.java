@@ -36,7 +36,24 @@ public class NganhHocDAO {
             }
             return list;
     }
-    
+    public ArrayList<NganhHoc> getListNganhHoc(){
+        ArrayList<NganhHoc> list = new ArrayList<>();
+        String sql = String.format("select MaNganh,TenNganh,MaKhoa from nganhhoc ");
+            try(Connection conn = DataBaseConnection.getConnection()){
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    NganhHoc a = new NganhHoc();
+                    a.setMaKhoa(rs.getString("MaKhoa"));
+                    a.setTenNganhHoc(rs.getString("TenNganh"));
+                    a.setMaNganhHoc(rs.getString("MaNganh"));
+                    list.add(a);
+                }
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+            return list;
+    }
     public static String searchTenNganh(String maNganh){
         String tenNganh = "";
         try{

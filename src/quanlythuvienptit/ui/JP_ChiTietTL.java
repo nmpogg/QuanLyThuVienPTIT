@@ -63,6 +63,7 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -236,6 +237,10 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
 
         jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        jButton2.setBackground(new java.awt.Color(153, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setText("Edit");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -251,10 +256,12 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(44, 44, 44)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,7 +274,9 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
                 .addGap(2, 2, 2)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(45, 45, 45)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -275,29 +284,66 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
     public void addAction(){
         ActionListener ac = new ChiTietTLListener(this);
         this.jButton1.addActionListener(ac);
+        this.jButton2.addActionListener(ac);
     }
     
     public void dislay(String id) throws SQLException{
         ResultSet rs = TaiLieuDAO.getChiTietSach(id);
         if(rs.next()){
             this.jTextField1.setText(rs.getString("TenTL"));
+            this.jTextField1.setEditable(false);
+            
             this.jTextField2.setText(NhaXuatBanDAO.searchTenNXB(rs.getString("MaNXB")));
+            this.jTextField2.setEditable(false);
+            
             this.jTextField4.setText(rs.getString("NamXB"));
+            this.jTextField4.setEditable(false);
+            
             this.jTextField5.setText(rs.getString("KeSach"));
+            this.jTextField5.setEditable(false);
+            
             this.jTextField6.setText(rs.getString("TinhTrang"));
+            this.jTextField6.setEditable(false);
+            
             this.jTextField3.setText(rs.getString("GhiChu"));
+            this.jTextField3.setEditable(false);
+            
             this.jTextField7.setText(rs.getString("MaTL"));
             this.jTextField7.setEditable(false);
+            
             this.jTextField8.setText(KhoaDAO.searchTenKhoa(rs.getString("MaKhoa")));
+            this.jTextField8.setEditable(false);
+            
             this.jTextField9.setText(TaiLieuDAO.searchSoLuong((String)rs.getString("MaTL")) + "");
+            this.jTextField9.setEditable(false);
+            
             this.jTextField10.setText(TaiLieuDAO.searchConLai((String)rs.getString("MaTL")) + "");
+            this.jTextField10.setEditable(false);
+            
             String[] col = {"Tên tác giả", "Năm sinh"}; 
             Object[][] row = new Object[1][2];
             row[0][0] = TacGiaDAO.searchTenTG(rs.getString("MaTG"));
             row[0][1] = TacGiaDAO.searchNamSinh(rs.getString("MaTG"));
             DefaultTableModel model = new DefaultTableModel(row, col);
             this.jTable1.setModel(model);
+            this.jTable1.setEnabled(false);
+            
+            this.jButton1.setVisible(false);
         }
+    }
+    
+    public void edit(){
+        this.jTextField1.setEditable(true);
+        this.jTextField2.setEditable(true);
+        this.jTextField3.setEditable(true);
+        this.jTextField4.setEditable(true);
+        this.jTextField5.setEditable(true);
+        this.jTextField6.setEditable(true);
+        this.jTextField8.setEditable(true);
+        this.jTextField9.setEditable(true);
+        this.jTextField10.setEditable(true);
+        this.jButton1.setVisible(true);
+        this.jTable1.setEnabled(true);
     }
     
     public void update(){
@@ -329,6 +375,7 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

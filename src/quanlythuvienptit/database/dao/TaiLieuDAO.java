@@ -500,4 +500,154 @@ public class TaiLieuDAO {
         }
         return tenTL;
     }
+    
+    /*
+    public static ResultSet searchTaiLieuTL(String s){
+        ResultSet rs = null;
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT MaTL, TenTL, MaKhoa, MaTG, MaNXB, SoLuong, status FROM TaiLieu " + 
+                         "WHERE TenTL LIKE ? OR MaTL LIKE ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, s);
+            ps.setString(2, s);
+            rs = ps.executeQuery();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return rs;
+    }
+    */
+    
+    public static DefaultTableModel getDSTL(String khoa){
+        DefaultTableModel model = null;
+        if(khoa == "Tất cả"){
+            try {
+                Connection con = DataBaseConnection.getConnection();
+                String sql = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Số lượng","Còn lại"};
+                ArrayList<Object[]> arr = new ArrayList<>();
+                int cnt = 1;
+                while(rs.next()){
+                    Object[] row = new Object[7];
+                    row[0] = cnt++;
+                    row[1] = rs.getString("MaTL");
+                    row[2] = rs.getString("TenTL");
+
+                    String maKhoa = rs.getString("MaKhoa");
+                    String sql2 = "SELECT TenKhoa FROM Khoa " +
+                                  "WHERE MaKhoa = " + "'" + maKhoa + "'";
+                    Statement stmt1 = con.createStatement();
+                    ResultSet rs2 = stmt1.executeQuery(sql2);
+                    if(rs2.next()){
+                        row[3] = rs2.getString("TenKhoa");
+                    }
+
+                    String maTG = rs.getString("MaTG");
+                    String sql3 = "SELECT TenTG FROM TacGia " +
+                                  "WHERE MaTG = " + "'" + maTG + "'";
+                    Statement stmt2 = con.createStatement();
+                    ResultSet rs3 = stmt1.executeQuery(sql3);
+                    if(rs3.next()){
+                        row[4] = rs3.getString("TenTG");
+                    }
+
+                    row[5] = rs.getInt("SoLuong");
+                    row[6] = rs.getInt("ConLai");
+                    arr.add(row);
+                }
+                if(!arr.isEmpty()){
+                    Object[][] row = new Object[arr.size()][13];
+                    for(int i = 0; i < arr.size(); i++){
+                        row[i] = arr.get(i);
+                    }
+                    model = new DefaultTableModel(row, col);
+                }
+                else{
+                    model = new DefaultTableModel(col, 4);
+                    JOptionPane.showMessageDialog(null, "Không tìm thấy sách!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
+            try {
+                Connection con = DataBaseConnection.getConnection();
+                String idKhoa = KhoaDAO.searchMaKhoa(khoa);
+                String sql1 = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu " +
+                              "WHERE MaKhoa = ?";
+                PreparedStatement ps = con.prepareStatement(sql1);
+                ps.setString(1, idKhoa);
+                ResultSet rs = ps.executeQuery();
+                String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Số lượng","Còn lại"};
+                ArrayList<Object[]> arr = new ArrayList<>();
+                int cnt = 1;
+                while(rs.next()){
+                    Object[] row = new Object[7];
+                    row[0] = cnt++;
+                    row[1] = rs.getString("MaTL");
+                    row[2] = rs.getString("TenTL");
+
+                    String maKhoa = rs.getString("MaKhoa");
+                    String sql2 = "SELECT TenKhoa FROM Khoa " +
+                                  "WHERE MaKhoa = " + "'" + maKhoa + "'";
+                    Statement stmt1 = con.createStatement();
+                    ResultSet rs2 = stmt1.executeQuery(sql2);
+                    if(rs2.next()){
+                        row[3] = rs2.getString("TenKhoa");
+                    }
+
+                    String maTG = rs.getString("MaTG");
+                    String sql3 = "SELECT TenTG FROM TacGia " +
+                                  "WHERE MaTG = " + "'" + maTG + "'";
+                    Statement stmt2 = con.createStatement();
+                    ResultSet rs3 = stmt1.executeQuery(sql3);
+                    if(rs3.next()){
+                        row[4] = rs3.getString("TenTG");
+                    }
+
+                    row[5] = rs.getInt("SoLuong");
+                    row[6] = rs.getInt("ConLai");
+                    arr.add(row);
+                }
+                if(!arr.isEmpty()){
+                    Object[][] row = new Object[arr.size()][13];
+                    for(int i = 0; i < arr.size(); i++){
+                        row[i] = arr.get(i);
+                    }
+                    model = new DefaultTableModel(row, col);
+                }
+                else{
+                    model = new DefaultTableModel(col, 4);
+                    JOptionPane.showMessageDialog(null, "Không tìm thấy sách!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(TaiLieuDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return model;
+    }
+    
+    public static void updateSachConLai(String id, int conLai){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE TaiLieu SET ConLai = ? " +
+                         "WHERE MaTL = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, conLai);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -4,6 +4,13 @@
  */
 package quanlythuvienptit.ui;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import quanlythuvienptit.database.dao.UserDAO;
+import quanlythuvienptit.models.NguoiDung;
+
 /**
  *
  * @author admin
@@ -13,8 +20,12 @@ public class JP_Caidat extends javax.swing.JPanel {
     /**
      * Creates new form JP_Caidat
      */
+    private NguoiDung nguoiDung;
     public JP_Caidat() {
+        nguoiDung = Main_Gui.user;
         initComponents();
+        showData();
+        System.out.println(nguoiDung.getUsername());
     }
 
     /**
@@ -34,24 +45,24 @@ public class JP_Caidat extends javax.swing.JPanel {
         jLabel64 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
-        jTextField49 = new javax.swing.JTextField();
-        jTextField50 = new javax.swing.JTextField();
-        jTextField51 = new javax.swing.JTextField();
-        jTextField53 = new javax.swing.JTextField();
-        jButton43 = new javax.swing.JButton();
+        hoTenField = new javax.swing.JTextField();
+        sdtField = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
+        updateButton = new javax.swing.JButton();
         jLabel67 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        gioiTinhField = new javax.swing.JComboBox<>();
+        dateField = new com.toedter.calendar.JDateChooser();
+        eidtButton = new javax.swing.JButton();
         jPanel43 = new javax.swing.JPanel();
         jPanel44 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jTextField36 = new javax.swing.JTextField();
-        jButton39 = new javax.swing.JButton();
-        jButton40 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        updatePassButton = new javax.swing.JButton();
+        newPassField = new javax.swing.JPasswordField();
+        oldPassField = new javax.swing.JPasswordField();
+        newPassAgainField = new javax.swing.JPasswordField();
 
         jTabbedPane10.setBackground(new java.awt.Color(255, 102, 102));
         jTabbedPane10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 102, 102)));
@@ -78,23 +89,21 @@ public class JP_Caidat extends javax.swing.JPanel {
         jLabel65.setText("Giới tính:");
 
         jLabel66.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel66.setText("Năm sinh:");
+        jLabel66.setText("Ngày sinh:");
 
-        jTextField49.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        hoTenField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jTextField50.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sdtField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jTextField51.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        emailField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jTextField53.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        jButton43.setBackground(new java.awt.Color(153, 255, 255));
-        jButton43.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton43.setText("Cập nhật");
-        jButton43.setOpaque(true);
-        jButton43.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setBackground(new java.awt.Color(153, 255, 255));
+        updateButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        updateButton.setText("Cập nhật");
+        updateButton.setOpaque(true);
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton43ActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
 
@@ -105,8 +114,28 @@ public class JP_Caidat extends javax.swing.JPanel {
         jLabel67.setText("Thông tin tài khoản");
         jLabel67.setOpaque(true);
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+        gioiTinhField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        gioiTinhField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        try{
+            Date date = formatter.parse(nguoiDung.getNgaySinh());
+            dateField.setDate(date);
+        }
+        catch(ParseException e){
+            System.out.println("Lỗi định dạng: " + e.getMessage());
+        }
+
+        eidtButton.setBackground(new java.awt.Color(153, 255, 255));
+        eidtButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        eidtButton.setText("Chỉnh sửa thông tin");
+        eidtButton.setOpaque(true);
+        eidtButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eidtButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
         jPanel46.setLayout(jPanel46Layout);
@@ -114,7 +143,7 @@ public class JP_Caidat extends javax.swing.JPanel {
             jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel46Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel46Layout.createSequentialGroup()
                         .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,15 +153,18 @@ public class JP_Caidat extends javax.swing.JPanel {
                             .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(80, 80, 80)
                         .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField49, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField53, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(emailField)
+                            .addComponent(sdtField)
+                            .addComponent(hoTenField)
+                            .addComponent(dateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel46Layout.createSequentialGroup()
+                                .addComponent(gioiTinhField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 104, Short.MAX_VALUE))))
                     .addGroup(jPanel46Layout.createSequentialGroup()
-                        .addComponent(jButton43)
-                        .addGap(92, 92, 92)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                        .addComponent(eidtButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(updateButton)))
+                .addContainerGap(92, Short.MAX_VALUE))
             .addComponent(jLabel67, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel46Layout.setVerticalGroup(
@@ -142,25 +174,27 @@ public class JP_Caidat extends javax.swing.JPanel {
                 .addGap(65, 65, 65)
                 .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel62)
-                    .addComponent(jTextField49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hoTenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel64)
-                    .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sdtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel63)
-                    .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel65)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gioiTinhField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel66)
-                    .addComponent(jTextField53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
-                .addComponent(jButton43)
+                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateButton)
+                    .addComponent(eidtButton))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
@@ -178,7 +212,7 @@ public class JP_Caidat extends javax.swing.JPanel {
             .addGroup(jPanel45Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jPanel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         jTabbedPane10.addTab("Thông tin tài khoản", jPanel45);
@@ -204,72 +238,58 @@ public class JP_Caidat extends javax.swing.JPanel {
         jLabel61.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel61.setText("Xác nhận mật khẩu mới:");
 
-        jTextField36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        jButton39.setBackground(new java.awt.Color(153, 255, 255));
-        jButton39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton39.setText("Cập nhật mật khẩu");
-        jButton39.setOpaque(true);
-
-        jButton40.setBackground(new java.awt.Color(153, 255, 255));
-        jButton40.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton40.setText("Xóa");
-        jButton40.setOpaque(true);
-
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        jPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        updatePassButton.setBackground(new java.awt.Color(153, 255, 255));
+        updatePassButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        updatePassButton.setText("Cập nhật mật khẩu");
+        updatePassButton.setOpaque(true);
+        updatePassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePassButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
         jPanel44.setLayout(jPanel44Layout);
         jPanel44Layout.setHorizontalGroup(
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel44Layout.createSequentialGroup()
-                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel44Layout.createSequentialGroup()
+                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel44Layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jButton39)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                        .addComponent(jButton40))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel44Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel44Layout.createSequentialGroup()
-                                .addComponent(jLabel50)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel44Layout.createSequentialGroup()
-                                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel52)
-                                    .addComponent(jLabel61))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(142, 142, 142))
-            .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel52)
+                            .addComponent(jLabel50)
+                            .addComponent(jLabel61))
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newPassAgainField, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(oldPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(newPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel44Layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(updatePassButton)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         jPanel44Layout.setVerticalGroup(
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel44Layout.createSequentialGroup()
                 .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(58, 58, 58)
                 .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
-                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(oldPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel61)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton39)
-                    .addComponent(jButton40))
-                .addContainerGap(73, Short.MAX_VALUE))
+                    .addComponent(newPassAgainField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(updatePassButton)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel43Layout = new javax.swing.GroupLayout(jPanel43);
@@ -286,7 +306,7 @@ public class JP_Caidat extends javax.swing.JPanel {
             .addGroup(jPanel43Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         jTabbedPane10.addTab("Đổi mật khẩu", jPanel43);
@@ -304,17 +324,74 @@ public class JP_Caidat extends javax.swing.JPanel {
             .addComponent(jTabbedPane10)
         );
     }// </editor-fold>//GEN-END:initComponents
+    private void showData(){
+        hoTenField.setText(nguoiDung.getHoTen());
+        hoTenField.setEnabled(false);
+        sdtField.setText(nguoiDung.getDienThoai());
+        sdtField.setEnabled(false);
+        emailField.setText(nguoiDung.getEmail());
+        emailField.setEnabled(false);
+        gioiTinhField.setSelectedItem(nguoiDung.getGioTinh());
+        gioiTinhField.setEnabled(false);
+        dateField.setDateFormatString(nguoiDung.getNgaySinh());
+        dateField.setEnabled(false);
+        updateButton.setVisible(false);
+    }
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        String hoTen = hoTenField.getText();
+        String sdt = sdtField.getText();
+        String email = emailField.getText();
+        String gioiTinh = gioiTinhField.getSelectedItem().toString();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String birthday = formatter.format(dateField.getDate());
+        String userName = nguoiDung.getUsername();
+        if(UserDAO.updateUserInfo(userName, hoTen, sdt, email, gioiTinh, birthday)){
+            JOptionPane.showMessageDialog(this, "Cập nhật thông tin thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Cập nhật thông tin thất bại!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
 
-    private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton43ActionPerformed
+    private void updatePassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePassButtonActionPerformed
+        String oldPass = oldPassField.getText();
+        String newPass = newPassField.getText();
+        String newPassAgain = newPassAgainField.getText();
+        if(!oldPass.equals(nguoiDung.getPassword())){
+            JOptionPane.showMessageDialog(this, "Mật khẩu không đúng!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(!newPass.equals(newPassAgain)){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập lại mật khẩu chính xác!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            if(UserDAO.updatePassword(nguoiDung.getUsername(), newPass)){
+                JOptionPane.showMessageDialog(this, "Cập nhật mật khẩu thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "ập nhật mật khẩu thất bại!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        oldPassField.setText("");
+        newPassField.setText("");
+        newPassAgainField.setText("");
+    }//GEN-LAST:event_updatePassButtonActionPerformed
+
+    private void eidtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eidtButtonActionPerformed
+        hoTenField.setEnabled(true);
+        sdtField.setEnabled(true);
+        emailField.setEnabled(true);
+        gioiTinhField.setEnabled(true);
+        dateField.setEnabled(true);
+        updateButton.setVisible(true);
+    }//GEN-LAST:event_eidtButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton39;
-    private javax.swing.JButton jButton40;
-    private javax.swing.JButton jButton43;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser dateField;
+    private javax.swing.JButton eidtButton;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JComboBox<String> gioiTinhField;
+    private javax.swing.JTextField hoTenField;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
@@ -329,13 +406,12 @@ public class JP_Caidat extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel46;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTabbedPane jTabbedPane10;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField49;
-    private javax.swing.JTextField jTextField50;
-    private javax.swing.JTextField jTextField51;
-    private javax.swing.JTextField jTextField53;
+    private javax.swing.JPasswordField newPassAgainField;
+    private javax.swing.JPasswordField newPassField;
+    private javax.swing.JPasswordField oldPassField;
+    private javax.swing.JTextField sdtField;
+    private javax.swing.JButton updateButton;
+    private javax.swing.JButton updatePassButton;
     // End of variables declaration//GEN-END:variables
 }

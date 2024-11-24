@@ -20,7 +20,7 @@ public class DocGiaDAO {
     
     public ArrayList<DocGia> getListDG(){
             ArrayList<DocGia> list = new ArrayList<>();
-            String sql = "select MaDG,HoTen,NgaySinh,GioiTinh,MaNganh,status from docgia ORDER BY MaDG ASC";
+            String sql = "select MaDG,HoTen,NgaySinh,GioiTinh,status,docgia.MaNganh,TenNganh from docgia JOIN nganhhoc ON docgia.MaNganh = nganhhoc.MaNganh ORDER BY MaDG ASC";
             try(Connection conn = DataBaseConnection.getConnection()){
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
@@ -30,6 +30,7 @@ public class DocGiaDAO {
                     a.setHoTen(rs.getString("HoTen"));
                     a.setNgaySinh(rs.getString("NgaySinh"));
                     a.setGioTinh(rs.getString("GioiTinh"));
+                    a.setTenNganh(rs.getString("TenNganh"));
                     a.setMaNganh(rs.getString("MaNganh"));
                     a.setStatus(rs.getString("status"));
                     list.add(a);

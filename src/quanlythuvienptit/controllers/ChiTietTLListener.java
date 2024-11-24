@@ -25,6 +25,9 @@ public class ChiTietTLListener implements ActionListener {
         if(s.equals("Cập nhật")){
             chiTietTL.update();
         }
+        else if(s.equals("Edit")){
+            chiTietTL.edit();
+        }
     }
     
 }
