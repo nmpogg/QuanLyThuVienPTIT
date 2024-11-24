@@ -843,7 +843,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     
     public void insertPhieu(){
         int id;
-        if(PhieuMuonTraDAO.getID_MuonTraMax().isEmpty()){
+        if(PhieuMuonTraDAO.getID_MuonTraMax() == null){
             id = 0;
         }
         else{

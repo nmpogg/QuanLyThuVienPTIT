@@ -85,7 +85,20 @@ public class KhoaDAO {
             e.printStackTrace();
         }
         return tenKhoa;
-
    }
+    
+    public static void updateTenKhoa(String id, String tenKhoa){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE Khoa SET TenKhoa = ?" +
+                         "WHERE MaKhoa = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenKhoa);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
 

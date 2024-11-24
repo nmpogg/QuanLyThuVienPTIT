@@ -210,10 +210,12 @@ public class TacGiaDAO {
     public static void updateTenTG(String id, String tenTG){
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "UPDATE TacGia SET TenTG = " + "'" + tenTG + "' " +
-                         "WHERE MaTG = " + "'" + id + "'";
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate(sql);
+            String sql = "UPDATE TacGia SET TenTG = ?" +
+                         "WHERE MaTG = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenTG);
+            ps.setString(2, id);
+            ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -222,10 +224,12 @@ public class TacGiaDAO {
     public static void updateNamSinh(String id, String namSinh){
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "UPDATE TacGia SET NamSinh = " + "'" + namSinh + "' " +
-                         "WHERE MaTG = " + "'" + id + "'";
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate(sql);
+            String sql = "UPDATE TacGia SET NamSinh = ?" +
+                         "WHERE MaTG = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, namSinh);
+            ps.setString(2, id);
+            ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
         }

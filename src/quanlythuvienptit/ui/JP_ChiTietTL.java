@@ -300,7 +300,13 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
         String tinhTrang = this.jTextField6.getText();
         String ghiChu = this.jTextField3.getText();
         String tenTL = this.jTextField1.getText();
-        TaiLieuDAO.update(maTL, tenTL, namXB, keSach, tinhTrang, ghiChu);
+        int soLuong = Integer.parseInt(this.jTextField9.getText());
+        int conLai = Integer.parseInt(this.jTextField10.getText());
+        TaiLieuDAO.update(maTL, tenTL, namXB, soLuong, conLai, keSach, tinhTrang, ghiChu);
+        
+        String maKhoa = TaiLieuDAO.searchMaKhoa(maTL);
+        String tenKhoa = this.jTextField8.getText();
+        KhoaDAO.updateTenKhoa(maKhoa, tenKhoa);
         
         String maNXB = TaiLieuDAO.searchMaNXB(maTL);
         String tenNXB = this.jTextField2.getText();

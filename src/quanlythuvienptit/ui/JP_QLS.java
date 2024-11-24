@@ -41,6 +41,7 @@ public class JP_QLS extends javax.swing.JPanel {
     
     private void init() {
         set_header(jScrollPane3, jTable3);
+        this.jTable3.setModel(TaiLieuDAO.dislaySach());
     }
     
     private void set_header(JScrollPane jScrollPane, JTable jTable) {
