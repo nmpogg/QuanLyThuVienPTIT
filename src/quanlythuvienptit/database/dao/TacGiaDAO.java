@@ -41,7 +41,7 @@ public class TacGiaDAO {
     }
     public static boolean delTG(String s) { //check trung username
         try ( Connection c = DataBaseConnection.getConnection()) {
-            String del = String.format("delete from tacgia where MaTG ='%s';",s);
+            String del = String.format("update tacgia set status = 'không hoạt động' where MaTG ='%s';",s);
             PreparedStatement ps = c.prepareStatement(del);
             int row = ps.executeUpdate(del);//ap dung cho insert update delete;
             return row >0 ? true:false;
@@ -71,7 +71,7 @@ public class TacGiaDAO {
     }
     public static boolean insertTacGia(TacGia tg) { //check trung username
         try ( Connection c = DataBaseConnection.getConnection()) {
-            String insert = String.format("insert into tacgia (MaTG,TenTG,GhiChu,GioiTinh,NamSinh,NgayTao) values ('%s', '%s', '%s', '%s', '%s', '%s');",tg.getMaTG(),tg.getTenTG(),tg.getGhiChu(),tg.getGioitinh(),tg.getNamSinh(),tg.getNgayTao());
+            String insert = String.format("insert into tacgia (MaTG,TenTG,GhiChu,GioiTinh,NamSinh,NgayTao,status) values ('%s', '%s', '%s', '%s', '%s', '%s','đang hoạt động');",tg.getMaTG(),tg.getTenTG(),tg.getGhiChu(),tg.getGioitinh(),tg.getNamSinh(),tg.getNgayTao());
             PreparedStatement ps = c.prepareStatement(insert);
             int row = ps.executeUpdate(insert);//ap dung cho insert update delete;
             return row >0 ? true:false;
@@ -107,6 +107,7 @@ public class TacGiaDAO {
                     a.setTenTG(rs.getString("TenTG"));
                     a.setNgayTao(rs.getString("NgayTao"));
                     a.setGhiChu(rs.getString("GhiChu"));
+                    a.setStatus(rs.getString("status"));
                 }
             } catch(Exception e){
                 e.printStackTrace();

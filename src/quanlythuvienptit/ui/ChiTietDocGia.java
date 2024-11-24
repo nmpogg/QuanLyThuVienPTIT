@@ -136,19 +136,28 @@ public class ChiTietDocGia extends javax.swing.JFrame {
         String[] stringArray = listKhoa.stream().map(Khoa::toString).toArray(String[]::new);
         MaKhoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MaKhoa.setModel(new javax.swing.DefaultComboBoxModel<>(stringArray));
-        MaKhoa.setSelectedItem(a.getMaKhoa());
+        for(Khoa b: listKhoa){
+            if(b.getMaKhoa().equals(a.getMaKhoa())){
+                MaKhoa.setSelectedItem(b.getTenKhoa());
+                break;
+            }
+        }
         MaKhoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MaKhoaActionPerformed(evt);
             }
         });
 
-        String khoa = (String)MaKhoa.getSelectedItem();
-        ArrayList<NganhHoc> listNganhHoc  = new NganhHocDAO().getListNganhHoc(khoa);
+        ArrayList<NganhHoc> listNganhHoc  = new NganhHocDAO().getListNganhHoc(a.getMaKhoa());
         String[] stringArray1 = listNganhHoc.stream().map(NganhHoc::toString).toArray(String[]::new);
         MaNganh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MaNganh.setModel(new javax.swing.DefaultComboBoxModel<>(stringArray1));
-        MaNganh.setSelectedItem(a.getMaNganh());
+        for(NganhHoc b: listNganhHoc){
+            if(b.getMaNganhHoc().equals(a.getMaNganh())){
+                MaNganh.setSelectedItem(b.getTenNganhHoc());
+                break;
+            }
+        }
         MaNganh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MaNganhActionPerformed(evt);
@@ -164,12 +173,16 @@ public class ChiTietDocGia extends javax.swing.JFrame {
         NguoiCN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NguoiCN.setText(a.getNguoiCN());
 
-        String nganh = (String)MaNganh.getSelectedItem();
-        ArrayList<Lop> listLop  = new LopDAO().getListLop(nganh);
+        ArrayList<Lop> listLop  = new LopDAO().getListLop(a.getMaNganh());
         String[] stringArray2 = listLop.stream().map(Lop::toString).toArray(String[]::new);
         MaLop.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MaLop.setModel(new javax.swing.DefaultComboBoxModel<>(stringArray2));
-        MaLop.setSelectedItem(a.getMaLop());
+        for(Lop b: listLop){
+            if(b.getMaLop().equals(a.getMaLop())){
+                MaLop.setSelectedItem(b.getTenLop());
+                break;
+            }
+        }
         MaLop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MaLopActionPerformed(evt);
@@ -343,6 +356,35 @@ public class ChiTietDocGia extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Bạn không có quyền");
             return;
         }
+        ArrayList<Khoa> listKhoa = new KhoaDAO().getListKhoa();
+        String khoa = (String)MaKhoa.getSelectedItem();
+        String maKhoa = "";
+        for(Khoa b : listKhoa){
+            if(b.getTenKhoa().equals(khoa)){ 
+                maKhoa += b.getMaKhoa();
+                break;
+            }
+        }
+        ArrayList<NganhHoc> listNH = new NganhHocDAO().getListNganhHoc();
+        
+        String nganh = (String)MaNganh.getSelectedItem();
+        String maNH = "";
+        for(NganhHoc b : listNH){
+            if(b.getTenNganhHoc().equals(nganh)){ 
+                maNH += b.getMaNganhHoc();
+                break;
+            }
+        }
+        ArrayList<Lop> listLop = new LopDAO().getListLop(maNH);
+        
+        String lop = (String)MaLop.getSelectedItem();
+        String maLop = "";
+        for(Lop b : listLop){
+            if(b.getTenLop().equals(lop)){ 
+                maLop += b.getMaLop();
+                break;
+            }
+        }
         DocGia b = new DocGia();
         b.setMaDG(MaDG.getText());
         b.setHoTen(Ten.getText());
@@ -350,9 +392,9 @@ public class ChiTietDocGia extends javax.swing.JFrame {
         SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
         b.setNgaySinh(formatter1.format(NgaySinh.getDate()));
         b.setGhiChu(GhiChu.getText());
-        b.setMaKhoa(MaKhoa.getSelectedItem().toString());
-        b.setMaNganh(MaNganh.getSelectedItem().toString());
-        b.setMaLop(MaLop.getSelectedItem().toString());
+        b.setMaKhoa(maKhoa);
+        b.setMaNganh(maNH);
+        b.setMaLop(maLop);
         b.setNguoiCN(UserDAO.TenUser);
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -377,12 +419,21 @@ public class ChiTietDocGia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void MaNganhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaNganhActionPerformed
+        ArrayList<NganhHoc> listNH = new NganhHocDAO().getListNganhHoc();
+        
         String nganh = (String)MaNganh.getSelectedItem();
-        ArrayList<Lop> listLop  = new LopDAO().getListLop(nganh);
+        String maNH = "";
+        for(NganhHoc b : listNH){
+            if(b.getTenNganhHoc().equals(nganh)){ 
+                maNH += b.getMaNganhHoc();
+                break;
+            }
+        }
+        ArrayList<Lop> listLop  = new LopDAO().getListLop(maNH);
         MaLop.removeAllItems();
         MaLop.addItem("Chọn lớp");
-        for(Lop a : listLop){
-            MaLop.addItem(a.getMaLop());
+        for(Lop b : listLop){
+            MaLop.addItem(b.getTenLop());
         }
     }//GEN-LAST:event_MaNganhActionPerformed
 
@@ -391,12 +442,20 @@ public class ChiTietDocGia extends javax.swing.JFrame {
     }//GEN-LAST:event_MaLopActionPerformed
 
     private void MaKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaKhoaActionPerformed
+        ArrayList<Khoa> listKhoa = new KhoaDAO().getListKhoa();
         String khoa = (String)MaKhoa.getSelectedItem();
-        ArrayList<NganhHoc> listNganhHoc  = new NganhHocDAO().getListNganhHoc(khoa);
+        String maKhoa = "";
+        for(Khoa b : listKhoa){
+            if(b.getTenKhoa().equals(khoa)){ 
+                maKhoa += b.getMaKhoa();
+                break;
+            }
+        }
+        ArrayList<NganhHoc> listNganhHoc  = new NganhHocDAO().getListNganhHoc(maKhoa);
         MaNganh.removeAllItems();
         MaNganh.addItem("Chọn ngành học");
-        for(NganhHoc a : listNganhHoc){
-            MaNganh.addItem(a.getMaNganhHoc());
+        for(NganhHoc b : listNganhHoc){
+            MaNganh.addItem(b.getTenNganhHoc());
         }
     }//GEN-LAST:event_MaKhoaActionPerformed
 

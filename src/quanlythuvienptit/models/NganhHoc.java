@@ -38,6 +38,6 @@ public class NganhHoc {
     }
     @Override
     public String toString() {
-        return maNganhHoc; // Biểu diễn đối tượng dưới dạng chuỗi
+        return tenNganhHoc; // Biểu diễn đối tượng dưới dạng chuỗi
     }
 }
