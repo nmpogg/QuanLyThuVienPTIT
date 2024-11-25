@@ -113,6 +113,11 @@ public class JP_QLS extends javax.swing.JPanel {
         jButton16.setBackground(new java.awt.Color(153, 255, 255));
         jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton16.setText("Xóa");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setBackground(new java.awt.Color(153, 255, 255));
         jButton17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -425,6 +430,10 @@ public class JP_QLS extends javax.swing.JPanel {
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
     public void addAction(){
         ActionListener ac = new QLSListener(this);
         this.jButton13.addActionListener(ac);
@@ -529,11 +538,11 @@ public class JP_QLS extends javax.swing.JPanel {
     }
     
     public void deleteSach(){
-        if(UserDAO.quyenHan.equals("Thủ thư") || UserDAO.quyenHan.equals("Admin")){
+        if(UserDAO.quyenHan.toLowerCase().equals("admin")){
             try{
                 int row = this.jTable3.getSelectedRow();
                 String id = (String)this.jTable3.getValueAt(row, 1);
-                TaiLieuDAO.updateStatus(id, "Cần thanh lý");
+                TaiLieuDAO.updateTinhTrang(id, "Cần thanh lý");
                 //TaiLieuDAO.deleteSach(id);
                 JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }catch(Exception e){

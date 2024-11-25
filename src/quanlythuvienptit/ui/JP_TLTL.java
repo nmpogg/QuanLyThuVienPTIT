@@ -51,7 +51,7 @@ public class JP_TLTL extends javax.swing.JPanel {
         int cnt = 0;
         for(TaiLieu a : listT4){
             model.addRow(new Object[]{
-                ++cnt,a.getMaTL(),a.getTenTL(),a.getMaKhoa(),a.getMaTG(),a.getMaNXB(),a.getSoLuong()
+                ++cnt,a.getMaTL(),a.getTenTL(),a.getMaKhoa(),a.getMaTG(),a.getMaNXB(),a.getSoLuong(),a.getTinhTrang()
             });
         }
         DefaultTableModel targetModel = (DefaultTableModel) jTable3.getModel();
@@ -353,7 +353,7 @@ public class JP_TLTL extends javax.swing.JPanel {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         DefaultTableModel model1  = (DefaultTableModel) jTable3.getModel();
         for(int i = 0;i<jTable3.getRowCount();i++){
-            boolean update = new TaiLieuDAO().updateThanhLy((String) jTable3.getValueAt(i, 1));
+            boolean update =  TaiLieuDAO.updateThanhLy((String) jTable3.getValueAt(i, 1));
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -376,8 +376,7 @@ public class JP_TLTL extends javax.swing.JPanel {
             PrintRequestAttributeSet set = new HashPrintRequestAttributeSet();
             set.add(OrientationRequested.PORTRAIT);
             jTable1.print(JTable.PrintMode.FIT_WIDTH,header,footer,true,set,true);
-            JOptionPane.showMessageDialog(null, "Printed Succeedfully");
-            
+            JOptionPane.showMessageDialog(null, "Printed Succeedfully");    
         }
         catch(java.awt.print.PrinterException e){
             JOptionPane.showMessageDialog(null, "Failed!");
