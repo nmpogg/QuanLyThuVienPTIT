@@ -130,7 +130,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Speech Bubble_1.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Speech Bubble_1.png"))); // NOI18N
         jLabel10.setText("Thông tin");
         jLabel10.setOpaque(true);
 
@@ -176,7 +176,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/User Male_1.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/User Male_1.png"))); // NOI18N
         jLabel7.setText("Danh sách tác giả");
         jLabel7.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
         jLabel7.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -195,7 +195,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Document.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Document.png"))); // NOI18N
         jLabel8.setText("Tài liệu thanh lý");
         jLabel8.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
         jLabel8.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -214,7 +214,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Scroll.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Scroll.png"))); // NOI18N
         jLabel4.setText("Quản lý phiếu mượn");
         jLabel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
         jLabel4.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -233,7 +233,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Bookmark_3.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Bookmark_3.png"))); // NOI18N
         jLabel1.setText("Quản lý tài liệu");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
         jLabel1.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -252,7 +252,7 @@ public class Main_Gui extends javax.swing.JFrame {
         DOCGIA.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         DOCGIA.setForeground(new java.awt.Color(255, 255, 255));
         DOCGIA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        DOCGIA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Connect.png"))); // NOI18N
+        DOCGIA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Connect.png"))); // NOI18N
         DOCGIA.setText("Quản lý độc giả");
         DOCGIA.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
         DOCGIA.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -271,7 +271,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Download from the Cloud_1.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Download from the Cloud_1.png"))); // NOI18N
         jLabel9.setText("Go to Web");
         jLabel9.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(255, 204, 204)));
         jLabel9.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -290,13 +290,13 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Services_1.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Services_1.png"))); // NOI18N
         jLabel11.setText("Tính năng");
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Contacts_1.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Contacts_1.png"))); // NOI18N
         jLabel5.setText("Quản lý tài khoản");
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
         jLabel5.setFocusable(false);
@@ -316,7 +316,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Home.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Home.png"))); // NOI18N
         jLabel2.setText("Bảng điều khiển");
         jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
         jLabel2.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -380,7 +380,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Lock_1.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Lock_1.png"))); // NOI18N
         jLabel12.setText("Đăng xuất");
         jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(255, 51, 51)));
         jLabel12.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -399,7 +399,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Settings_1.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Settings_1.png"))); // NOI18N
         jLabel13.setText("Cài đặt");
         jLabel13.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 51, 51)));
         jLabel13.setPreferredSize(new java.awt.Dimension(130, 40));
@@ -631,8 +631,8 @@ public class Main_Gui extends javax.swing.JFrame {
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-////                Main_Gui main = new Main_Gui();
-////                main.setVisible(true);
+//                Main_Gui main = new Main_Gui("test", "test");
+//                main.setVisible(true);
 //            }
 //        });
 //    }

@@ -117,7 +117,7 @@ public class JFMain extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(153, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Key.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/Key.png"))); // NOI18N
         jButton1.setText("Đăng nhập");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +176,7 @@ public class JFMain extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/tvvv.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/ui/icons/tvvv.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
