@@ -68,8 +68,8 @@ public class KhoaDAO {
             e.printStackTrace();
         }
         return maKhoa;
-
     }
+    
     public static String searchTenKhoa(String maKhoa){
         String tenKhoa = "";
         try{

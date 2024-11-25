@@ -9,7 +9,7 @@ package quanlythuvienptit.models;
  * @author NguyenXuanKhuong
  */
 public class DocGia {
-    private String MaDG, HoTen, NgaySinh, GioTinh, MaNganh, MaKhoa, MaLop, NguoiCN, NgayCN, GhiChu, status;
+    private String MaDG, HoTen, NgaySinh, GioTinh, MaNganh, MaKhoa, MaLop, NguoiCN, NgayCN, GhiChu, status,TenNganh;
 
     public String getMaDG() {
         return MaDG;
@@ -97,6 +97,14 @@ public class DocGia {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTenNganh() {
+        return TenNganh;
+    }
+
+    public void setTenNganh(String TenNganh) {
+        this.TenNganh = TenNganh;
     }
     
     

@@ -14,7 +14,7 @@ public class TacGia {
     private String ghiChu;
     private String gioitinh;
     private String NamSinh;
-    private String NgayTao;
+    private String NgayTao,Status;
 
     public void setMaTG(String maTG) {
         this.maTG = maTG;
@@ -62,6 +62,14 @@ public class TacGia {
 
     public void setNgayTao(String NgayTao) {
         this.NgayTao = NgayTao;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
     }
     
 }

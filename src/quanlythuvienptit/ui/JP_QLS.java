@@ -21,6 +21,7 @@ import quanlythuvienptit.database.dao.KhoaDAO;
 import quanlythuvienptit.database.dao.NhaXuatBanDAO;
 import quanlythuvienptit.database.dao.TacGiaDAO;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
+import quanlythuvienptit.database.dao.UserDAO;
 import quanlythuvienptit.models.TaiLieu;
 
 /**
@@ -50,7 +51,7 @@ public class JP_QLS extends javax.swing.JPanel {
         JTableHeader header = jTable.getTableHeader();
         header.setPreferredSize(new Dimension(100, 40)); // Tăng kích thước chiều cao header
         header.setFont(new Font("Arial", Font.PLAIN, 14)); // Thay đổi font chữ
-        header.setBackground(Color.RED); // Đặt màu nền
+        header.setBackground(new Color(255, 102, 102)); // Đặt màu nền
         jTable.setTableHeader(header);
     }
 
@@ -506,22 +507,27 @@ public class JP_QLS extends javax.swing.JPanel {
     }
     
     public void reset(){
-        String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Số lượng", "Còn lại"};
-        DefaultTableModel model = new DefaultTableModel(col, 4);
+        int index = this.jComboBox4.getSelectedIndex();
+        String khoa = this.jComboBox4.getItemAt(index);
+        DefaultTableModel model = TaiLieuDAO.getDSTL(khoa);
         this.jTable3.setModel(model);
-        this.jTextField17.setText("");
-        this.jComboBox4.setSelectedIndex(0);
     }
     
     public void deleteSach(){
-        try{
-            int row = this.jTable3.getSelectedRow();
-            String id = (String)this.jTable3.getValueAt(row, 1);
-            TaiLieuDAO.deleteSach(id);
-            JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        }catch(Exception e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        if(UserDAO.quyenHan.equals("Thủ thư") || UserDAO.quyenHan.equals("Admin")){
+            try{
+                int row = this.jTable3.getSelectedRow();
+                String id = (String)this.jTable3.getValueAt(row, 1);
+                TaiLieuDAO.updateStatus(id, "Cần thanh lý");
+                //TaiLieuDAO.deleteSach(id);
+                JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }catch(Exception e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Bạn không có quyền hạn!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     

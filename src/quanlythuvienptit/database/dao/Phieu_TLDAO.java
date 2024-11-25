@@ -96,19 +96,6 @@ public class Phieu_TLDAO {
         return cnt;
     }
     
-    public static void delete(String maPhieu){
-        try{
-            Connection con = DataBaseConnection.getConnection();
-            String sql = "DELETE FROM Phieu_TaiLieu " + 
-                         "WHERE ID_MuonTra = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, maPhieu);
-            ps.executeUpdate();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    
     public static String getTrangThaiMuonTra(String maPhieu, String maTL){
         String trangThai = "";
         try{
@@ -126,5 +113,18 @@ public class Phieu_TLDAO {
             e.printStackTrace();
         }
         return trangThai;
+    }
+    
+    public static void delete(String maPhieu){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "DELETE FROM Phieu_TaiLieu " +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maPhieu);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

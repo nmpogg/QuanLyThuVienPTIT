@@ -49,13 +49,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="306" max="-2" attributes="0"/>
                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="129" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="jPanel1" max="32767" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jPanel1" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -115,13 +111,15 @@
                       <Component id="MaLop" max="32767" attributes="0"/>
                       <Component id="NguoiCN" max="32767" attributes="0"/>
                       <Component id="NgayCN" max="32767" attributes="0"/>
-                      <Component id="GioiTinh" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="TrangThai" min="-2" pref="168" max="-2" attributes="0"/>
-                              <Component id="GhiChu" min="-2" pref="168" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="GioiTinh" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="TrangThai" min="-2" pref="168" max="-2" attributes="0"/>
+                                  <Component id="GhiChu" min="-2" pref="168" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="77" max="32767" attributes="0"/>
@@ -193,7 +191,7 @@
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TrangThai" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="35" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -206,11 +204,17 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="M&#xe3; &#x110;&#x1ecd;c Gi&#x1ea3;:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="MaDG">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="a.getMaDG()" type="code"/>
             </Property>
@@ -218,6 +222,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="Ten">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="a.getHoTen()" type="code"/>
             </Property>
@@ -225,21 +232,35 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="T&#xea;n &#x110;&#x1ecd;c Gi&#x1ea3;:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ng&#xe0;y Sinh:"/>
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="NgaySinh">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="SimpleDateFormat formatter = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);&#xa;&#xa;try{&#xa;    Date date = formatter.parse(a.getNgaySinh());&#xa;    NgaySinh.setDate(date);&#xa;}&#xa;catch(ParseException e){&#xa;    System.out.println(&quot;L&#x1ed7;i &#x111;&#x1ecb;nh d&#x1ea1;ng: &quot; + e.getMessage());&#xa;}"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="GioiTinh">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Nam&quot;, &quot;N&#x1eef;&quot; })" type="code"/>
             </Property>
@@ -251,16 +272,25 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Gi&#x1edb;i T&#xed;nh:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Khoa:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="MaKhoa">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(stringArray)" type="code"/>
             </Property>
@@ -269,13 +299,16 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaKhoaActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="MaKhoa.setSelectedItem(a.getMaKhoa());"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Khoa b: listKhoa){&#xa;    if(b.getMaKhoa().equals(a.getMaKhoa())){&#xa;        MaKhoa.setSelectedItem(b.getTenKhoa());&#xa;        break;&#xa;    }&#xa;}"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ArrayList&lt;Khoa&gt; listKhoa = new KhoaDAO().getListKhoa();&#xa;String[] stringArray = listKhoa.stream().map(Khoa::toString).toArray(String[]::new);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="MaNganh">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(stringArray1)" type="code"/>
             </Property>
@@ -284,23 +317,32 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaNganhActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="MaNganh.setSelectedItem(a.getMaNganh());"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String khoa = (String)MaKhoa.getSelectedItem();&#xa;ArrayList&lt;NganhHoc&gt; listNganhHoc  = new NganhHocDAO().getListNganhHoc(khoa);&#xa;String[] stringArray1 = listNganhHoc.stream().map(NganhHoc::toString).toArray(String[]::new);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(NganhHoc b: listNganhHoc){&#xa;    if(b.getMaNganhHoc().equals(a.getMaNganh())){&#xa;        MaNganh.setSelectedItem(b.getTenNganhHoc());&#xa;        break;&#xa;    }&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ArrayList&lt;NganhHoc&gt; listNganhHoc  = new NganhHocDAO().getListNganhHoc(a.getMaKhoa());&#xa;String[] stringArray1 = listNganhHoc.stream().map(NganhHoc::toString).toArray(String[]::new);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ng&#xe0;nh h&#x1ecd;c:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="L&#x1edb;p:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="NguoiCN">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="a.getNguoiCN()" type="code"/>
             </Property>
@@ -308,6 +350,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="MaLop">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(stringArray2)" type="code"/>
             </Property>
@@ -316,23 +361,32 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaLopActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="MaLop.setSelectedItem(a.getMaLop());"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String nganh = (String)MaNganh.getSelectedItem();&#xa;ArrayList&lt;Lop&gt; listLop  = new LopDAO().getListLop(nganh);&#xa;String[] stringArray2 = listLop.stream().map(Lop::toString).toArray(String[]::new);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Lop b: listLop){&#xa;    if(b.getMaLop().equals(a.getMaLop())){&#xa;        MaLop.setSelectedItem(b.getTenLop());&#xa;        break;&#xa;    }&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ArrayList&lt;Lop&gt; listLop  = new LopDAO().getListLop(a.getMaNganh());&#xa;String[] stringArray2 = listLop.stream().map(Lop::toString).toArray(String[]::new);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i C&#x1ead;p Nh&#x1ead;t:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ng&#xe0;y C&#x1ead;p Nh&#x1ead;t:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="NgayCN">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="a.getNgayCN()" type="code"/>
             </Property>
@@ -340,6 +394,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="GhiChu">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="a.getGhiChu()" type="code"/>
             </Property>
@@ -347,16 +404,25 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ghi Ch&#xfa;:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="TrangThai">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="a.getStatus()" type="code"/>
             </Property>
@@ -364,6 +430,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="99" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Access"/>
           </Properties>
           <Events>
@@ -372,6 +444,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="99" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t"/>
           </Properties>
           <Events>

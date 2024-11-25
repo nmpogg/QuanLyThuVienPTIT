@@ -37,7 +37,8 @@ public class LopDAO {
             }
             return list;
     }
-    public static String searchTenLop(String maLop){
+     
+     public static String searchTenLop(String maLop){
         String tenLop = "";
         try{
             Connection con = DataBaseConnection.getConnection();
@@ -53,5 +54,19 @@ public class LopDAO {
             e.printStackTrace();
         }
         return tenLop;
+    }
+     
+    public static void updateTenLop(String id, String tenLop){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE Lop SET TenLop = ?" +
+                         "WHERE MaLop = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenLop);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

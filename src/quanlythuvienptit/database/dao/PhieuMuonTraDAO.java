@@ -25,13 +25,12 @@ public class PhieuMuonTraDAO {
                          "WHERE MaDG = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, s);
-            String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả", "Trạng thái"};
+            String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
             ResultSet rs = ps.executeQuery();
             ArrayList<Object[]> arr = new ArrayList<>();
             int cnt = 1;
             while(rs.next()){
-                Object[] row = new Object[8];
-                row[0] = cnt++;
+                Object[] row = new Object[7];
                 row[1] = rs.getString("ID_MuonTra");
                 row[3] = rs.getString("MaDG");
                 row[5] = rs.getString("NgayMuon");
@@ -41,15 +40,17 @@ public class PhieuMuonTraDAO {
                 PreparedStatement ps2 = con.prepareStatement(sql2);
                 ArrayList<String> dsMaTL = Phieu_TLDAO.getMaTL((String)row[1]);
                 for(String idTL : dsMaTL){
+                    row[0] = cnt++;
                     row[2] = idTL;
                     ps2.setString(1, (String)row[2]);
                     ResultSet rs2 = ps2.executeQuery();
                     if(rs2.next()){
                         row[4] = rs2.getString("TenTL");
                     }
-                    row[7] = Phieu_TLDAO.getTrangThaiMuonTra((String)row[1], (String)row[2]);
                     Object[] rowClone = row.clone();
-                    arr.add(rowClone);
+                    if(Phieu_TLDAO.getTrangThaiMuonTra((String)row[1], idTL).equals("Chưa trả")){
+                        arr.add(rowClone);
+                    }
                 }
             }
             if(!arr.isEmpty()){
@@ -143,6 +144,7 @@ public class PhieuMuonTraDAO {
             if(rs.next()){
                 idMuonTraMax = rs.getString("ID_MuonTraMax");
             }
+            else idMuonTraMax = "";
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -229,5 +231,47 @@ public class PhieuMuonTraDAO {
             e.printStackTrace();
         }
         return rs;
+    }
+    
+    public static void updateNguoiChoMuon(String id, String nguoiChoMuon){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE PhieuMuonTra SET NguoiChoMuon = ?" +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nguoiChoMuon);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void updateKieuMuon(String id, String kieuMuon){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE PhieuMuonTra SET KieuMuon = ?" +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, kieuMuon);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void updateHanTra(String id, String hanTra){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE PhieuMuonTra SET HanTra = ?" +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, hanTra);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

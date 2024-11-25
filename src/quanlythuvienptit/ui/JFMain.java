@@ -6,6 +6,7 @@ package quanlythuvienptit.ui;
 
 import javax.swing.JOptionPane;
 import quanlythuvienptit.database.dao.UserDAO;
+import quanlythuvienptit.models.NguoiDung;
 
 
 /**
@@ -221,8 +222,10 @@ public class JFMain extends javax.swing.JFrame {
        String user = userField.getText();
        String pass = passField.getText();
        if(UserDAO.isValidUser(user, pass)){
-           setVisible(false);        
-           Main_Gui dashBoard = new Main_Gui();
+           setVisible(false); 
+           NguoiDung user_x = UserDAO.getUserByUsername(user);
+           Main_Gui dashBoard = new Main_Gui(user_x.getHoTen(), user_x.getQuyenHan());
+           Main_Gui.user = user_x;
            dashBoard.setVisible(true);
            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "POPUP", JOptionPane.INFORMATION_MESSAGE);
            return;

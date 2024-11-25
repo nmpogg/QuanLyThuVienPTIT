@@ -36,20 +36,29 @@ public class JP_DSTG extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0);
         int cnt = 1;
-        for(TacGia a : listTG){
-            model.addRow(new Object[]{
-                cnt++,a.getMaTG(),a.getTenTG(),a.getGioitinh(),a.getNamSinh()
-            });
+        if(!UserDAO.quyenHan.toLowerCase().equals("admin")){
+            for(TacGia a : listTG){
+                if(!a.getStatus().equals("không hoạt động")) model.addRow(new Object[]{
+                    cnt++,a.getMaTG(),a.getTenTG(),a.getGioitinh(),a.getNamSinh()
+                });
+            }
+        } else{
+            for(TacGia a : listTG){
+                model.addRow(new Object[]{
+                    cnt++,a.getMaTG(),a.getTenTG(),a.getGioitinh(),a.getNamSinh()
+                });
+            }
         }
     }
     public JP_DSTG() {
         initComponents();
+        showdata();
         jScrollPane2.getViewport().setBackground(Color.WHITE);
 
         JTableHeader header = jTable2.getTableHeader();
         header.setPreferredSize(new Dimension(100, 40)); // Tăng kích thước chiều cao header
         header.setFont(new Font("Arial", Font.PLAIN, 14)); // Thay đổi font chữ
-        header.setBackground(Color.RED); // Đặt màu nền
+        header.setBackground(new Color(255, 102, 102)); // Đặt màu nền
         jTable2.setTableHeader(header);
     }
 
@@ -389,10 +398,10 @@ public class JP_DSTG extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         int removeIndex = jTable2.getSelectedRow();
         if(removeIndex == -1){
-            JOptionPane.showMessageDialog(jButton10, "Hay chon mot dong");
+            JOptionPane.showMessageDialog(jButton10, "Hãy chọn một dòng");
         }
         else if(listTG.isEmpty()){
-            JOptionPane.showMessageDialog(jButton10, "Khong co thong tin de xoa");
+            JOptionPane.showMessageDialog(jButton10, "Không có thông tin để xóa");
         }
         else{
             String s = listTG.get(removeIndex).getMaTG();
@@ -402,17 +411,18 @@ public class JP_DSTG extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-         String s = jTextField3.getText();
+         String s = jTextField3.getText().toLowerCase();
         if(s.equals("")){
-            JOptionPane.showMessageDialog(jButton10, "Hay nhap thong tin");
+            JOptionPane.showMessageDialog(jButton10, "Hãy nhập thông tin");
         }
         else{
-            listTG = new TacGiaDAO().getListtenTG(s);
+            listTG = new TacGiaDAO().getListTG();
             
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
             model.setRowCount(0);
             int cnt = 1;
             for(TacGia a : listTG){
+                if(a.getMaTG().toLowerCase().contains(s)||a.getTenTG().toLowerCase().contains(s))
                 model.addRow(new Object[]{
                     cnt++,a.getMaTG(),a.getTenTG(),a.getGioitinh(),a.getNamSinh()
                 });
@@ -445,7 +455,7 @@ public class JP_DSTG extends javax.swing.JPanel {
         SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
         a.setNamSinh(formatter1.format(NgaySinh.getDate()));
         if(a.getMaTG().equals("")||a.getTenTG().equals("")||a.getGioitinh().equals("None")||a.getNamSinh().equals("")){
-            JOptionPane.showMessageDialog(jButton10, "Hay dien day du thong tin");
+            JOptionPane.showMessageDialog(jButton10, "Hãy điền đầy đủ thông tin");
             return;
         }
         boolean isExist = TacGiaDAO.isExist(a.getMaTG());
@@ -458,7 +468,7 @@ public class JP_DSTG extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(jButton10, "Sever error!");
             }
             else{
-                JOptionPane.showMessageDialog(jButton10, "Them tac gia thanh cong!");
+                JOptionPane.showMessageDialog(jButton10, "Thêm tác giả thành công!");
             }
             
         }

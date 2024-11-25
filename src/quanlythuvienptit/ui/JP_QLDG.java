@@ -46,15 +46,15 @@ public class JP_QLDG extends javax.swing.JPanel {
         int cnt = 1;
         if(!UserDAO.quyenHan.toLowerCase().equals("admin")){
             for(DocGia a : listDG){
-                if(!a.getStatus().equals("khong hoat dong")) model.addRow(new Object[]{
-                    cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getMaNganh()
+                if(!a.getStatus().equals("không hoạt động")) model.addRow(new Object[]{
+                    cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getTenNganh()
                 });
             }
         }
         else{
             for(DocGia a : listDG){
                 model.addRow(new Object[]{
-                    cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getMaNganh()
+                    cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getTenNganh()
                 });
             }
         }
@@ -62,6 +62,7 @@ public class JP_QLDG extends javax.swing.JPanel {
     }
     public JP_QLDG() {
         initComponents();
+        showdata();
         init();
     }
     
@@ -69,9 +70,12 @@ public class JP_QLDG extends javax.swing.JPanel {
         set_header(jScrollPane4, jTable4);
         ArrayList<Khoa> listKhoa = new KhoaDAO().getListKhoa();
         for(Khoa a : listKhoa){
-            MaKhoa.addItem(a.getMaKhoa());
+            MaKhoa.addItem(a.getTenKhoa());
         }
-        
+        ArrayList<NganhHoc> list = new NganhHocDAO().getListNganhHoc();
+        for(NganhHoc a: list){
+            Filter.addItem(a.getTenNganhHoc());
+        }
         
     }
     
@@ -81,7 +85,7 @@ public class JP_QLDG extends javax.swing.JPanel {
         JTableHeader header = jTable.getTableHeader();
         header.setPreferredSize(new Dimension(100, 40)); // Tăng kích thước chiều cao header
         header.setFont(new Font("Arial", Font.PLAIN, 14)); // Thay đổi font chữ
-        header.setBackground(Color.RED); // Đặt màu nền
+        header.setBackground(new Color(255, 102, 102)); // Đặt màu nền
         jTable.setTableHeader(header);
     }
 
@@ -102,6 +106,7 @@ public class JP_QLDG extends javax.swing.JPanel {
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
+        Filter = new javax.swing.JComboBox<>();
         jPanel22 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
@@ -178,6 +183,14 @@ public class JP_QLDG extends javax.swing.JPanel {
             }
         });
 
+        Filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lọc theo ngành học"}));
+        Filter.setSelectedItem("Lọc theo ngành học");
+        Filter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FilterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
@@ -192,9 +205,14 @@ public class JP_QLDG extends javax.swing.JPanel {
                         .addComponent(jButton23)))
                 .addGap(64, 64, 64)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton22)
-                    .addComponent(jButton24))
-                .addContainerGap(584, Short.MAX_VALUE))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addComponent(jButton24)
+                        .addContainerGap(584, Short.MAX_VALUE))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addComponent(jButton22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,8 +221,9 @@ public class JP_QLDG extends javax.swing.JPanel {
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton21)
                     .addComponent(jButton22)
-                    .addComponent(jButton23))
-                .addGap(18, 18, 18)
+                    .addComponent(jButton23)
+                    .addComponent(Filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton24))
@@ -241,7 +260,7 @@ public class JP_QLDG extends javax.swing.JPanel {
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
@@ -456,10 +475,10 @@ public class JP_QLDG extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
         int removeIndex = jTable4.getSelectedRow();
         if(removeIndex == -1){
-            JOptionPane.showMessageDialog(JComboBox, "Hay chon mot dong");
+            JOptionPane.showMessageDialog(JComboBox, "Hãy chọn một dòng");
         }
         else if(listDG.isEmpty()){
-            JOptionPane.showMessageDialog(JComboBox, "Khong co thong tin de xoa");
+            JOptionPane.showMessageDialog(JComboBox, "Không có thông tin để xóa");
         }
         else{
             String s = listDG.get(removeIndex).getMaDG();
@@ -469,19 +488,21 @@ public class JP_QLDG extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        String s = jTextField18.getText();
+        String s = jTextField18.getText().toLowerCase();
         if(s.equals("")){
-            JOptionPane.showMessageDialog(JComboBox, "Hay nhap thong tin");
+            JOptionPane.showMessageDialog(JComboBox, "Hãy nhập thông tin");
         }
         else{
-            listDG = new DocGiaDAO().getListMaThe(s);
+            listDG = new DocGiaDAO().getListDG();
             DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
             model.setRowCount(0);
             int cnt = 1;
             for(DocGia a : listDG){
-                model.addRow(new Object[]{
-                    cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getMaNganh()
-                });
+                if(a.getMaDG().toLowerCase().contains(s)||a.getHoTen().toLowerCase().contains(s)){
+                    model.addRow(new Object[]{
+                        cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getMaNganh()
+                    });
+                }
             } 
         }
     }//GEN-LAST:event_jButton24ActionPerformed
@@ -491,6 +512,35 @@ public class JP_QLDG extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(JComboBox, "Bạn không có quyền");
             return;
         }
+        ArrayList<Khoa> listKhoa = new KhoaDAO().getListKhoa();
+        String khoa = (String)MaKhoa.getSelectedItem();
+        String maKhoa = "";
+        for(Khoa a : listKhoa){
+            if(a.getTenKhoa().equals(khoa)){ 
+                maKhoa += a.getMaKhoa();
+                break;
+            }
+        }
+        ArrayList<NganhHoc> listNH = new NganhHocDAO().getListNganhHoc();
+        
+        String nganh = (String)MaNganh.getSelectedItem();
+        String maNH = "";
+        for(NganhHoc a : listNH){
+            if(a.getTenNganhHoc().equals(nganh)){ 
+                maNH += a.getMaNganhHoc();
+                break;
+            }
+        }
+        ArrayList<Lop> listLop = new LopDAO().getListLop(maNH);
+        
+        String lop = (String)MaLop.getSelectedItem();
+        String maLop = "";
+        for(Lop a : listLop){
+            if(a.getTenLop().equals(lop)){ 
+                maLop += a.getMaLop();
+                break;
+            }
+        }
         DocGia a = new DocGia();
         int max = new DocGiaDAO().maxmadg();
         String maDG = String.format("DG%03d", max+1);
@@ -499,9 +549,9 @@ public class JP_QLDG extends javax.swing.JPanel {
         a.setGioTinh((String) JComboBox.getSelectedItem());
         SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
         a.setNgaySinh(formatter1.format(NamSinh.getDate()));
-        a.setMaNganh((String) MaNganh.getSelectedItem());
-        a.setMaKhoa((String) MaKhoa.getSelectedItem());
-        a.setMaLop((String) MaLop.getSelectedItem());
+        a.setMaNganh(maNH);
+        a.setMaKhoa(maKhoa);
+        a.setMaLop(maLop);
         a.setNguoiCN(UserDAO.TenUser);
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -510,12 +560,12 @@ public class JP_QLDG extends javax.swing.JPanel {
         a.setNgayCN(formattedNow);
         
         if(a.getMaDG().equals("")||a.getHoTen().equals("")||a.getNgaySinh().equals("")||a.getGioTinh().equals("None")||a.getMaKhoa().equals("Chọn khoa")||a.getMaNganh().equals("Chọn ngành học")||a.getMaLop().equals("Chọn lớp")||a.getNguoiCN().equals("")||a.getNgayCN().equals("")){
-            JOptionPane.showMessageDialog(JComboBox, "Hay dien day du thong tin");
+            JOptionPane.showMessageDialog(JComboBox, "Hãy điền đầy đủ thông tin");
             return;
         }
         boolean isExist = DocGiaDAO.isExist(a.getMaDG());
         if(isExist){
-            JOptionPane.showMessageDialog(JComboBox, "Ma tac gia da ton tai");
+            JOptionPane.showMessageDialog(JComboBox, "Mã độc giả đã tồn tại");
         }
         else{
             boolean insert = DocGiaDAO.insertDocGia(a);
@@ -523,7 +573,7 @@ public class JP_QLDG extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(JComboBox, "Sever error!");
             }
             else{
-                JOptionPane.showMessageDialog(JComboBox, "Them doc gia thanh cong!");
+                JOptionPane.showMessageDialog(JComboBox, "Thêm độc giả thành công !");
             }
             
         }
@@ -536,22 +586,39 @@ public class JP_QLDG extends javax.swing.JPanel {
     }//GEN-LAST:event_JComboBoxActionPerformed
 
     private void MaNganhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaNganhActionPerformed
+        ArrayList<NganhHoc> listNH = new NganhHocDAO().getListNganhHoc();
+        
         String nganh = (String)MaNganh.getSelectedItem();
-        ArrayList<Lop> listLop  = new LopDAO().getListLop(nganh);
+        String maNH = "";
+        for(NganhHoc a : listNH){
+            if(a.getTenNganhHoc().equals(nganh)){ 
+                maNH += a.getMaNganhHoc();
+                break;
+            }
+        }
+        ArrayList<Lop> listLop  = new LopDAO().getListLop(maNH);
         MaLop.removeAllItems();
         MaLop.addItem("Chọn lớp");
         for(Lop a : listLop){
-            MaLop.addItem(a.getMaLop());
+            MaLop.addItem(a.getTenLop());
         }
     }//GEN-LAST:event_MaNganhActionPerformed
 
     private void MaKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaKhoaActionPerformed
+        ArrayList<Khoa> listKhoa = new KhoaDAO().getListKhoa();
         String khoa = (String)MaKhoa.getSelectedItem();
-        ArrayList<NganhHoc> listNganhHoc  = new NganhHocDAO().getListNganhHoc(khoa);
+        String maKhoa = "";
+        for(Khoa a : listKhoa){
+            if(a.getTenKhoa().equals(khoa)){ 
+                maKhoa += a.getMaKhoa();
+                break;
+            }
+        }
+        ArrayList<NganhHoc> listNganhHoc  = new NganhHocDAO().getListNganhHoc(maKhoa);
         MaNganh.removeAllItems();
         MaNganh.addItem("Chọn ngành học");
         for(NganhHoc a : listNganhHoc){
-            MaNganh.addItem(a.getMaNganhHoc());
+            MaNganh.addItem(a.getTenNganhHoc());
         }
     }//GEN-LAST:event_MaKhoaActionPerformed
 
@@ -576,8 +643,34 @@ public class JP_QLDG extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField18ActionPerformed
 
+    private void FilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilterActionPerformed
+        String s = (String) Filter.getSelectedItem();
+        listDG = new DocGiaDAO().getListDG();
+        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        model.setRowCount(0);
+        int cnt = 1;
+        if(!UserDAO.quyenHan.toLowerCase().equals("admin")){
+            for(DocGia a : listDG){
+                if(!a.getStatus().equals("không hoạt động"))
+                    if(a.getTenNganh().equals(s)) model.addRow(new Object[]{
+                    cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getTenNganh()
+                });
+            }
+        }
+        else{
+            for(DocGia a : listDG){
+                if(a.getTenNganh().equals(s)) model.addRow(new Object[]{
+                    cnt++,a.getMaDG(),a.getHoTen(),a.getNgaySinh(),a.getGioTinh(),a.getTenNganh()
+                });
+            }
+        }
+        
+        
+    }//GEN-LAST:event_FilterActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Filter;
     private javax.swing.JComboBox<String> JComboBox;
     private javax.swing.JComboBox<String> MaKhoa;
     private javax.swing.JComboBox<String> MaLop;

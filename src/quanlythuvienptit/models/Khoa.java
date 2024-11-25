@@ -38,7 +38,7 @@ public class Khoa {
     }
     @Override
     public String toString() {
-        return maKhoa; // Biểu diễn đối tượng dưới dạng chuỗi
+        return tenKhoa; // Biểu diễn đối tượng dưới dạng chuỗi
     }
     
 }
