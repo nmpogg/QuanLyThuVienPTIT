@@ -4,7 +4,19 @@
  */
 package quanlythuvienptit.ui;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -286,6 +298,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         this.capNhat.addActionListener(ac);
         this.jButton2.addActionListener(ac);
         this.xoa.addActionListener(ac);
+        this.xuatPhieu.addActionListener(ac);
     }
     
     public void dislay(String id) throws SQLException{
@@ -428,6 +441,74 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void createPDF() {
+    Document document = new Document();
+    try {
+        PdfWriter.getInstance(document, new FileOutputStream("phieumuon.pdf"));
+        document.open();
+
+        String fontPath = "C:/Windows/Fonts/times.ttf";
+        BaseFont baseFont = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        Font vietnameseFont = new Font(baseFont, 12, Font.NORMAL);
+
+        Paragraph title = new Paragraph("PHIẾU MƯỢN TÀI LIỆU", new Font(baseFont, 16, Font.BOLD));
+        title.setAlignment(Element.ALIGN_CENTER);
+        title.setSpacingAfter(20);
+        document.add(title);
+
+        PdfPTable table1 = new PdfPTable(2);
+        table1.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
+        table1.setSpacingBefore(10);
+        table1.setSpacingAfter(20);
+        table1.setWidthPercentage(100);
+
+        table1.addCell(new Phrase("Mã độc giả: " + jTextField1.getText(), vietnameseFont));
+        table1.addCell(new Phrase("Mã Phiếu: " + jTextField8.getText(), vietnameseFont));
+        table1.addCell(new Phrase("Tên độc giả: " + jTextField2.getText(), vietnameseFont));
+        table1.addCell(new Phrase("Kiểu mượn: " + jComboBox1.getSelectedItem(), vietnameseFont));
+        table1.addCell(new Phrase("Lớp hành chính: " + jTextField3.getText(), vietnameseFont));
+        Date date1 = jDateChooser1.getDate();
+        String ngayMuon = "";
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
+        ngayMuon = dateFormat1.format(date1);
+        table1.addCell(new Phrase("Ngày mượn: " + ngayMuon, vietnameseFont));
+        table1.addCell(new Phrase("Chuyên ngành: " + jTextField4.getText(), vietnameseFont));
+        Date date2 = jDateChooser2.getDate();
+        String hanTra = "";
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+        hanTra = dateFormat2.format(date2);
+        table1.addCell(new Phrase("Ngày phải trả: " + hanTra, vietnameseFont));
+        table1.addCell(new Phrase("Người tạo phiếu: " + jTextField5.getText(), vietnameseFont));
+        table1.addCell(new Phrase("" , vietnameseFont));
+
+        document.add(table1);
+
+        PdfPTable table2 = new PdfPTable(5);
+        table2.setSpacingBefore(10);
+        table2.setWidthPercentage(100);
+
+        table2.addCell(new Phrase("Mã tài liệu", vietnameseFont));
+        table2.addCell(new Phrase("Tên tài liệu", vietnameseFont));
+        table2.addCell(new Phrase("NXB", vietnameseFont));
+        table2.addCell(new Phrase("Tác giả", vietnameseFont));
+        table2.addCell(new Phrase("Trạng thái", vietnameseFont));
+
+        int rowCount = dstailieu.getRowCount();
+        for (int i = 0; i < rowCount; i++) {
+            for (int j = 0; j < dstailieu.getColumnCount(); j++) {
+                table2.addCell(new Phrase("" + dstailieu.getValueAt(i, j), vietnameseFont));
+            }
+        }
+
+        document.add(table2);
+        document.close();
+        System.out.println("PDF created successfully.");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton capNhat;
