@@ -122,6 +122,11 @@ public class JP_QLS extends javax.swing.JPanel {
         jButton17.setBackground(new java.awt.Color(153, 255, 255));
         jButton17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton17.setText("Chi tiết");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setBackground(new java.awt.Color(153, 255, 255));
         jButton18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -232,7 +237,7 @@ public class JP_QLS extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Quản lý sách", jPanel7);
+        jTabbedPane3.addTab("Quản lý tài liệu", jPanel7);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -243,7 +248,7 @@ public class JP_QLS extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("THÊM MỚI SÁCH");
+        jLabel14.setText("THÊM MỚI TÀI LIỆU");
         jLabel14.setOpaque(true);
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -405,7 +410,7 @@ public class JP_QLS extends javax.swing.JPanel {
                 .addContainerGap(102, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Thêm sách", jPanel8);
+        jTabbedPane3.addTab("Thêm tài liệu", jPanel8);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -434,6 +439,10 @@ public class JP_QLS extends javax.swing.JPanel {
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
     public void addAction(){
         ActionListener ac = new QLSListener(this);
         this.jButton13.addActionListener(ac);

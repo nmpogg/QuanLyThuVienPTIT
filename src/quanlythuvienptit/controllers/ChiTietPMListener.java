@@ -31,6 +31,9 @@ public class ChiTietPMListener implements ActionListener {
         else if(s.equals("Xóa")){
             pm.delete();
         }
+        else if(s.equals("Xuất Phiếu")){
+            pm.createPDF();
+        }
     }
     
 }

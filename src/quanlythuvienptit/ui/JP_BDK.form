@@ -130,7 +130,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="T&#xec;m s&#xe1;ch"/>
+            <Property name="text" type="java.lang.String" value="T&#xec;m t&#xe0;i li&#x1ec7;u"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField1">
@@ -394,7 +394,7 @@
                 <Column editable="false" title="STT" type="java.lang.Object"/>
                 <Column editable="false" title="M&#xe3; &#x110;&#x1ecd;c Gi&#x1ea3;" type="java.lang.Object"/>
                 <Column editable="false" title="T&#xea;n &#x110;&#x1ecd;c Gi&#x1ea3;" type="java.lang.Object"/>
-                <Column editable="false" title="S&#x1ed1; S&#xe1;ch M&#x1b0;&#x1ee3;n" type="java.lang.Object"/>
+                <Column editable="false" title="S&#x1ed1; T&#xe0;i Li&#x1ec7;u M&#x1b0;&#x1ee3;n" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

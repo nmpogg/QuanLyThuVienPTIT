@@ -30,6 +30,7 @@ public class ChiTietTacGia extends javax.swing.JFrame {
         GioiTinh.setEnabled(false);
         NgaySinh.setEnabled(false);
         jTextField3.setEditable(false);
+        updateBut.setEnabled(false);
         
     }
 
@@ -54,7 +55,7 @@ public class ChiTietTacGia extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        updateBut = new javax.swing.JButton();
         MaTG = new javax.swing.JLabel();
         GioiTinh = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
@@ -104,12 +105,12 @@ public class ChiTietTacGia extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText(a.getNgayTao());
 
-        jButton1.setBackground(new java.awt.Color(153, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Cập Nhật");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        updateBut.setBackground(new java.awt.Color(153, 255, 255));
+        updateBut.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        updateBut.setText("Cập Nhật");
+        updateBut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                updateButActionPerformed(evt);
             }
         });
 
@@ -141,7 +142,7 @@ public class ChiTietTacGia extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(31, 31, 31)
-                .addComponent(jButton1)
+                .addComponent(updateBut)
                 .addGap(20, 20, 20))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
@@ -213,7 +214,7 @@ public class ChiTietTacGia extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(updateBut)
                     .addComponent(jButton2))
                 .addGap(39, 39, 39))
         );
@@ -244,7 +245,7 @@ public class ChiTietTacGia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void updateButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButActionPerformed
 
         
         TacGia b = new TacGia();
@@ -256,7 +257,7 @@ public class ChiTietTacGia extends javax.swing.JFrame {
         b.setGhiChu(jTextField3.getText());
         boolean update = TacGiaDAO.updateTG(b);
         JOptionPane.showMessageDialog(rootPane, "Cập nhật thành công.");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_updateButActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(!UserDAO.quyenHan.toLowerCase().equals("admin")){
@@ -267,6 +268,7 @@ public class ChiTietTacGia extends javax.swing.JFrame {
         GioiTinh.setEnabled(true);
         NgaySinh.setEnabled(true);
         jTextField3.setEditable(true);
+        updateBut.setEnabled(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -309,7 +311,6 @@ public class ChiTietTacGia extends javax.swing.JFrame {
     private javax.swing.JLabel MaTG;
     private com.toedter.calendar.JDateChooser NgaySinh;
     private javax.swing.JTextField TenTG;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -324,5 +325,6 @@ public class ChiTietTacGia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton updateBut;
     // End of variables declaration//GEN-END:variables
 }
