@@ -34,6 +34,7 @@ import quanlythuvienptit.database.dao.DocGiaDAO;
 import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
 import quanlythuvienptit.database.dao.Phieu_TLDAO;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
+import quanlythuvienptit.database.dao.UserDAO;
 import quanlythuvienptit.models.PhieuMuonTra;
 
 /**
@@ -59,6 +60,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         set_header(jScrollPane8, jTable8);
         LocalDate today = LocalDate.now();
         this.jTextField32.setText(today.toString());
+        this.jTextField39.setText(UserDAO.TenUser);
     }
     
     private void set_header(JScrollPane jScrollPane, JTable jTable) {
@@ -134,6 +136,8 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton35 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable8 = new javax.swing.JTable();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTable9 = new javax.swing.JTable();
         jPanel35 = new javax.swing.JPanel();
         jButton31 = new javax.swing.JButton();
         jButton32 = new javax.swing.JButton();
@@ -250,7 +254,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jButton28)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,7 +298,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jPanel34.setLayout(jPanel34Layout);
         jPanel34Layout.setHorizontalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -524,7 +528,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jButton36)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
             .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel37Layout.setVerticalGroup(
@@ -578,6 +582,16 @@ public class JP_QLPM extends javax.swing.JPanel {
         ));
         jScrollPane8.setViewportView(jTable8);
 
+        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"
+            }
+        ));
+        jScrollPane11.setViewportView(jTable9);
+
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
         jPanel38Layout.setHorizontalGroup(
@@ -588,6 +602,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addComponent(jButton35)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane8)
+            .addComponent(jScrollPane11)
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -596,7 +611,9 @@ public class JP_QLPM extends javax.swing.JPanel {
                     .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton35))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
@@ -615,7 +632,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                         .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(jButton34)
-                        .addGap(0, 586, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addGap(470, 470, 470)
@@ -672,7 +689,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addComponent(jButton32)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1224, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1237, Short.MAX_VALUE)
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -750,6 +767,9 @@ public class JP_QLPM extends javax.swing.JPanel {
     public void searchPhieu(){
         String s = this.jTextField34.getText();
         this.jTable8.setModel(PhieuMuonTraDAO.search(s));
+        String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+        this.jTable9.setModel(model);
     }
     
     public void getThongTinTraSach(){
@@ -784,25 +804,30 @@ public class JP_QLPM extends javax.swing.JPanel {
     }
     
     public void traSach(){
-        int row = this.jTable8.getSelectedRow();
+        int rowCount = this.jTable9.getRowCount();
         String idPM = "";
         String idTL = "";
         int conLai = 0;
         String tinhTrang = this.jTextArea1.getText();
-        if(row >= 0){
-           idPM = (String)this.jTable8.getValueAt(row, 1);
-           idTL = (String)this.jTable8.getValueAt(row, 2);
-           conLai = TaiLieuDAO.searchConLai(idTL);
-        }
-        if(!idPM.isEmpty() && !idTL.isEmpty() && conLai > 0){
-            Phieu_TLDAO.updateTrangThaiMT(idPM, idTL);
-            TaiLieuDAO.updateTinhTrang(idTL, tinhTrang);
-            --conLai;
-            TaiLieuDAO.updateSachConLai(idTL, conLai);
+        if(rowCount > 0){
+            for(int i = 0; i < rowCount; i++){
+                idPM = (String)this.jTable9.getValueAt(i, 1);
+                idTL = (String)this.jTable9.getValueAt(i, 2);
+                conLai = TaiLieuDAO.searchConLai(idTL);
+                if(!idPM.isEmpty() && !idTL.isEmpty() && conLai > 0){
+                    Phieu_TLDAO.updateTrangThaiMT(idPM, idTL);
+                    TaiLieuDAO.updateTinhTrang(idTL, tinhTrang);
+                    ++conLai;
+                    TaiLieuDAO.updateSachConLai(idTL, conLai);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "lỗi!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
             JOptionPane.showMessageDialog(null, "Trả sách thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Lỗi!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Hãy chọn sách!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -828,6 +853,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
         this.jTable8.setModel(model);
+        this.jTable9.setModel(model);
     }
     
     public void insertPhieu(){
@@ -864,6 +890,9 @@ public class JP_QLPM extends javax.swing.JPanel {
             int row = model.getRowCount();
             for(int i = 0; i < row; i++){
                 String idTL = (String)model.getValueAt(i, 0);
+                int conLai = TaiLieuDAO.searchConLai(idTL);
+                --conLai;
+                TaiLieuDAO.updateSachConLai(idTL, conLai);
                 Phieu_TLDAO.insertSachMuon(idMuonTra, idTL);
             }
         }
@@ -908,6 +937,20 @@ public class JP_QLPM extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn phiếu!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }
+    
+    public void selectSachDaMuon(){
+        int row = this.jTable8.getSelectedRow();
+        int colCount = this.jTable8.getColumnCount();
+        if(row >= 0){
+            DefaultTableModel model = (DefaultTableModel)this.jTable9.getModel();
+            Object[] r = new Object[colCount];
+            for(int i = 0; i < colCount; i++){
+                r[i] = this.jTable8.getValueAt(row, i);
+            }
+            model.addRow(r);
+            this.jTable9.setModel(model);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton27;
@@ -949,6 +992,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
@@ -959,6 +1003,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
+    private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField30;

@@ -21,6 +21,7 @@ import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
 import quanlythuvienptit.database.dao.Phieu_TLDAO;
 import quanlythuvienptit.database.dao.TacGiaDAO;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
+import quanlythuvienptit.database.dao.UserDAO;
 
 /**
  *
@@ -71,6 +72,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -152,6 +154,10 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tại chỗ", "Mượn về" }));
 
+        jButton2.setBackground(new java.awt.Color(153, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setText("Edit");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -191,6 +197,8 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                         .addGap(17, 17, 17))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(30, 30, 30)
                 .addComponent(capNhat)
                 .addGap(29, 29, 29)
                 .addComponent(xoa)
@@ -251,7 +259,8 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(xuatPhieu)
                     .addComponent(xoa)
-                    .addComponent(capNhat))
+                    .addComponent(capNhat)
+                    .addComponent(jButton2))
                 .addGap(15, 15, 15))
         );
 
@@ -275,6 +284,8 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
     public void addAction(){
         ActionListener ac = new ChiTietPMListener(this);
         this.capNhat.addActionListener(ac);
+        this.jButton2.addActionListener(ac);
+        this.xoa.addActionListener(ac);
     }
     
     public void dislay(String id) throws SQLException{
@@ -282,16 +293,31 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         if(rs.next()){
             this.jTextField1.setText(rs.getString("MaDG"));
             this.jTextField1.setEditable(false);
+            
             this.jTextField8.setText(rs.getString("ID_MuonTra"));
             this.jTextField8.setEditable(false);
+            
             this.jComboBox1.setSelectedItem(rs.getString("KieuMuon"));
+            this.jComboBox1.setEnabled(false);
+            
             this.jDateChooser1.setDate(rs.getDate("NgayMuon"));
             this.jDateChooser1.setEnabled(false);
+            
             this.jDateChooser2.setDate(rs.getDate("HanTra"));
+            this.jDateChooser2.setEnabled(false);
+            
             this.jTextField2.setText(DocGiaDAO.getTenDG(rs.getString("MaDG")));
+            this.jTextField2.setEditable(false);
+            
             this.jTextField5.setText(rs.getString("NguoiChoMuon"));
+            this.jTextField5.setEditable(false);
+            
             this.jTextField3.setText(LopDAO.searchTenLop(DocGiaDAO.searchMaLop(rs.getString("MaDG"))));
+            this.jTextField3.setEditable(false);
+            
             this.jTextField4.setText(NganhHocDAO.searchTenNganh(DocGiaDAO.searchMaNganh(rs.getString("MaDG"))));
+            this.jTextField4.setEditable(false);
+            
             ArrayList<String> dsMaTL = Phieu_TLDAO.getMaTL(rs.getString("ID_MuonTra"));
             DefaultTableModel model = (DefaultTableModel)this.dstailieu.getModel();
             for(String maTL : dsMaTL){
@@ -305,6 +331,9 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
             }
             this.dstailieu.setModel(model);
             this.dstailieu.setEnabled(false);
+            
+            this.capNhat.setVisible(false);
+            this.xoa.setVisible(false);
         } 
     }
     
@@ -335,6 +364,34 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         PhieuMuonTraDAO.updateHanTra(maPhieu, hanTra);
         
         JOptionPane.showMessageDialog(null, "Đã cập nhật", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void delete(){
+        try{
+            String maPhieu = this.jTextField8.getText();
+            Phieu_TLDAO.delete(maPhieu);
+            PhieuMuonTraDAO.deletePhieu(maPhieu);
+            JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗiii", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void edit(){
+        if(UserDAO.quyenHan.equals("Admin") || UserDAO.quyenHan.equals("Thủ thư")){
+            this.jTextField2.setEditable(true);
+            this.jTextField3.setEditable(true);
+            this.jTextField4.setEditable(true);
+            this.jTextField5.setEditable(true);
+            this.jComboBox1.setEnabled(true);
+            this.jDateChooser2.setEnabled(true);
+            this.capNhat.setVisible(true);
+            this.xoa.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Bạn không có quyền hạn!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
     /**
@@ -377,6 +434,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
     private javax.swing.JLabel chuyenNganh;
     private javax.swing.JTable dstailieu;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;

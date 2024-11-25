@@ -650,4 +650,18 @@ public class TaiLieuDAO {
             e.printStackTrace();
         }
     }
+    
+    public static void updateStatus(String id, String status){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE TaiLieu SET status = ? " +
+                         "WHERE MaTL = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, status);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

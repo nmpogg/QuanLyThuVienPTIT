@@ -13,6 +13,7 @@ import quanlythuvienptit.controllers.ChiTietTLListener;
 import quanlythuvienptit.database.dao.KhoaDAO;
 import quanlythuvienptit.database.dao.NhaXuatBanDAO;
 import quanlythuvienptit.database.dao.TacGiaDAO;
+import quanlythuvienptit.database.dao.UserDAO;
 
 /**
  *
@@ -333,17 +334,22 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
     }
     
     public void edit(){
-        this.jTextField1.setEditable(true);
-        this.jTextField2.setEditable(true);
-        this.jTextField3.setEditable(true);
-        this.jTextField4.setEditable(true);
-        this.jTextField5.setEditable(true);
-        this.jTextField6.setEditable(true);
-        this.jTextField8.setEditable(true);
-        this.jTextField9.setEditable(true);
-        this.jTextField10.setEditable(true);
-        this.jButton1.setVisible(true);
-        this.jTable1.setEnabled(true);
+        if(UserDAO.quyenHan.equals("Thủ thư") || UserDAO.quyenHan.equals("Admin")){
+            this.jTextField1.setEditable(true);
+            this.jTextField2.setEditable(true);
+            this.jTextField3.setEditable(true);
+            this.jTextField4.setEditable(true);
+            this.jTextField5.setEditable(true);
+            this.jTextField6.setEditable(true);
+            this.jTextField8.setEditable(true);
+            this.jTextField9.setEditable(true);
+            this.jTextField10.setEditable(true);
+            this.jButton1.setVisible(true);
+            this.jTable1.setEnabled(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Bạn không có quyền hạn!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
     public void update(){

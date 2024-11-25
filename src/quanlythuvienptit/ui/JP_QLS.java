@@ -21,6 +21,7 @@ import quanlythuvienptit.database.dao.KhoaDAO;
 import quanlythuvienptit.database.dao.NhaXuatBanDAO;
 import quanlythuvienptit.database.dao.TacGiaDAO;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
+import quanlythuvienptit.database.dao.UserDAO;
 import quanlythuvienptit.models.TaiLieu;
 
 /**
@@ -513,14 +514,20 @@ public class JP_QLS extends javax.swing.JPanel {
     }
     
     public void deleteSach(){
-        try{
-            int row = this.jTable3.getSelectedRow();
-            String id = (String)this.jTable3.getValueAt(row, 1);
-            TaiLieuDAO.deleteSach(id);
-            JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        }catch(Exception e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        if(UserDAO.quyenHan.equals("Thủ thư") || UserDAO.quyenHan.equals("Admin")){
+            try{
+                int row = this.jTable3.getSelectedRow();
+                String id = (String)this.jTable3.getValueAt(row, 1);
+                TaiLieuDAO.updateStatus(id, "Cần thanh lý");
+                //TaiLieuDAO.deleteSach(id);
+                JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }catch(Exception e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Bạn không có quyền hạn!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     

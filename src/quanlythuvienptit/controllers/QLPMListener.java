@@ -67,6 +67,7 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
             qlpm.selectSach();   
         }
         else if(source == qlpm.getTable8()){
+            qlpm.selectSachDaMuon();
             qlpm.getThongTinTraSach();
         }
     }

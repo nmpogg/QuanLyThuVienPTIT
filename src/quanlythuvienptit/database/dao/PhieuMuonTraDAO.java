@@ -31,7 +31,6 @@ public class PhieuMuonTraDAO {
             int cnt = 1;
             while(rs.next()){
                 Object[] row = new Object[7];
-                row[0] = cnt++;
                 row[1] = rs.getString("ID_MuonTra");
                 row[3] = rs.getString("MaDG");
                 row[5] = rs.getString("NgayMuon");
@@ -41,6 +40,7 @@ public class PhieuMuonTraDAO {
                 PreparedStatement ps2 = con.prepareStatement(sql2);
                 ArrayList<String> dsMaTL = Phieu_TLDAO.getMaTL((String)row[1]);
                 for(String idTL : dsMaTL){
+                    row[0] = cnt++;
                     row[2] = idTL;
                     ps2.setString(1, (String)row[2]);
                     ResultSet rs2 = ps2.executeQuery();

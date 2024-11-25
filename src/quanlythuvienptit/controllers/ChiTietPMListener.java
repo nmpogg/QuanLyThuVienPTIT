@@ -25,6 +25,12 @@ public class ChiTietPMListener implements ActionListener {
         if(s.equals("Cập nhật phiếu")){
             pm.update();
         }
+        else if(s.equals("Edit")){
+            pm.edit();
+        }
+        else if(s.equals("Xóa")){
+            pm.delete();
+        }
     }
     
 }
