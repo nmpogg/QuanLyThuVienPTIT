@@ -24,6 +24,13 @@ import javax.swing.table.JTableHeader;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
 import quanlythuvienptit.models.TaiLieu;
 
+
+import java.sql.*;
+import java.util.ArrayList;
+import quanlythuvienptit.database.dao.KhoaDAO;
+import quanlythuvienptit.database.dao.NhaXuatBanDAO;
+import quanlythuvienptit.database.dao.TacGiaDAO;
+
 /**
  *
  * @author tai28
@@ -84,6 +91,31 @@ public class JP_TLTL extends javax.swing.JPanel {
         header.setBackground(new Color(255, 102, 102)); // Đặt màu nền
         jTable.setTableHeader(header);
     }
+    
+    /*
+    public void searchTaiLieuTL() throws SQLException{
+        String s = this.jTextField2.getText();
+        ResultSet rs = TaiLieuDAO.searchTaiLieuTL(s);
+        ArrayList<Object> dsTL = new ArrayList<>();
+        String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Nhà Xuất Bản", "Số Lượng", "Trạng thái"};
+        int cnt = 1;
+        while(rs.next()){
+            Object[] row = new Object[8];
+            row[0] = cnt++;
+            row[1] = rs.getString("MaTL");
+            row[2] = rs.getString("TenTL"); 
+            
+            String maKhoa = rs.getString("MaKhoa");
+            row[3] = KhoaDAO.searchTenKhoa(maKhoa);
+            
+            String maTG = rs.getString("MaTG");
+            row[4] = TacGiaDAO.searchTenTG(maTG);
+            
+            String maNXB = rs.getString("MaNXB");
+            row[5] = NhaXuatBanDAO.searchTenNXB(maNXB);
+        }
+    }
+    */
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -148,7 +180,7 @@ public class JP_TLTL extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Nhà xuất bản", "Số lượng"
+                "STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Nhà xuất bản", "Số lượng", "Trạng thái"
             }
         ));
         jScrollPane4.setViewportView(jTable4);

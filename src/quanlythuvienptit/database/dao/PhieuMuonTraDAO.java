@@ -32,7 +32,6 @@ public class PhieuMuonTraDAO {
             int cnt = 1;
             while(rs.next()){
                 Object[] row = new Object[7];
-                row[0] = cnt++;
                 row[1] = rs.getString("ID_MuonTra");
                 row[3] = rs.getString("MaDG");
                 row[5] = rs.getString("NgayMuon");
@@ -42,6 +41,7 @@ public class PhieuMuonTraDAO {
                 PreparedStatement ps2 = con.prepareStatement(sql2);
                 ArrayList<String> dsMaTL = Phieu_TLDAO.getMaTL((String)row[1]);
                 for(String idTL : dsMaTL){
+                    row[0] = cnt++;
                     row[2] = idTL;
                     ps2.setString(1, (String)row[2]);
                     ResultSet rs2 = ps2.executeQuery();
@@ -49,7 +49,9 @@ public class PhieuMuonTraDAO {
                         row[4] = rs2.getString("TenTL");
                     }
                     Object[] rowClone = row.clone();
-                    arr.add(rowClone);
+                    if(Phieu_TLDAO.getTrangThaiMuonTra((String)row[1], idTL).equals("Chưa trả")){
+                        arr.add(rowClone);
+                    }
                 }
             }
             if(!arr.isEmpty()){
@@ -257,5 +259,47 @@ public class PhieuMuonTraDAO {
             e.printStackTrace();
         }
         return list;
+    }
+    
+    public static void updateNguoiChoMuon(String id, String nguoiChoMuon){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE PhieuMuonTra SET NguoiChoMuon = ?" +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nguoiChoMuon);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void updateKieuMuon(String id, String kieuMuon){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE PhieuMuonTra SET KieuMuon = ?" +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, kieuMuon);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static void updateHanTra(String id, String hanTra){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE PhieuMuonTra SET HanTra = ?" +
+                         "WHERE ID_MuonTra = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, hanTra);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

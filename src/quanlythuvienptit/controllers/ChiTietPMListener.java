@@ -6,27 +6,30 @@ package quanlythuvienptit.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import quanlythuvienptit.ui.JP_ChiTietTL;
+import quanlythuvienptit.ui.JF_PhieuMuon;
 
 /**
  *
  * @author NguyenXuanKhuong
  */
-public class ChiTietTLListener implements ActionListener {
-    JP_ChiTietTL chiTietTL;
+public class ChiTietPMListener implements ActionListener {
+    private JF_PhieuMuon pm;
 
-    public ChiTietTLListener(JP_ChiTietTL chiTietTL) {
-        this.chiTietTL = chiTietTL;
+    public ChiTietPMListener(JF_PhieuMuon pm) {
+        this.pm = pm;
     }
-        
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
-        if(s.equals("Cập nhật")){
-            chiTietTL.update();
+        if(s.equals("Cập nhật phiếu")){
+            pm.update();
         }
         else if(s.equals("Edit")){
-            chiTietTL.edit();
+            pm.edit();
+        }
+        else if(s.equals("Xóa")){
+            pm.delete();
         }
     }
     
