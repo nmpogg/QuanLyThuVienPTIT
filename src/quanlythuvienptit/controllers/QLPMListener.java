@@ -8,6 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import quanlythuvienptit.ui.JP_QLPM;
 
 /**
@@ -45,14 +48,15 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
         else if(s.equals("Tạo phiếu mượn")){
             qlpm.insertPhieu();
         }
-        else if(s.equals("getToday")){
-            qlpm.getToday();
-        }
         else if(s.equals("resetPhieu")){
             qlpm.ThongKePhieu();
         }
-        else if(s.equals("deletePhieu")){
-            qlpm.deletePhieu();
+        else if(s.equals("Chi tiết")){
+            try {
+                qlpm.dislayChiTietPhieu();
+            } catch (SQLException ex) {
+                Logger.getLogger(QLPMListener.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -63,6 +67,7 @@ public class QLPMListener extends MouseAdapter implements ActionListener {
             qlpm.selectSach();   
         }
         else if(source == qlpm.getTable8()){
+            qlpm.selectSachDaMuon();
             qlpm.getThongTinTraSach();
         }
     }

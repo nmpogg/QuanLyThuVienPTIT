@@ -36,5 +36,8 @@ public class NganhHoc {
     public String getMaKhoa() {
         return maKhoa;
     }
-    
+    @Override
+    public String toString() {
+        return tenNganhHoc; // Biểu diễn đối tượng dưới dạng chuỗi
+    }
 }

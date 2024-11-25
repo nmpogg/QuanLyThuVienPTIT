@@ -12,6 +12,9 @@ public class TacGia {
     private String maTG;
     private String tenTG;
     private String ghiChu;
+    private String gioitinh;
+    private String NamSinh;
+    private String NgayTao,Status;
 
     public void setMaTG(String maTG) {
         this.maTG = maTG;
@@ -35,6 +38,38 @@ public class TacGia {
 
     public String getGhiChu() {
         return ghiChu;
+    }
+
+    public String getGioitinh() {
+        return gioitinh;
+    }
+
+    public void setGioitinh(String gioitinh) {
+        this.gioitinh = gioitinh;
+    }
+
+    public String getNamSinh() {
+        return NamSinh;
+    }
+
+    public void setNamSinh(String NamSinh) {
+        this.NamSinh = NamSinh;
+    }
+
+    public String getNgayTao() {
+        return NgayTao;
+    }
+
+    public void setNgayTao(String NgayTao) {
+        this.NgayTao = NgayTao;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
     }
     
 }

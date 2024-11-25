@@ -4,19 +4,30 @@
  */
 package quanlythuvienptit.database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
  * @author Admin
  */
 public class DataBaseConnection {
-    private static String url = "jdbc:mysql://localhost:3306/quanlythuvien?autoReconnect=true&useSSL=false";
-    private static String username = "root";
-    private static String password = "090204";
-    
-    public static Connection getConnection() throws ClassNotFoundException, SQLException{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        return (Connection) DriverManager.getConnection(url, username, password);
+    private static final String URL = "jdbc:mysql://localhost:3306/quanlythuvien";
+    private static final String USER = "root";
+    private static final String PASSWORD = "090204";
+
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        Connection connect = null;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connect = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("connect successfully!");
+        }
+        catch (Exception ex) {
+            System.out.println("connect failure!");
+            ex.printStackTrace();
+        }
+        return connect;
     }
 }

@@ -3,25 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_QLPM.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_QLS.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/LoanSlipPanel.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_BDK.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/TaiLieuDAO.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/test.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/QuanLyThuVienPTIT.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_TKBC.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_Thongtin.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/MainFrame.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/PhieuMuonTraDAO.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/Main_Gui.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/database/DataBaseConnection.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/MemberInfoFrame.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/controllers/QLPMListener.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/LibraMasterLoginPanel.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/controllers/QLSListener.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/controllers/MainController.java</file>
-            <file>file:/D:/Github/btl/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/DocGiaDAO.java</file>
+            <file>file:/D:/OOP/QuanLyThuVien/src/quanlythuvienptit/ui/JF_PhieuMuon.java</file>
+            <file>file:/D:/OOP/QuanLyThuVien/src/quanlythuvienptit/ui/JP_QLDG.java</file>
+            <file>file:/D:/OOP/QuanLyThuVien/src/quanlythuvienptit/ui/JP_DSTG.java</file>
+            <file>file:/D:/OOP/QuanLyThuVien/src/quanlythuvienptit/ui/JP_MemberID.java</file>
+            <file>file:/D:/OOP/QuanLyThuVien/src/quanlythuvienptit/ui/JFMain.java</file>
+            <file>file:/D:/OOP/QuanLyThuVien/src/quanlythuvienptit/ui/JP_QLPM.java</file>
+            <file>file:/D:/OOP/QuanLyThuVien/src/quanlythuvienptit/ui/JP_ChiTietTL.java</file>
         </group>
     </open-files>
 </project-private>

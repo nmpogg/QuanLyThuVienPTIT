@@ -9,24 +9,21 @@ package quanlythuvienptit.models;
  * @author NguyenXuanKhuong
  */
 public class PhieuMuonTra {
-    private String ID_MuonTra, MaDG, MaTL, KieuMuon, NgayMuon, NguoiChoMuon, HanTra,
-            TrangThaiMuonTra, NguoiNhan, TinhTrangMuon, TinhTrangTra, NgayTra;
+    private String ID_MuonTra;
+    private String MaDG, KieuMuon, NgayMuon, NguoiChoMuon, HanTra, NguoiNhan;
 
-    public PhieuMuonTra(String ID_MuonTra, String MaDG, String MaTL, String KieuMuon, String NgayMuon, String NguoiChoMuon, String HanTra, String TrangThaiMuonTra, String NguoiNhan, String TinhTrangMuon, String TinhTrangTra, String NgayTra) {
+    public PhieuMuonTra(String ID_MuonTra, String MaDG, String KieuMuon, String NgayMuon, String NguoiChoMuon, String HanTra, String NguoiNhan) {
         this.ID_MuonTra = ID_MuonTra;
         this.MaDG = MaDG;
-        this.MaTL = MaTL;
         this.KieuMuon = KieuMuon;
         this.NgayMuon = NgayMuon;
         this.NguoiChoMuon = NguoiChoMuon;
         this.HanTra = HanTra;
-        this.TrangThaiMuonTra = TrangThaiMuonTra;
         this.NguoiNhan = NguoiNhan;
-        this.TinhTrangMuon = TinhTrangMuon;
-        this.TinhTrangTra = TinhTrangTra;
-        this.NgayTra = NgayTra;
     }
 
+    
+    
     public String getID_MuonTra() {
         return ID_MuonTra;
     }
@@ -41,14 +38,6 @@ public class PhieuMuonTra {
 
     public void setMaDG(String MaDG) {
         this.MaDG = MaDG;
-    }
-
-    public String getMaTL() {
-        return MaTL;
-    }
-
-    public void setMaTL(String MaTL) {
-        this.MaTL = MaTL;
     }
 
     public String getKieuMuon() {
@@ -83,44 +72,12 @@ public class PhieuMuonTra {
         this.HanTra = HanTra;
     }
 
-    public String getNgayTra() {
-        return NgayTra;
-    }
-
-    public void setNgayTra(String NgayTra) {
-        this.NgayTra = NgayTra;
-    }
-
-    public String getTrangThaiMuonTra() {
-        return TrangThaiMuonTra;
-    }
-
-    public void setTrangThaiMuonTra(String TrangThaiMuonTra) {
-        this.TrangThaiMuonTra = TrangThaiMuonTra;
-    }
-
     public String getNguoiNhan() {
         return NguoiNhan;
     }
 
     public void setNguoiNhan(String NguoiNhan) {
         this.NguoiNhan = NguoiNhan;
-    }
-
-    public String getTinhTrangMuon() {
-        return TinhTrangMuon;
-    }
-
-    public void setTinhTrangMuon(String TinhTrangMuon) {
-        this.TinhTrangMuon = TinhTrangMuon;
-    }
-
-    public String getTinhTrangTra() {
-        return TinhTrangTra;
-    }
-
-    public void setTinhTrangTra(String TinhTrangTra) {
-        this.TinhTrangTra = TinhTrangTra;
     }
     
     

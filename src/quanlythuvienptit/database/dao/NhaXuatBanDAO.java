@@ -47,4 +47,32 @@ public class NhaXuatBanDAO {
         }
         return maNXB;
     }
+    
+    public static String searchTenNXB(String maNXB){
+        String tenNXB = "";
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT TenNXB FROM NhaXuatBan " +
+                         "WHERE MaNXB = " + "'" + maNXB + "'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                tenNXB = rs.getString("TenNXB");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return tenNXB;
+    }
+    public static void updateTenNXB(String id, String tenNXB){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE NhaXuatBan SET TenNXB = " + "'" + tenNXB + "' " +
+                         "WHERE MaNXB = " + "'" + id + "'";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

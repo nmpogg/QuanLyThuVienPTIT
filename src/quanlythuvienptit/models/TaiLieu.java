@@ -9,26 +9,26 @@ package quanlythuvienptit.models;
  * @author NguyenXuanKhuong
  */
 public class TaiLieu {
-    private String MaTL, TenTL, MaKhoa, MaNXB;
-    private int NamXB;
-    private String MaTG;
-    private int SoLuong, ConLai;
-    private String KeSach, TinhTrang, GhiChu;
+    private String MaTL, TenTL, MaKhoa, MaNXB, NamXB, MaTG;
+    private int soLuong, conLai;
+    private String keSach, tinhTrang, ghiChu, status;
 
-    public TaiLieu(String MaTL, String TenTL, String MaKhoa, String MaNXB, int NamXB, String MaTG, int SoLuong, int ConLai, String KeSach, String TinhTrang, String GhiChu) {
+    public TaiLieu(String MaTL, String TenTL, String MaKhoa, String MaNXB, String NamXB, String MaTG, int soLuong, int conLai, String keSach, String tinhTrang, String ghiChu, String status) {
         this.MaTL = MaTL;
         this.TenTL = TenTL;
         this.MaKhoa = MaKhoa;
         this.MaNXB = MaNXB;
         this.NamXB = NamXB;
         this.MaTG = MaTG;
-        this.SoLuong = SoLuong;
-        this.ConLai = ConLai;
-        this.KeSach = KeSach;
-        this.TinhTrang = TinhTrang;
-        this.GhiChu = GhiChu;
+        this.soLuong = soLuong;
+        this.conLai = conLai;
+        this.keSach = keSach;
+        this.tinhTrang = tinhTrang;
+        this.ghiChu = ghiChu;
+        this.status = status;
     }
 
+    
     public String getMaTL() {
         return MaTL;
     }
@@ -53,22 +53,6 @@ public class TaiLieu {
         this.MaKhoa = MaKhoa;
     }
 
-    public String getMaNXB() {
-        return MaNXB;
-    }
-
-    public void setMaNXB(String MaNXB) {
-        this.MaNXB = MaNXB;
-    }
-
-    public int getNamXB() {
-        return NamXB;
-    }
-
-    public void setNamXB(int NamXB) {
-        this.NamXB = NamXB;
-    }
-
     public String getMaTG() {
         return MaTG;
     }
@@ -77,44 +61,68 @@ public class TaiLieu {
         this.MaTG = MaTG;
     }
 
-    public int getSoLuong() {
-        return SoLuong;
+    public String getMaNXB() {
+        return MaNXB;
     }
 
-    public void setSoLuong(int SoLuong) {
-        this.SoLuong = SoLuong;
+    public String getNamXB() {
+        return NamXB;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
     }
 
     public int getConLai() {
-        return ConLai;
-    }
-
-    public void setConLai(int ConLai) {
-        this.ConLai = ConLai;
+        return conLai;
     }
 
     public String getKeSach() {
-        return KeSach;
-    }
-
-    public void setKeSach(String KeSach) {
-        this.KeSach = KeSach;
+        return keSach;
     }
 
     public String getTinhTrang() {
-        return TinhTrang;
-    }
-
-    public void setTinhTrang(String TinhTrang) {
-        this.TinhTrang = TinhTrang;
+        return tinhTrang;
     }
 
     public String getGhiChu() {
-        return GhiChu;
+        return ghiChu;
     }
 
-    public void setGhiChu(String GhiChu) {
-        this.GhiChu = GhiChu;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setMaNXB(String MaNXB) {
+        this.MaNXB = MaNXB;
+    }
+
+    public void setNamXB(String NamXB) {
+        this.NamXB = NamXB;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public void setConLai(int conLai) {
+        this.conLai = conLai;
+    }
+
+    public void setKeSach(String keSach) {
+        this.keSach = keSach;
+    }
+
+    public void setTinhTrang(String tinhTrang) {
+        this.tinhTrang = tinhTrang;
+    }
+
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
     
