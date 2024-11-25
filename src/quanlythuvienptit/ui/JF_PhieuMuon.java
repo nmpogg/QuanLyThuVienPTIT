@@ -4,10 +4,15 @@
  */
 package quanlythuvienptit.ui;
 
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import quanlythuvienptit.controllers.ChiTietPMListener;
 import quanlythuvienptit.database.dao.DocGiaDAO;
 import quanlythuvienptit.database.dao.LopDAO;
 import quanlythuvienptit.database.dao.NganhHocDAO;
@@ -16,6 +21,7 @@ import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
 import quanlythuvienptit.database.dao.Phieu_TLDAO;
 import quanlythuvienptit.database.dao.TacGiaDAO;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
+import quanlythuvienptit.database.dao.UserDAO;
 
 /**
  *
@@ -28,6 +34,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
      */
     public JF_PhieuMuon() {
         initComponents();
+        this.addAction();
     }
 
     /**
@@ -46,7 +53,6 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         tenDG = new javax.swing.JLabel();
         lop = new javax.swing.JLabel();
         chuyenNganh = new javax.swing.JLabel();
-        sdt = new javax.swing.JLabel();
         ngayMuon = new javax.swing.JLabel();
         ngaytra = new javax.swing.JLabel();
         maPhieu = new javax.swing.JLabel();
@@ -62,11 +68,11 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -93,9 +99,6 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
 
         chuyenNganh.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         chuyenNganh.setText("Chuyên Ngành");
-
-        sdt.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        sdt.setText("Số Điện Thoại");
 
         ngayMuon.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         ngayMuon.setText("Ngày Mượn");
@@ -146,16 +149,14 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tại chỗ", "Mượn về" }));
 
-        jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField10.setText("jTextField10");
+        jButton2.setBackground(new java.awt.Color(153, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setText("Edit");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,8 +170,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel10)
                         .addComponent(lop)
-                        .addComponent(chuyenNganh)
-                        .addComponent(sdt)))
+                        .addComponent(chuyenNganh)))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -181,27 +181,24 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(ngaytra)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ngayMuon)
-                                    .addComponent(maPhieu)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ngayMuon)
+                            .addComponent(maPhieu)
+                            .addComponent(jLabel9)
+                            .addComponent(ngaytra))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(17, 17, 17))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(30, 30, 30)
                 .addComponent(capNhat)
                 .addGap(29, 29, 29)
                 .addComponent(xoa)
@@ -236,11 +233,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chuyenNganh)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(sdt)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -251,22 +244,23 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ngayMuon)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ngayMuon))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ngaytra)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(40, 40, 40)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(82, 82, 82)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(xuatPhieu)
                     .addComponent(xoa)
-                    .addComponent(capNhat))
+                    .addComponent(capNhat)
+                    .addComponent(jButton2))
                 .addGap(15, 15, 15))
         );
 
@@ -287,20 +281,43 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    public void addAction(){
+        ActionListener ac = new ChiTietPMListener(this);
+        this.capNhat.addActionListener(ac);
+        this.jButton2.addActionListener(ac);
+        this.xoa.addActionListener(ac);
+    }
+    
     public void dislay(String id) throws SQLException{
         ResultSet rs = PhieuMuonTraDAO.getChiTietPhieu(id);
         if(rs.next()){
             this.jTextField1.setText(rs.getString("MaDG"));
             this.jTextField1.setEditable(false);
-            this.jTextField6.setText(rs.getString("ID_MuonTra"));
-            this.jTextField6.setEditable(false);
-            this.jTextField7.setText(rs.getString("KieuMuon"));
-            this.jTextField8.setText(rs.getString("NgayMuon"));
-            this.jTextField9.setText(rs.getString("HanTra"));
+            
+            this.jTextField8.setText(rs.getString("ID_MuonTra"));
+            this.jTextField8.setEditable(false);
+            
+            this.jComboBox1.setSelectedItem(rs.getString("KieuMuon"));
+            this.jComboBox1.setEnabled(false);
+            
+            this.jDateChooser1.setDate(rs.getDate("NgayMuon"));
+            this.jDateChooser1.setEnabled(false);
+            
+            this.jDateChooser2.setDate(rs.getDate("HanTra"));
+            this.jDateChooser2.setEnabled(false);
+            
             this.jTextField2.setText(DocGiaDAO.getTenDG(rs.getString("MaDG")));
+            this.jTextField2.setEditable(false);
+            
             this.jTextField5.setText(rs.getString("NguoiChoMuon"));
+            this.jTextField5.setEditable(false);
+            
             this.jTextField3.setText(LopDAO.searchTenLop(DocGiaDAO.searchMaLop(rs.getString("MaDG"))));
+            this.jTextField3.setEditable(false);
+            
             this.jTextField4.setText(NganhHocDAO.searchTenNganh(DocGiaDAO.searchMaNganh(rs.getString("MaDG"))));
+            this.jTextField4.setEditable(false);
+            
             ArrayList<String> dsMaTL = Phieu_TLDAO.getMaTL(rs.getString("ID_MuonTra"));
             DefaultTableModel model = (DefaultTableModel)this.dstailieu.getModel();
             for(String maTL : dsMaTL){
@@ -313,9 +330,70 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                 model.addRow(row);
             }
             this.dstailieu.setModel(model);
-        }
-        
+            this.dstailieu.setEnabled(false);
+            
+            this.capNhat.setVisible(false);
+            this.xoa.setVisible(false);
+        } 
     }
+    
+    public void update(){
+        String maDG = this.jTextField1.getText();
+        String tenDG = this.jTextField2.getText();
+        DocGiaDAO.updatetenDG(maDG, tenDG);
+        
+        String tenLop = this.jTextField3.getText();
+        String maLop = DocGiaDAO.searchMaLop(maDG);
+        LopDAO.updateTenLop(maLop, tenLop);
+        
+        String tenNganh = this.jTextField4.getText();
+        String maNganh = DocGiaDAO.searchMaNganh(maDG);
+        NganhHocDAO.updateTenNganh(maNganh, tenNganh);
+        
+        String maPhieu = this.jTextField8.getText();
+        String NguoiTao = this.jTextField5.getText();
+        PhieuMuonTraDAO.updateNguoiChoMuon(maPhieu, NguoiTao);
+        
+        String kieuMuon = (String)this.jComboBox1.getSelectedItem();
+        PhieuMuonTraDAO.updateKieuMuon(maPhieu, kieuMuon);
+        
+        Date date = jDateChooser2.getDate(); 
+        String hanTra = "";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        hanTra = dateFormat.format(date);
+        PhieuMuonTraDAO.updateHanTra(maPhieu, hanTra);
+        
+        JOptionPane.showMessageDialog(null, "Đã cập nhật", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void delete(){
+        try{
+            String maPhieu = this.jTextField8.getText();
+            Phieu_TLDAO.delete(maPhieu);
+            PhieuMuonTraDAO.deletePhieu(maPhieu);
+            JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗiii", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void edit(){
+        if(UserDAO.quyenHan.equals("Admin") || UserDAO.quyenHan.equals("Thủ thư")){
+            this.jTextField2.setEditable(true);
+            this.jTextField3.setEditable(true);
+            this.jTextField4.setEditable(true);
+            this.jTextField5.setEditable(true);
+            this.jComboBox1.setEnabled(true);
+            this.jDateChooser2.setEnabled(true);
+            this.capNhat.setVisible(true);
+            this.xoa.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Bạn không có quyền hạn!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -356,27 +434,26 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
     private javax.swing.JLabel chuyenNganh;
     private javax.swing.JTable dstailieu;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lop;
     private javax.swing.JLabel maDG;
     private javax.swing.JLabel maPhieu;
     private javax.swing.JLabel ngayMuon;
     private javax.swing.JLabel ngaytra;
     private javax.swing.JLabel phieumuon;
-    private javax.swing.JLabel sdt;
     private javax.swing.JLabel tenDG;
     private javax.swing.JButton xoa;
     private javax.swing.JButton xuatPhieu;

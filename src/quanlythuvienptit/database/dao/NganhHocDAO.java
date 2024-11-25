@@ -71,4 +71,18 @@ public class NganhHocDAO {
         }
         return tenNganh;
     }
+    
+    public static void updateTenNganh(String id, String tenNganh){
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "UPDATE NganhHoc SET TenNganh = ?" +
+                         "WHERE MaNganh = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenNganh);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -15,10 +15,13 @@ import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -31,6 +34,7 @@ import quanlythuvienptit.database.dao.DocGiaDAO;
 import quanlythuvienptit.database.dao.PhieuMuonTraDAO;
 import quanlythuvienptit.database.dao.Phieu_TLDAO;
 import quanlythuvienptit.database.dao.TaiLieuDAO;
+import quanlythuvienptit.database.dao.UserDAO;
 import quanlythuvienptit.models.PhieuMuonTra;
 
 /**
@@ -56,6 +60,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         set_header(jScrollPane8, jTable8);
         LocalDate today = LocalDate.now();
         this.jTextField32.setText(today.toString());
+        this.jTextField39.setText(UserDAO.TenUser);
     }
     
     private void set_header(JScrollPane jScrollPane, JTable jTable) {
@@ -105,10 +110,10 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel49 = new javax.swing.JLabel();
         jButton30 = new javax.swing.JButton();
         jTextField32 = new javax.swing.JTextField();
-        jTextField38 = new javax.swing.JTextField();
         jTextField39 = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel36 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
         jTextField34 = new javax.swing.JTextField();
@@ -131,10 +136,11 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton35 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable8 = new javax.swing.JTable();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTable9 = new javax.swing.JTable();
         jPanel35 = new javax.swing.JPanel();
         jButton31 = new javax.swing.JButton();
         jButton32 = new javax.swing.JButton();
-        jButton33 = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
 
@@ -248,7 +254,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jButton28)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,7 +298,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jPanel34.setLayout(jPanel34Layout);
         jPanel34Layout.setHorizontalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -353,8 +359,6 @@ public class JP_QLPM extends javax.swing.JPanel {
 
         jTextField32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jTextField38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         jTextField39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -378,13 +382,12 @@ public class JP_QLPM extends javax.swing.JPanel {
                             .addComponent(jLabel49)
                             .addComponent(jLabel50))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextField32, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(jButton30)))
@@ -398,11 +401,14 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
                     .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel37)
-                    .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel37))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel49)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -438,7 +444,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                         .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 29, Short.MAX_VALUE)))
+                        .addGap(0, 33, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -522,7 +528,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jButton36)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
             .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel37Layout.setVerticalGroup(
@@ -576,6 +582,16 @@ public class JP_QLPM extends javax.swing.JPanel {
         ));
         jScrollPane8.setViewportView(jTable8);
 
+        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"
+            }
+        ));
+        jScrollPane11.setViewportView(jTable9);
+
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
         jPanel38Layout.setHorizontalGroup(
@@ -586,6 +602,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addComponent(jButton35)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane8)
+            .addComponent(jScrollPane11)
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -594,7 +611,9 @@ public class JP_QLPM extends javax.swing.JPanel {
                     .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton35))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
@@ -613,7 +632,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                         .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(jButton34)
-                        .addGap(0, 586, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addGap(470, 470, 470)
@@ -643,19 +662,10 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton31.setBackground(new java.awt.Color(153, 255, 255));
         jButton31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton31.setText("Chi tiết");
-        jButton31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton31ActionPerformed(evt);
-            }
-        });
 
         jButton32.setBackground(new java.awt.Color(153, 255, 255));
         jButton32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton32.setText("Làm mới");
-
-        jButton33.setBackground(new java.awt.Color(153, 255, 255));
-        jButton33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton33.setText("Xóa");
 
         jTable7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
@@ -678,10 +688,8 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addComponent(jButton31)
                 .addGap(38, 38, 38)
                 .addComponent(jButton32)
-                .addGap(36, 36, 36)
-                .addComponent(jButton33)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1224, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1237, Short.MAX_VALUE)
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -689,8 +697,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton31)
-                    .addComponent(jButton32)
-                    .addComponent(jButton33))
+                    .addComponent(jButton32))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE))
         );
@@ -708,10 +715,6 @@ public class JP_QLPM extends javax.swing.JPanel {
             .addComponent(jTabbedPane8)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton31ActionPerformed
      public void addAction(){
         ActionListener ac = new QLPMListener(this);
         this.jButton28.setActionCommand("searchSach");
@@ -730,8 +733,6 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jButton30.addActionListener(ac);
         this.jButton32.setActionCommand("resetPhieu");
         this.jButton32.addActionListener(ac);
-        this.jButton33.setActionCommand("deletePhieu");
-        this.jButton33.addActionListener(ac);
         this.jButton31.addActionListener(ac);
     }
     
@@ -766,6 +767,9 @@ public class JP_QLPM extends javax.swing.JPanel {
     public void searchPhieu(){
         String s = this.jTextField34.getText();
         this.jTable8.setModel(PhieuMuonTraDAO.search(s));
+        String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
+        DefaultTableModel model = new DefaultTableModel(col, 0);
+        this.jTable9.setModel(model);
     }
     
     public void getThongTinTraSach(){
@@ -800,21 +804,30 @@ public class JP_QLPM extends javax.swing.JPanel {
     }
     
     public void traSach(){
-        int row = this.jTable8.getSelectedRow();
+        int rowCount = this.jTable9.getRowCount();
         String idPM = "";
         String idTL = "";
+        int conLai = 0;
         String tinhTrang = this.jTextArea1.getText();
-        if(row >= 0){
-           idPM = (String)this.jTable8.getValueAt(row, 1);
-           idTL = (String)this.jTable8.getValueAt(row, 2);
-        }
-        if(!idPM.isEmpty() && !idTL.isEmpty()){
-            Phieu_TLDAO.updateTrangThaiMT(idPM, idTL);
-            TaiLieuDAO.updateTinhTrang(idTL, tinhTrang);
+        if(rowCount > 0){
+            for(int i = 0; i < rowCount; i++){
+                idPM = (String)this.jTable9.getValueAt(i, 1);
+                idTL = (String)this.jTable9.getValueAt(i, 2);
+                conLai = TaiLieuDAO.searchConLai(idTL);
+                if(!idPM.isEmpty() && !idTL.isEmpty() && conLai > 0){
+                    Phieu_TLDAO.updateTrangThaiMT(idPM, idTL);
+                    TaiLieuDAO.updateTinhTrang(idTL, tinhTrang);
+                    ++conLai;
+                    TaiLieuDAO.updateSachConLai(idTL, conLai);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "lỗi!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
             JOptionPane.showMessageDialog(null, "Trả sách thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Lỗi!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Hãy chọn sách!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -840,6 +853,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
         this.jTable8.setModel(model);
+        this.jTable9.setModel(model);
     }
     
     public void insertPhieu(){
@@ -858,12 +872,15 @@ public class JP_QLPM extends javax.swing.JPanel {
         String kieuMuon = this.jComboBox1.getItemAt(index);
         String ngayMuon = this.jTextField32.getText();
         String nguoiChoMuon = this.jTextField39.getText();
-        String hanTra = this.jTextField38.getText();
+        Date date = jDateChooser1.getDate(); 
+        String hanTra = "";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        hanTra = dateFormat.format(date);
         String trangThaiMuonTra = "chua tra";
         String nguoiNhan = this.jTextField30.getText();
         String tinhTrangMuon = TaiLieuDAO.getTinhTrang(maTL);
         String tinhTrangTra = "";
-        if(maDG.isEmpty() || nguoiNhan.isEmpty() || ngayMuon.isEmpty() || hanTra.isEmpty() || nguoiChoMuon.isEmpty()){
+        if(maDG.isEmpty() || nguoiNhan.isEmpty() || ngayMuon.isEmpty() || date == null || nguoiChoMuon.isEmpty()){
             JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
@@ -873,6 +890,9 @@ public class JP_QLPM extends javax.swing.JPanel {
             int row = model.getRowCount();
             for(int i = 0; i < row; i++){
                 String idTL = (String)model.getValueAt(i, 0);
+                int conLai = TaiLieuDAO.searchConLai(idTL);
+                --conLai;
+                TaiLieuDAO.updateSachConLai(idTL, conLai);
                 Phieu_TLDAO.insertSachMuon(idMuonTra, idTL);
             }
         }
@@ -889,6 +909,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         this.jTable7.setModel(model);
     }
     
+    /*
     public void deletePhieu(){
         try{
             int row = this.jTable7.getSelectedRow();
@@ -900,17 +921,34 @@ public class JP_QLPM extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi!!!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+    */
+
     public void dislayChiTietPhieu() throws SQLException{
         int row = this.jTable7.getSelectedRow();
         if(row >= 0){
             String maPhieu = (String)this.jTable7.getValueAt(row, 1);
             JF_PhieuMuon pm = new JF_PhieuMuon();
             pm.dislay(maPhieu);
+            pm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            pm.setLocationRelativeTo(null);
             pm.setVisible(true);
         }
         else{
             JOptionPane.showMessageDialog(this, "Vui lòng chọn phiếu!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    public void selectSachDaMuon(){
+        int row = this.jTable8.getSelectedRow();
+        int colCount = this.jTable8.getColumnCount();
+        if(row >= 0){
+            DefaultTableModel model = (DefaultTableModel)this.jTable9.getModel();
+            Object[] r = new Object[colCount];
+            for(int i = 0; i < colCount; i++){
+                r[i] = this.jTable8.getValueAt(row, i);
+            }
+            model.addRow(r);
+            this.jTable9.setModel(model);
         }
     }
 
@@ -921,11 +959,11 @@ public class JP_QLPM extends javax.swing.JPanel {
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
     private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -954,6 +992,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
@@ -964,6 +1003,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
+    private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField30;
@@ -973,7 +1013,6 @@ public class JP_QLPM extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField35;
     private javax.swing.JTextField jTextField36;
     private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
     private javax.swing.JTextField jTextField39;
     // End of variables declaration//GEN-END:variables
 }
