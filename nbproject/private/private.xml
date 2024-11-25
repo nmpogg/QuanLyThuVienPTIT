@@ -2,8 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-
-
+        <group>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/NewJPanel.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/models/HienThiBDK.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_QLS.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/Digital_clock.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_DSTG.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/ChiTietDocGia.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_QLDG.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/Main_Gui.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_BDK.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JFMain.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/ui/JP_QLTK.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/PhieuMuonTraDAO.java</file>
+            <file>file:/F:/GitHub/QuanLyThuVienPTIT/src/quanlythuvienptit/database/dao/TaiLieuDAO.java</file>
+        </group>
     </open-files>
 </project-private>
