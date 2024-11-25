@@ -4,10 +4,13 @@
  */
 package quanlythuvienptit.ui;
 
+
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -53,6 +56,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
         tenDG = new javax.swing.JLabel();
         lop = new javax.swing.JLabel();
         chuyenNganh = new javax.swing.JLabel();
+        sdt = new javax.swing.JLabel();
         ngayMuon = new javax.swing.JLabel();
         ngaytra = new javax.swing.JLabel();
         maPhieu = new javax.swing.JLabel();
@@ -99,6 +103,9 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
 
         chuyenNganh.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         chuyenNganh.setText("Chuyên Ngành");
+
+        sdt.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        sdt.setText("Số Điện Thoại");
 
         ngayMuon.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         ngayMuon.setText("Ngày Mượn");
@@ -149,6 +156,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+
         jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -181,6 +189,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +242,9 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chuyenNganh)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                         .addGap(20, 20, 20)
+
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -244,6 +255,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
+
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,13 +266,16 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
                             .addComponent(ngaytra)
                             .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(82, 82, 82)
+
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(xuatPhieu)
                     .addComponent(xoa)
+
                     .addComponent(capNhat)
                     .addComponent(jButton2))
+
                 .addGap(15, 15, 15))
         );
 
@@ -393,7 +408,6 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Bạn không có quyền hạn!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
     /**
      * @param args the command line arguments
      */
@@ -443,6 +457,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -454,6 +469,7 @@ public class JF_PhieuMuon extends javax.swing.JFrame {
     private javax.swing.JLabel ngayMuon;
     private javax.swing.JLabel ngaytra;
     private javax.swing.JLabel phieumuon;
+    private javax.swing.JLabel sdt;
     private javax.swing.JLabel tenDG;
     private javax.swing.JButton xoa;
     private javax.swing.JButton xuatPhieu;

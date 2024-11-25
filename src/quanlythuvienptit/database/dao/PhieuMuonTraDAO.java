@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvienptit.database.DataBaseConnection;
+import quanlythuvienptit.models.HienThiBDK;
 import quanlythuvienptit.models.PhieuMuonTra;
 /**
  *
@@ -31,6 +32,8 @@ public class PhieuMuonTraDAO {
             int cnt = 1;
             while(rs.next()){
                 Object[] row = new Object[7];
+
+                row[0] = cnt++;
                 row[1] = rs.getString("ID_MuonTra");
                 row[3] = rs.getString("MaDG");
                 row[5] = rs.getString("NgayMuon");
@@ -273,5 +276,32 @@ public class PhieuMuonTraDAO {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    public ArrayList<HienThiBDK> hienthibdk(){
+        ArrayList<HienThiBDK> list = new ArrayList<>();
+        ResultSet rs = null;
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String s = "tại chỗ";
+            String sql = "SELECT DocGia.MaDG AS MaDocGia,DocGia.HoTen AS TenDocGia,COUNT(Phieu_TaiLieu.MaTL) AS SoTaiLieuMuon "+
+                    "FROM  phieumuontra "+
+                    "LEFT JOIN docgia ON DocGia.MaDG = PhieuMuonTra.MaDG "+
+                    "LEFT JOIN Phieu_TaiLieu ON PhieuMuonTra.ID_MuonTra = Phieu_TaiLieu.ID_MuonTra "+
+                    "WHERE phieumuontra.KieuMuon = ?" +
+                    "GROUP BY DocGia.MaDG, DocGia.HoTen;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, s);
+            rs = ps.executeQuery();
+           while(rs.next()){
+               HienThiBDK a = new HienThiBDK();
+               a.setMaDG(rs.getString("MaDocGia"));
+               a.setTenDG(rs.getString("TenDocGia"));
+               a.setSoSach(rs.getString("SoTaiLieuMuon"));
+               list.add(a);
+           }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
     }
 }

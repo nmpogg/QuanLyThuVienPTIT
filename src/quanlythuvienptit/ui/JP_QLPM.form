@@ -1079,6 +1079,7 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
+<<<<<<< HEAD
                           </TableColumnModel>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -1145,6 +1146,8 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
+=======
+>>>>>>> main
                           </TableColumnModel>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -1180,9 +1183,17 @@
                       <Component id="jButton31" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="jButton32" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane7" alignment="1" pref="1237" max="32767" attributes="0"/>
+=======
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jButton33" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPane7" alignment="1" pref="1224" max="32767" attributes="0"/>
+>>>>>>> main
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1210,6 +1221,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Chi ti&#x1ebf;t"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton31ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton32">
               <Properties>

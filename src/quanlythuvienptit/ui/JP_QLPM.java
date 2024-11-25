@@ -60,7 +60,10 @@ public class JP_QLPM extends javax.swing.JPanel {
         set_header(jScrollPane8, jTable8);
         LocalDate today = LocalDate.now();
         this.jTextField32.setText(today.toString());
+<<<<<<< HEAD
         this.jTextField39.setText(UserDAO.TenUser);
+=======
+>>>>>>> main
     }
     
     private void set_header(JScrollPane jScrollPane, JTable jTable) {
@@ -662,6 +665,11 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton31.setBackground(new java.awt.Color(153, 255, 255));
         jButton31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton31.setText("Chi tiết");
+        jButton31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton31ActionPerformed(evt);
+            }
+        });
 
         jButton32.setBackground(new java.awt.Color(153, 255, 255));
         jButton32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -688,8 +696,15 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addComponent(jButton31)
                 .addGap(38, 38, 38)
                 .addComponent(jButton32)
+<<<<<<< HEAD
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1237, Short.MAX_VALUE)
+=======
+                .addGap(36, 36, 36)
+                .addComponent(jButton33)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1224, Short.MAX_VALUE)
+>>>>>>> main
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -715,6 +730,10 @@ public class JP_QLPM extends javax.swing.JPanel {
             .addComponent(jTabbedPane8)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton31ActionPerformed
      public void addAction(){
         ActionListener ac = new QLPMListener(this);
         this.jButton28.setActionCommand("searchSach");
@@ -853,7 +872,10 @@ public class JP_QLPM extends javax.swing.JPanel {
         String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
         this.jTable8.setModel(model);
+<<<<<<< HEAD
         this.jTable9.setModel(model);
+=======
+>>>>>>> main
     }
     
     public void insertPhieu(){
