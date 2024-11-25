@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvienptit.database.DataBaseConnection;
+import quanlythuvienptit.models.HienThiBDK;
 import quanlythuvienptit.models.PhieuMuonTra;
 /**
  *
@@ -229,5 +230,32 @@ public class PhieuMuonTraDAO {
             e.printStackTrace();
         }
         return rs;
+    }
+    public ArrayList<HienThiBDK> hienthibdk(){
+        ArrayList<HienThiBDK> list = new ArrayList<>();
+        ResultSet rs = null;
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String s = "tại chỗ";
+            String sql = "SELECT DocGia.MaDG AS MaDocGia,DocGia.HoTen AS TenDocGia,COUNT(Phieu_TaiLieu.MaTL) AS SoTaiLieuMuon "+
+                    "FROM  phieumuontra "+
+                    "LEFT JOIN docgia ON DocGia.MaDG = PhieuMuonTra.MaDG "+
+                    "LEFT JOIN Phieu_TaiLieu ON PhieuMuonTra.ID_MuonTra = Phieu_TaiLieu.ID_MuonTra "+
+                    "WHERE phieumuontra.KieuMuon = ?" +
+                    "GROUP BY DocGia.MaDG, DocGia.HoTen;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, s);
+            rs = ps.executeQuery();
+           while(rs.next()){
+               HienThiBDK a = new HienThiBDK();
+               a.setMaDG(rs.getString("MaDocGia"));
+               a.setTenDG(rs.getString("TenDocGia"));
+               a.setSoSach(rs.getString("SoTaiLieuMuon"));
+               list.add(a);
+           }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
     }
 }

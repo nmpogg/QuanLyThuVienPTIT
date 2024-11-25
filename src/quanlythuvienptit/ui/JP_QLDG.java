@@ -634,7 +634,7 @@ public class JP_QLDG extends javax.swing.JPanel {
             return;
         }
         selectedMaDG = (String) jTable4.getValueAt(selectedRow, 1);
-        ChiTietDocGia a = new ChiTietDocGia();
+        ChiTietDocGia a = new ChiTietDocGia(selectedMaDG);
         a.setVisible(true);
         a.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jButton23ActionPerformed
