@@ -121,7 +121,7 @@ public class JP_BDK extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel5.setText("Tìm sách");
+        jLabel5.setText("Tìm tài liệu");
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +150,7 @@ public class JP_BDK extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
                 .addContainerGap())
@@ -287,7 +287,7 @@ public class JP_BDK extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã Đọc Giả", "Tên Đọc Giả", "Số Sách Mượn"
+                "STT", "Mã Đọc Giả", "Tên Đọc Giả", "Số Tài Liệu Mượn"
             }
         ) {
             boolean[] canEdit = new boolean [] {

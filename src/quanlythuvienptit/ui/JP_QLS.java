@@ -113,10 +113,20 @@ public class JP_QLS extends javax.swing.JPanel {
         jButton16.setBackground(new java.awt.Color(153, 255, 255));
         jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton16.setText("Xóa");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setBackground(new java.awt.Color(153, 255, 255));
         jButton17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton17.setText("Chi tiết");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setBackground(new java.awt.Color(153, 255, 255));
         jButton18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -227,7 +237,7 @@ public class JP_QLS extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Quản lý sách", jPanel7);
+        jTabbedPane3.addTab("Quản lý tài liệu", jPanel7);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -238,7 +248,7 @@ public class JP_QLS extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("THÊM MỚI SÁCH");
+        jLabel14.setText("THÊM MỚI TÀI LIỆU");
         jLabel14.setOpaque(true);
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -400,7 +410,7 @@ public class JP_QLS extends javax.swing.JPanel {
                 .addContainerGap(102, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Thêm sách", jPanel8);
+        jTabbedPane3.addTab("Thêm tài liệu", jPanel8);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -425,6 +435,14 @@ public class JP_QLS extends javax.swing.JPanel {
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
     public void addAction(){
         ActionListener ac = new QLSListener(this);
         this.jButton13.addActionListener(ac);
@@ -529,11 +547,11 @@ public class JP_QLS extends javax.swing.JPanel {
     }
     
     public void deleteSach(){
-        if(UserDAO.quyenHan.equals("Thủ thư") || UserDAO.quyenHan.equals("Admin")){
+        if(UserDAO.quyenHan.toLowerCase().equals("admin")){
             try{
                 int row = this.jTable3.getSelectedRow();
                 String id = (String)this.jTable3.getValueAt(row, 1);
-                TaiLieuDAO.updateStatus(id, "Cần thanh lý");
+                TaiLieuDAO.updateTinhTrang(id, "Cần thanh lý");
                 //TaiLieuDAO.deleteSach(id);
                 JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }catch(Exception e){

@@ -293,6 +293,7 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
         if(rs.next()){
             this.jTextField1.setText(rs.getString("TenTL"));
             this.jTextField1.setEditable(false);
+            this.jLabel1.setText(rs.getString("TenTL"));
             
             this.jTextField2.setText(NhaXuatBanDAO.searchTenNXB(rs.getString("MaNXB")));
             this.jTextField2.setEditable(false);

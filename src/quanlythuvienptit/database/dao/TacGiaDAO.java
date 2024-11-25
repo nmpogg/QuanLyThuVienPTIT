@@ -20,7 +20,7 @@ import quanlythuvienptit.models.TacGia;
 public class TacGiaDAO {
     public ArrayList<TacGia> getListTG(){
             ArrayList<TacGia> list = new ArrayList<>();
-            String sql = "select MaTG,TenTG,GhiChu,GioiTinh,NamSinh,NgayTao from tacgia ORDER BY MaTG ASC";
+            String sql = "select MaTG,TenTG,GhiChu,GioiTinh,NamSinh,NgayTao,status from tacgia ORDER BY MaTG ASC";
             try(Connection conn = DataBaseConnection.getConnection()){
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
@@ -32,6 +32,7 @@ public class TacGiaDAO {
                     a.setGioitinh(rs.getString("GioiTinh"));
                     a.setNamSinh(rs.getString("NamSinh"));
                     a.setNgayTao(rs.getString("NgayTao"));
+                    a.setStatus(rs.getString("status"));
                     list.add(a);
                 }
             } catch(Exception e){

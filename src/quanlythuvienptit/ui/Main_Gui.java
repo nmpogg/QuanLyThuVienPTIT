@@ -234,7 +234,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Bookmark_3.png"))); // NOI18N
-        jLabel1.setText("Quản lý sách");
+        jLabel1.setText("Quản lý tài liệu");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
         jLabel1.setPreferredSize(new java.awt.Dimension(130, 40));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,7 +272,7 @@ public class Main_Gui extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Download from the Cloud_1.png"))); // NOI18N
-        jLabel9.setText("Sao lưu khôi phục");
+        jLabel9.setText("Go to Web");
         jLabel9.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(255, 204, 204)));
         jLabel9.setPreferredSize(new java.awt.Dimension(130, 40));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -378,7 +378,7 @@ public class Main_Gui extends javax.swing.JFrame {
         );
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Lock_1.png"))); // NOI18N
         jLabel12.setText("Đăng xuất");
@@ -397,7 +397,7 @@ public class Main_Gui extends javax.swing.JFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Settings_1.png"))); // NOI18N
         jLabel13.setText("Cài đặt");

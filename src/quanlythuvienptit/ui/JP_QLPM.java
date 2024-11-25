@@ -157,7 +157,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jPanel30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel33.setText("Số thẻ:");
+        jLabel33.setText("Mã độc giả");
 
         jTextField29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -188,11 +188,11 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel33))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -220,7 +220,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel39.setText("Tìm sách");
+        jLabel39.setText("Tìm tài liệu");
         jLabel39.setOpaque(true);
 
         jPanel33.setBackground(new java.awt.Color(255, 255, 255));
@@ -275,7 +275,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel40.setText("Sách đã chọn");
+        jLabel40.setText("Tài liệu đã chọn");
         jLabel40.setOpaque(true);
 
         jTable6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -448,12 +448,12 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane8.addTab("Mượn sách", jPanel27);
+        jTabbedPane8.addTab("Mượn tài liệu", jPanel27);
 
         jPanel36.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel41.setText("Số thẻ");
+        jLabel41.setText("Mã Độc Giả");
 
         jTextField34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -468,7 +468,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel42.setText("Thông tin trả sách");
+        jLabel42.setText("Thông tin trả tài liệu");
         jLabel42.setOpaque(true);
 
         jLabel43.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -478,7 +478,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel44.setText("Phạt:");
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel45.setText("Trạng thái sách khi trả:");
+        jLabel45.setText("Ghi chú:");
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel46.setText("Số ngày muộn:");
@@ -486,6 +486,11 @@ public class JP_QLPM extends javax.swing.JPanel {
         jButton36.setBackground(new java.awt.Color(153, 255, 255));
         jButton36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton36.setText("Trả sách");
+        jButton36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton36ActionPerformed(evt);
+            }
+        });
 
         jTextField35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -565,7 +570,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel47.setText("Sách đã mượn");
+        jLabel47.setText("Tài liệu đã mượn");
         jLabel47.setOpaque(true);
 
         jButton35.setBackground(new java.awt.Color(153, 255, 255));
@@ -577,7 +582,7 @@ public class JP_QLPM extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"
+                "STT", "Mã phiếu mượn", "Mã tài liệu", "Mã độc giả", "Tên tài liệu", "Ngày mượn", "Hạn trả"
             }
         ));
         jScrollPane8.setViewportView(jTable8);
@@ -587,7 +592,7 @@ public class JP_QLPM extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã phiếu mượn", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"
+                "STT", "Mã phiếu mượn", "Mã tài liệu", "Mã độc giả", "Tên tài liệu", "Ngày mượn", "Hạn trả"
             }
         ));
         jScrollPane11.setViewportView(jTable9);
@@ -636,7 +641,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addGap(470, 470, 470)
-                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel41)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel36Layout.setVerticalGroup(
@@ -655,7 +660,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
-        jTabbedPane8.addTab("Trả sách", jPanel36);
+        jTabbedPane8.addTab("Trả tài liệu", jPanel36);
 
         jPanel35.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -673,7 +678,7 @@ public class JP_QLPM extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số đã trả", "Ngày mượn", "Hạn trả"
+                "STT", "Mã phiếu mượn", "Mã độc giả", "Họ tên", "Số TL mượn", "Số TL trả", "Ngày mượn", "Hạn trả"
             }
         ));
         jTable7.setSelectionBackground(new java.awt.Color(204, 255, 255));
@@ -715,6 +720,10 @@ public class JP_QLPM extends javax.swing.JPanel {
             .addComponent(jTabbedPane8)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton36ActionPerformed
      public void addAction(){
         ActionListener ac = new QLPMListener(this);
         this.jButton28.setActionCommand("searchSach");
@@ -767,7 +776,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     public void searchPhieu(){
         String s = this.jTextField34.getText();
         this.jTable8.setModel(PhieuMuonTraDAO.search(s));
-        String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
+        String[] col = {"STT", "Mã PM", "Mã tài liệu", "Mã độc giả", "Tên tài liệu", "Ngày mượn", "Hạn trả"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
         this.jTable9.setModel(model);
     }
@@ -808,7 +817,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         String idPM = "";
         String idTL = "";
         int conLai = 0;
-        String tinhTrang = this.jTextArea1.getText();
+        String ghiChu = this.jTextArea1.getText();
         if(rowCount > 0){
             for(int i = 0; i < rowCount; i++){
                 idPM = (String)this.jTable9.getValueAt(i, 1);
@@ -816,7 +825,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 conLai = TaiLieuDAO.searchConLai(idTL);
                 if(!idPM.isEmpty() && !idTL.isEmpty() && conLai > 0){
                     Phieu_TLDAO.updateTrangThaiMT(idPM, idTL);
-                    TaiLieuDAO.updateTinhTrang(idTL, tinhTrang);
+                    TaiLieuDAO.updateTinhTrang(idTL, ghiChu);
                     ++conLai;
                     TaiLieuDAO.updateSachConLai(idTL, conLai);
                 }
@@ -824,10 +833,10 @@ public class JP_QLPM extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "lỗi!!!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
-            JOptionPane.showMessageDialog(null, "Trả sách thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Trả thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Hãy chọn sách!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Hãy chọn một tài liệu!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -838,7 +847,7 @@ public class JP_QLPM extends javax.swing.JPanel {
             this.jTextField30.setText(tenDG);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Số thẻ không hợp lệ!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Mã độc giả không tồn tại!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -850,7 +859,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     }
     
     public void resetSach(){
-        String[] col = {"STT", "Mã PM", "Mã sách", "Số thẻ", "Tên sách", "Ngày mượn", "Hạn trả"};
+        String[] col = {"STT", "Mã PM", "Mã tài liệu", "Mã độc giả", "Tên tài liệu", "Ngày mượn", "Hạn trả"};
         DefaultTableModel model = new DefaultTableModel(col, 0);
         this.jTable8.setModel(model);
         this.jTable9.setModel(model);
@@ -876,7 +885,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         String hanTra = "";
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         hanTra = dateFormat.format(date);
-        String trangThaiMuonTra = "chua tra";
+        String trangThaiMuonTra = "Chưa trả";
         String nguoiNhan = this.jTextField30.getText();
         String tinhTrangMuon = TaiLieuDAO.getTinhTrang(maTL);
         String tinhTrangTra = "";
@@ -899,7 +908,7 @@ public class JP_QLPM extends javax.swing.JPanel {
     }
     
     public void ThongKePhieu(){
-        String[] col = {"STT", "Mã phiếu mượn", "Số thẻ", "Họ tên", "Số sách mượn", "Số sách trả", "Ngày mượn", "Hạn trả"};
+        String[] col = {"STT", "Mã phiếu mượn", "Mã độc giả", "Họ tên", "Số TL mượn", "Số TL trả", "Ngày mượn", "Hạn trả"};
         ArrayList<Object[]> dsPhieu = PhieuMuonTraDAO.thongKePhieu();
         Object[][] row = new Object[dsPhieu.size()][8];
         for(int i = 0; i < dsPhieu.size(); i++){
@@ -934,7 +943,7 @@ public class JP_QLPM extends javax.swing.JPanel {
             pm.setVisible(true);
         }
         else{
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn phiếu!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một phiếu mượn!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }
     

@@ -56,7 +56,7 @@ public class TaiLieuDAO {
             try {
                 Connection con = DataBaseConnection.getConnection();
                 String sql = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu " +
-                             "WHERE tenTL LIKE ?";
+                             "WHERE tengetTL LIKE ?";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1, "%" + s + "%");
                 ResultSet rs = ps.executeQuery();
@@ -271,10 +271,10 @@ public class TaiLieuDAO {
         return tinhTrang;
     }
     
-    public static void updateTinhTrang(String id, String tinhTrang){
+    public static void updateTinhTrang(String id, String ghiChu){
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "UPDATE TaiLieu SET TinhTrang = " + "'" + tinhTrang + "' " +
+            String sql = "UPDATE TaiLieu SET GhiChu = " + "'" + ghiChu + "' " +
                          "WHERE MaTL = " + "'" + id + "'";
             Statement stmt = con.createStatement();
             stmt.executeUpdate(sql);
@@ -355,8 +355,10 @@ public class TaiLieuDAO {
         DefaultTableModel model = null;
         try {
                 Connection con = DataBaseConnection.getConnection();
-                String sql = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu";
+                String sql = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu where TinhTrang = ?";
                 PreparedStatement ps = con.prepareStatement(sql);
+                String s = "đang sử dụng";
+                ps.setString(1, s);
                 ResultSet rs = ps.executeQuery();
                 String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Số lượng","Còn lại"};
                 ArrayList<Object[]> arr = new ArrayList<>();
@@ -505,13 +507,13 @@ public class TaiLieuDAO {
         ArrayList<TaiLieu> list = new ArrayList<>();
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "SELECT * FROM TaiLieu " + 
+            String sql = "SELECT MaTL,TenTL,khoa.tenkhoa,nhaxuatban.tennxb,namxb,tacgia.tentg,soluong,conlai,kesach,tinhtrang,tailieu.ghichu,tailieu.status FROM TaiLieu JOIN tacgia on tacgia.matg=tailieu.matg join khoa on tailieu.makhoa = khoa.makhoa join nhaxuatban on nhaxuatban.manxb = tailieu.manxb " + 
                          "WHERE TinhTrang = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "Thanh lý");
+            ps.setString(1, "Cần thanh lý");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                TaiLieu a = new TaiLieu(rs.getString("MaTL"), rs.getString("TenTL"),rs.getString("MaKhoa") , rs.getString("MaNXB"), rs.getString("NamXB"),rs.getString("MaTG") , rs.getInt("SoLuong"), rs.getInt("ConLai"), rs.getString("KeSach"), rs.getString("TinhTrang"), rs.getString("GhiChu"), rs.getString("status"));
+                TaiLieu a = new TaiLieu(rs.getString("MaTL"), rs.getString("TenTL"),rs.getString("tenKhoa") , rs.getString("tenNXB"), rs.getString("NamXB"),rs.getString("tenTG") , rs.getInt("SoLuong"), rs.getInt("ConLai"), rs.getString("KeSach"), rs.getString("TinhTrang"), rs.getString("GhiChu"), rs.getString("status"));
                 list.add(a);
             }
         }catch(Exception e){
@@ -519,9 +521,9 @@ public class TaiLieuDAO {
         }
         return list;
     }
-    public boolean updateThanhLy(String s){
+    public static boolean updateThanhLy(String s){
         try ( Connection c = DataBaseConnection.getConnection()) {
-            String del = String.format("update tailieu set TinhTrang = 'da thanh ly' where MaTL ='%s';",s);
+            String del =String.format("update tailieu set TinhTrang = 'Đã thanh lý' where MaTL = '%s'",s);
             PreparedStatement ps = c.prepareStatement(del);
             int row = ps.executeUpdate(del);//ap dung cho insert update delete;
             return row >0 ? true:false;
@@ -534,13 +536,13 @@ public class TaiLieuDAO {
         ArrayList<TaiLieu> list = new ArrayList<>();
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "SELECT * FROM TaiLieu " + 
+            String sql = "SELECT MaTL,TenTL,khoa.tenkhoa,nhaxuatban.tennxb,namxb,tacgia.tentg,soluong,conlai,kesach,tinhtrang,tailieu.ghichu,tailieu.status FROM TaiLieu JOIN tacgia on tacgia.matg=tailieu.matg join khoa on tailieu.makhoa = khoa.makhoa join nhaxuatban on nhaxuatban.manxb = tailieu.manxb " + 
                          "WHERE TinhTrang = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, "da thanh ly");
+            ps.setString(1, "Đã thanh lý");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                TaiLieu a = new TaiLieu(rs.getString("MaTL"), rs.getString("TenTL"),rs.getString("MaKhoa") , rs.getString("MaNXB"), rs.getString("NamXB"),rs.getString("MaTG") , rs.getInt("SoLuong"), rs.getInt("ConLai"), rs.getString("KeSach"), rs.getString("TinhTrang"), rs.getString("GhiChu"), rs.getString("status"));
+                TaiLieu a = new TaiLieu(rs.getString("MaTL"), rs.getString("TenTL"),rs.getString("tenkhoa") , rs.getString("tennxb"), rs.getString("NamXB"),rs.getString("tentg") , rs.getInt("SoLuong"), rs.getInt("ConLai"), rs.getString("KeSach"), rs.getString("TinhTrang"), rs.getString("GhiChu"), rs.getString("status"));
                 list.add(a);
             }
         }catch(Exception e){
@@ -572,8 +574,9 @@ public class TaiLieuDAO {
         if(khoa == "Tất cả"){
             try {
                 Connection con = DataBaseConnection.getConnection();
-                String sql = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu";
+                String sql = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu WHERE TinhTrang = ?";
                 PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, "đang sử dụng");
                 ResultSet rs = ps.executeQuery();
                 String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Số lượng","Còn lại"};
                 ArrayList<Object[]> arr = new ArrayList<>();
@@ -629,9 +632,11 @@ public class TaiLieuDAO {
                 Connection con = DataBaseConnection.getConnection();
                 String idKhoa = KhoaDAO.searchMaKhoa(khoa);
                 String sql1 = "SELECT MaTL, TenTL, MaKhoa, MaTG, SoLuong, ConLai FROM TaiLieu " +
-                              "WHERE MaKhoa = ?";
+                              "WHERE MaKhoa = ? AND TinhTrang = ?";
                 PreparedStatement ps = con.prepareStatement(sql1);
+                
                 ps.setString(1, idKhoa);
+                ps.setString(2, "đang sử dụng");
                 ResultSet rs = ps.executeQuery();
                 String[] col = {"STT", "Mã tài liệu", "Tên tài liệu", "Khoa", "Tác giả", "Số lượng","Còn lại"};
                 ArrayList<Object[]> arr = new ArrayList<>();
