@@ -271,10 +271,10 @@ public class TaiLieuDAO {
         return tinhTrang;
     }
     
-    public static void updateTinhTrang(String id, String tinhTrang){
+    public static void updateTinhTrang(String id, String ghiChu){
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "UPDATE TaiLieu SET TinhTrang = " + "'" + tinhTrang + "' " +
+            String sql = "UPDATE TaiLieu SET GhiChu = " + "'" + ghiChu + "' " +
                          "WHERE MaTL = " + "'" + id + "'";
             Statement stmt = con.createStatement();
             stmt.executeUpdate(sql);

@@ -478,7 +478,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel44.setText("Phạt:");
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel45.setText("Trạng thái sách khi trả:");
+        jLabel45.setText("Ghi chú:");
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel46.setText("Số ngày muộn:");
@@ -808,7 +808,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         String idPM = "";
         String idTL = "";
         int conLai = 0;
-        String tinhTrang = this.jTextArea1.getText();
+        String ghiChu = this.jTextArea1.getText();
         if(rowCount > 0){
             for(int i = 0; i < rowCount; i++){
                 idPM = (String)this.jTable9.getValueAt(i, 1);
@@ -816,7 +816,7 @@ public class JP_QLPM extends javax.swing.JPanel {
                 conLai = TaiLieuDAO.searchConLai(idTL);
                 if(!idPM.isEmpty() && !idTL.isEmpty() && conLai > 0){
                     Phieu_TLDAO.updateTrangThaiMT(idPM, idTL);
-                    TaiLieuDAO.updateTinhTrang(idTL, tinhTrang);
+                    TaiLieuDAO.updateTinhTrang(idTL, ghiChu);
                     ++conLai;
                     TaiLieuDAO.updateSachConLai(idTL, conLai);
                 }
