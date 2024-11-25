@@ -500,4 +500,51 @@ public class TaiLieuDAO {
         }
         return tenTL;
     }
+    public ArrayList<TaiLieu> getlistTLTL(){
+        ArrayList<TaiLieu> list = new ArrayList<>();
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT * FROM TaiLieu " + 
+                         "WHERE TinhTrang = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "Thanh lý");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                TaiLieu a = new TaiLieu(rs.getString("MaTL"), rs.getString("TenTL"),rs.getString("MaKhoa") , rs.getString("MaNXB"), rs.getString("NamXB"),rs.getString("MaTG") , rs.getInt("SoLuong"), rs.getInt("ConLai"), rs.getString("KeSach"), rs.getString("TinhTrang"), rs.getString("GhiChu"), rs.getString("status"));
+                list.add(a);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public boolean updateThanhLy(String s){
+        try ( Connection c = DataBaseConnection.getConnection()) {
+            String del = String.format("update tailieu set TinhTrang = 'da thanh ly' where MaTL ='%s';",s);
+            PreparedStatement ps = c.prepareStatement(del);
+            int row = ps.executeUpdate(del);//ap dung cho insert update delete;
+            return row >0 ? true:false;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return true;
+    }
+    public ArrayList<TaiLieu> getlistTLDTL(){
+        ArrayList<TaiLieu> list = new ArrayList<>();
+        try{
+            Connection con = DataBaseConnection.getConnection();
+            String sql = "SELECT * FROM TaiLieu " + 
+                         "WHERE TinhTrang = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "da thanh ly");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                TaiLieu a = new TaiLieu(rs.getString("MaTL"), rs.getString("TenTL"),rs.getString("MaKhoa") , rs.getString("MaNXB"), rs.getString("NamXB"),rs.getString("MaTG") , rs.getInt("SoLuong"), rs.getInt("ConLai"), rs.getString("KeSach"), rs.getString("TinhTrang"), rs.getString("GhiChu"), rs.getString("status"));
+                list.add(a);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

@@ -13,6 +13,9 @@ public class TaiLieu {
     private int soLuong, conLai;
     private String keSach, tinhTrang, ghiChu, status;
 
+    public TaiLieu() {
+    }
+    
     public TaiLieu(String MaTL, String TenTL, String MaKhoa, String MaNXB, String NamXB, String MaTG, int soLuong, int conLai, String keSach, String tinhTrang, String ghiChu, String status) {
         this.MaTL = MaTL;
         this.TenTL = TenTL;
