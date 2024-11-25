@@ -707,7 +707,7 @@ public class TaiLieuDAO {
     public static void updateStatus(String id, String status){
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "UPDATE TaiLieu SET status = ? " +
+            String sql = "UPDATE TaiLieu SET TinhTrang = ? " +
                          "WHERE MaTL = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, status);

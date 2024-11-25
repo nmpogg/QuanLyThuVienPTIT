@@ -253,7 +253,7 @@ public class Main_Gui extends javax.swing.JFrame {
         DOCGIA.setForeground(new java.awt.Color(255, 255, 255));
         DOCGIA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         DOCGIA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quanlythuvienptit/icons/Connect.png"))); // NOI18N
-        DOCGIA.setText("Quản lý đọc giả");
+        DOCGIA.setText("Quản lý độc giả");
         DOCGIA.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 204, 204)));
         DOCGIA.setPreferredSize(new java.awt.Dimension(130, 40));
         DOCGIA.addMouseListener(new java.awt.event.MouseAdapter() {

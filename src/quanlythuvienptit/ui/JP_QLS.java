@@ -551,7 +551,7 @@ public class JP_QLS extends javax.swing.JPanel {
             try{
                 int row = this.jTable3.getSelectedRow();
                 String id = (String)this.jTable3.getValueAt(row, 1);
-                TaiLieuDAO.updateTinhTrang(id, "Cần thanh lý");
+                TaiLieuDAO.updateStatus(id, "Cần thanh lý");
                 //TaiLieuDAO.deleteSach(id);
                 JOptionPane.showMessageDialog(null, "Đã xóa", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }catch(Exception e){

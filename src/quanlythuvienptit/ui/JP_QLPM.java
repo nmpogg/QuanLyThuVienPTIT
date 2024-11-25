@@ -364,6 +364,7 @@ public class JP_QLPM extends javax.swing.JPanel {
         jLabel50.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel50.setText("Người cho mượn:");
 
+        jComboBox1.setBackground(new java.awt.Color(102, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tại chỗ", "Mượn về" }));
 
