@@ -88,13 +88,13 @@ public class JP_QLTK extends javax.swing.JPanel {
         hoTenField = new javax.swing.JTextField();
         emailField = new javax.swing.JTextField();
         soDienThoaiField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JTextField();
         usernameField = new javax.swing.JTextField();
         gioiTinhField = new javax.swing.JComboBox<>();
         quyenHanField = new javax.swing.JComboBox<>();
         addButton = new javax.swing.JButton();
         delButton = new javax.swing.JButton();
         birthdayField = new com.toedter.calendar.JDateChooser();
-        passwordField = new javax.swing.JPasswordField();
 
         jTabbedPane2.setBackground(new java.awt.Color(255, 102, 102));
         jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
@@ -287,6 +287,8 @@ public class JP_QLTK extends javax.swing.JPanel {
 
         soDienThoaiField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        passwordField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         usernameField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         gioiTinhField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -333,15 +335,16 @@ public class JP_QLTK extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(delButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                        .addComponent(hoTenField, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                        .addComponent(quyenHanField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(birthdayField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(gioiTinhField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(soDienThoaiField)
-                        .addComponent(passwordField)))
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(hoTenField, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(quyenHanField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(birthdayField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(gioiTinhField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(soDienThoaiField))
+                        .addComponent(delButton, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addGap(218, 218, 218))
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(131, 131, 131)
@@ -361,7 +364,7 @@ public class JP_QLTK extends javax.swing.JPanel {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(hoTenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -409,7 +412,7 @@ public class JP_QLTK extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Thêm tài khoản", jPanel6);
@@ -575,7 +578,7 @@ public class JP_QLTK extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField passwordField;
     private javax.swing.JComboBox<String> quyenHanField;
     private javax.swing.JButton refresh;
     private javax.swing.JTextField soDienThoaiField;

@@ -238,13 +238,10 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
 
         jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-<<<<<<< HEAD
         jButton2.setBackground(new java.awt.Color(153, 255, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton2.setText("Edit");
 
-=======
->>>>>>> main
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -260,19 +257,12 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69))
-<<<<<<< HEAD
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(44, 44, 44)
                 .addComponent(jButton1)
                 .addGap(97, 97, 97))
-=======
-            .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
->>>>>>> main
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,13 +275,9 @@ public class JP_ChiTietTL extends javax.swing.JPanel {
                 .addGap(2, 2, 2)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(45, 45, 45)
-<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-=======
-                .addComponent(jButton1)
->>>>>>> main
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

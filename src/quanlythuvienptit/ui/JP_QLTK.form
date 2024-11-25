@@ -372,7 +372,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="54" max="32767" attributes="0"/>
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -412,15 +412,17 @@
                           <EmptySpace pref="64" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="emailField" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="passwordField" alignment="0" pref="177" max="32767" attributes="0"/>
+                                      <Component id="usernameField" alignment="0" pref="177" max="32767" attributes="0"/>
+                                      <Component id="hoTenField" alignment="0" pref="177" max="32767" attributes="0"/>
+                                      <Component id="quyenHanField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="birthdayField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="gioiTinhField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="soDienThoaiField" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                                   <Component id="delButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="usernameField" alignment="0" pref="177" max="32767" attributes="0"/>
-                                  <Component id="hoTenField" alignment="0" pref="177" max="32767" attributes="0"/>
-                                  <Component id="quyenHanField" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="birthdayField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="gioiTinhField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="soDienThoaiField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
@@ -447,7 +449,7 @@
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="passwordField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="hoTenField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -594,6 +596,13 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JTextField" name="passwordField">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JTextField" name="usernameField">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -664,8 +673,6 @@
                   </Events>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="birthdayField">
-                </Component>
-                <Component class="javax.swing.JPasswordField" name="passwordField">
                 </Component>
               </SubComponents>
             </Container>
