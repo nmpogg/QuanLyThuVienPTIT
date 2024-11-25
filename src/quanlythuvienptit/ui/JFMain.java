@@ -227,10 +227,10 @@ public class JFMain extends javax.swing.JFrame {
            Main_Gui dashBoard = new Main_Gui(user_x.getHoTen(), user_x.getQuyenHan());
            Main_Gui.user = user_x;
            dashBoard.setVisible(true);
-           JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "POPUP", JOptionPane.INFORMATION_MESSAGE);
+           JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE); 
            return;
        }
-        JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu không chính xác!", "ERROR", JOptionPane.ERROR_MESSAGE);
         return;
     }//GEN-LAST:event_jButton1ActionPerformed
 
