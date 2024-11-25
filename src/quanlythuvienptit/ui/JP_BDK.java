@@ -55,6 +55,7 @@ public class JP_BDK extends javax.swing.JPanel {
             }
         });
         timer.start();
+        cnt -= 1;
         jLabel7.setText(""+cnt);
     }
     private void updateTimeAndDate() {
