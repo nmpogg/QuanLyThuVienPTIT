@@ -352,10 +352,6 @@ public class ChiTietDocGia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(!UserDAO.quyenHan.toLowerCase().equals("admin")){
-            JOptionPane.showMessageDialog(rootPane, "Bạn không có quyền");
-            return;
-        }
         ArrayList<Khoa> listKhoa = new KhoaDAO().getListKhoa();
         String khoa = (String)MaKhoa.getSelectedItem();
         String maKhoa = "";
@@ -405,10 +401,6 @@ public class ChiTietDocGia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(!UserDAO.quyenHan.toLowerCase().equals("admin")){
-            JOptionPane.showMessageDialog(rootPane, "Bạn không có quyền");
-            return;
-        }
         Ten.setEditable(true);  
         NgaySinh.setEnabled(true);
         GioiTinh.setEnabled(true);

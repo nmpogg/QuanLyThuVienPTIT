@@ -311,8 +311,6 @@ public class JP_Caidat extends javax.swing.JPanel {
 
         jTabbedPane10.addTab("Đổi mật khẩu", jPanel43);
 
-        jTabbedPane10.setSelectedIndex(1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(

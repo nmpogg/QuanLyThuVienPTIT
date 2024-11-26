@@ -271,10 +271,10 @@ public class TaiLieuDAO {
         return tinhTrang;
     }
     
-    public static void updateTinhTrang(String id, String tinhTrang){
+    public static void updateTinhTrang(String id, String ghiChu){
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "UPDATE TaiLieu SET TinhTrang = " + "'" + tinhTrang + "' " +
+            String sql = "UPDATE TaiLieu SET GhiChu = " + "'" + ghiChu + "' " +
                          "WHERE MaTL = " + "'" + id + "'";
             Statement stmt = con.createStatement();
             stmt.executeUpdate(sql);
@@ -707,7 +707,7 @@ public class TaiLieuDAO {
     public static void updateStatus(String id, String status){
         try{
             Connection con = DataBaseConnection.getConnection();
-            String sql = "UPDATE TaiLieu SET status = ? " +
+            String sql = "UPDATE TaiLieu SET TinhTrang = ? " +
                          "WHERE MaTL = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, status);

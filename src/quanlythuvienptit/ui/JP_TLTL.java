@@ -305,6 +305,7 @@ public class JP_TLTL extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(153, 255, 255));
         jButton3.setText("Làm mới");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,6 +356,7 @@ public class JP_TLTL extends javax.swing.JPanel {
         for(int i = 0;i<jTable3.getRowCount();i++){
             boolean update =  TaiLieuDAO.updateThanhLy((String) jTable3.getValueAt(i, 1));
         }
+        JOptionPane.showMessageDialog(this, "Thanh lý thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

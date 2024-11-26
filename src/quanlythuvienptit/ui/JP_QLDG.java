@@ -183,6 +183,7 @@ public class JP_QLDG extends javax.swing.JPanel {
             }
         });
 
+        Filter.setBackground(new java.awt.Color(102, 255, 255));
         Filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lọc theo ngành học"}));
         Filter.setSelectedItem("Lọc theo ngành học");
         Filter.addActionListener(new java.awt.event.ActionListener() {

@@ -221,6 +221,9 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="Filter">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="66" type="rgb"/>
+                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;L&#x1ecd;c theo ng&#xe0;nh h&#x1ecd;c&quot;})" type="code"/>
                     </Property>

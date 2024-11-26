@@ -50,8 +50,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Qu&#x1ea3;n l&#xfd; s&#xe1;ch">
-                <Property name="tabTitle" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; s&#xe1;ch"/>
+              <JTabbedPaneConstraints tabName="Qu&#x1ea3;n l&#xfd; t&#xe0;i li&#x1ec7;u">
+                <Property name="tabTitle" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; t&#xe0;i li&#x1ec7;u"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -178,6 +178,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Chi ti&#x1ebf;t"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton17ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton18">
                   <Properties>
@@ -340,8 +343,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Th&#xea;m s&#xe1;ch">
-                <Property name="tabTitle" type="java.lang.String" value="Th&#xea;m s&#xe1;ch"/>
+              <JTabbedPaneConstraints tabName="Th&#xea;m t&#xe0;i li&#x1ec7;u">
+                <Property name="tabTitle" type="java.lang.String" value="Th&#xea;m t&#xe0;i li&#x1ec7;u"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -512,7 +515,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="TH&#xca;M M&#x1eda;I S&#xc1;CH"/>
+                    <Property name="text" type="java.lang.String" value="TH&#xca;M M&#x1eda;I T&#xc0;I LI&#x1ec6;U"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
                 </Component>
